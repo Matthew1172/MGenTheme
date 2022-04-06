@@ -104,8 +104,13 @@ function get_mxl()
     );
 
     $api = new ApiCaller();
-    $response['scoreXml'] = $api->CallGetMxl($callee_data);
-    $response['r'] = "Good";
+    $xml = $api->CallGetMxl($callee_data);
+    if($xml){
+        $response['scoreXml'] = $xml;
+        $response['r'] = "Good";
+    }else{
+        $response['r'] = "Bad";
+    }
     wp_send_json($response);
 }
 add_action('wp_ajax_call_get_mxl', 'get_mxl');
