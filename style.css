@@ -1,0 +1,27 @@
+/*
+Theme Name: MGen Website
+Text Domain: mgen
+Version: 1.0
+Requires at least: 4.7
+Requires PHP: 5.2.4
+Description: Custom theme for MGen
+Tags: businesspage
+Author: Matthew Pecko
+Author URI: https://matthew1172.github.io/matthewpecko/
+Theme URI:
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+All files, unless otherwise stated, are released under the GNU General Public
+License version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned
+with others.
+*/
+
+main {
+    width: 1400px;
+    max-width: 90%;
+    margin: 40px auto 20px auto;
+}
