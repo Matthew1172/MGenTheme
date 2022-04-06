@@ -113,6 +113,7 @@ function get_mxl()
     $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
 
     $xml =  file_get_contents($url);
+    $xml = file_get_contents('http://www.example.com/');
     if($xml){
         $response['scoreXml'] = $xml;
         $response['r'] = "Good";
