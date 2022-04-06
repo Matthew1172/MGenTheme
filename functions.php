@@ -114,7 +114,7 @@ function get_mxl()
         $response['scoreXml'] = $url;
         $response['r'] = "Bad";
     }else{
-        $response['scoreXml'] = $xml;
+        $response['scoreXml'] = base64_encode($xml);
         $response['r'] = "Good";
     }
     wp_send_json($response);
