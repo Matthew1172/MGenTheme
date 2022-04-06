@@ -103,14 +103,13 @@ function get_mxl()
     //$api = new ApiCaller();
     //$xml = $api->CallGetMxl($callee_data);
     $api = '134.74.112.18';
-    $endpoint = "/mxl";
+    $endpoint = "/midi";
     $port = '1234';
     $folder = $callee_data['folder'];
     $file = $callee_data['file'];
     $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
 
     $xml =  file_get_contents($url);
-    $xml = mime_content_type($url);
     if($xml){
         $response['scoreXml'] = $xml;
         $response['r'] = "Good";
