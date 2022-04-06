@@ -7,6 +7,7 @@
  * @since 1.0.0
  */
 
+
 /**
  * First, let's set the maximum content width based on the theme's design and stylesheet.
  * This will limit the width of all uploaded images and embeds.
@@ -76,5 +77,35 @@ function index_script_enqueue()
     wp_enqueue_script('osmdJS', get_template_directory_uri() . '/inc/opensheetmusicdisplay.min.js', array('jquery'));
     wp_enqueue_script('osmdpJS', get_template_directory_uri() . '/inc/OsmdAudioPlayer.min.js', array('jquery'));
     wp_enqueue_script('appJS', get_template_directory_uri() . '/inc/js/app.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('configJS', get_template_directory_uri() . '/inc/js/config.js', array('jquery'), '1.0', false);
+    wp_enqueue_script('predictJS', get_template_directory_uri() . '/inc/js/predictSong.js', array('jquery'), '1.0', false);
+
+    wp_localize_script('configJS', 'mgen', array(
+        'url' => admin_url('admin-ajax.php')
+    ));
 }
 add_action('wp_enqueue_scripts', 'index_script_enqueue');
+
+
+/*
+ *
+ * Function to reset user first and last name
+ *
+ */
+function get_mxl()
+{
+    $response = array(
+        'r' => '',
+        'scoreXml' => ''
+    );
+    $callee_data = array(
+        'folder' => esc_attr($_POST['folder']),
+        'file' => esc_attr($_POST['file'])
+    );
+
+    $api = new ApiCaller();
+    $response['scoreXml'] = $api->CallGetMxl($callee_data);
+    $response['r'] = "Good";
+    wp_send_json($response);
+}
+add_action('wp_ajax_call_get_mxl', 'get_mxl');
