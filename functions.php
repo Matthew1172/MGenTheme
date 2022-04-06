@@ -15,6 +15,7 @@
 function index_style_enqueue()
 {
     $theme_version = wp_get_theme()->get( 'Version' );
+    wp_enqueue_style( 'mgen-style', get_stylesheet_uri(), array(), $theme_version );
 
 }
 add_action('wp_enqueue_scripts', 'index_style_enqueue');
