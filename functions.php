@@ -103,8 +103,9 @@ function get_mxl()
         'file' => esc_attr($_POST['file'])
     );
 
-    $api = new ApiCaller();
-    $xml = $api->CallGetMxl($callee_data);
+    //$api = new ApiCaller();
+    //$xml = $api->CallGetMxl($callee_data);
+    $xml = "";
     if($xml){
         $response['scoreXml'] = $xml;
         $response['r'] = "Good";
