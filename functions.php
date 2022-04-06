@@ -94,10 +94,7 @@ add_action('wp_enqueue_scripts', 'index_script_enqueue');
  */
 function get_mxl()
 {
-    $response = array(
-        'r' => '',
-        'scoreXml' => ''
-    );
+    $response = array();
     $callee_data = array(
         'folder' => esc_attr($_POST['folder']),
         'file' => esc_attr($_POST['file'])
