@@ -110,12 +110,12 @@ function get_mxl()
     $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
 
     $xml =  file_get_contents($url);
-    if($xml){
-        $response['scoreXml'] = $xml;
-        $response['r'] = "Good";
-    }else{
+    if($xml === false){
         $response['scoreXml'] = $url;
         $response['r'] = "Bad";
+    }else{
+        $response['scoreXml'] = $xml;
+        $response['r'] = "Good";
     }
     wp_send_json($response);
 }
