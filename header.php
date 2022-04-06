@@ -22,12 +22,4 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md navbar-light py-4 bg-white" role="navigation">
-    <div class="container">
-        <a class="navbar-brand" href="<?php echo home_url(); ?>">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
+
