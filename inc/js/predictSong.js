@@ -24,7 +24,7 @@
                 success: function (response) {
                     switch (response['r']) {
                         case "Good":
-                            scoreXmlResponse = response['scoreXml']
+                            scoreXmlResponse = response['scoreXml'];
                             (async (scoreXml) => {
                                 const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay(document.getElementById("score"));
                                 const audioPlayer = new OsmdAudioPlayer();
@@ -47,7 +47,7 @@
                             })(scoreXmlResponse);
                             break;
                         case "Bad":
-                            alert("Bad")
+                            alert("Bad");
                             break;
                         default:
                             break;
