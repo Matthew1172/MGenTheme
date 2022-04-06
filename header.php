@@ -13,10 +13,10 @@
 
 
 $api = '134.74.112.18';
-$endpoint = "/midi";
+$endpoint = "/mxl";
 $port = '1234';
 $folder = "output@WedApr61452382022";
-$file = "generated_1.mid";
+$file = "generated_1.mxl";
 $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
 
 $xml =  file_get_contents($url);
