@@ -24,7 +24,7 @@
                 success: function (response) {
                     switch (response['r']) {
                         case "Good":
-                            scoreXmlResponse = response['scoreXml'];
+                            scoreXmlResponse = atob(response['scoreXml']);
                             var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                 // set options here
                                 backend: "svg",
