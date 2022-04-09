@@ -169,7 +169,7 @@ function run_model()
     // use key 'http' even if you send the request to https://...
     $options = array(
         'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'header'  => "Content-type: application/json\r\n",
             'method'  => 'POST',
             'content' => http_build_query($callee_data)
         )
