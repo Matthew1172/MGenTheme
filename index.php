@@ -4,7 +4,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="dataset">Dataset name</label>
-                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" />
+                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V1"/>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="input-clef">Input clef</label>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="length">Length</label>
-                    <input id="length" type="text" class="form-control" placeholder="Length" />
+                    <input id="length" type="text" class="form-control" placeholder="Length" value="100"/>
                 </div>
 
                 <div class="form-group col-md-4 mt-4">
@@ -54,15 +54,15 @@
 
                 <div class="form-group col-md-6">
                     <label for="random-seq-length">Random sequence length</label>
-                    <input id="random-seq-length" type="text" class="form-control" placeholder="Random sequence length" />
+                    <input id="random-seq-length" type="text" class="form-control" placeholder="Random sequence length" value="1"/>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="songs">Songs</label>
-                    <input id="songs" type="text" class="form-control" placeholder="Songs" />
+                    <input id="songs" type="text" class="form-control" placeholder="Songs" value="1"/>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="temperature">Temperature</label>
-                    <input id="temperature" type="text" class="form-control" placeholder="Temperature" />
+                    <input id="temperature" type="text" class="form-control" placeholder="Temperature" value="0.85"/>
                 </div>
             </div>
             <div class="form-row">
