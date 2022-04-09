@@ -176,7 +176,8 @@ function run_model()
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { /* Handle error */ }
-    $result = json_encode($result);
+    $result = utf8_decode($result);
+    //$result = json_encode($result);
     wp_send_json($result);
 }
 add_action('wp_ajax_call_run_model', 'run_model');
