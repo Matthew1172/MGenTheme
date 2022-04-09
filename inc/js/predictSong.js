@@ -19,7 +19,7 @@
                     file: file
                 },
                 beforeSend: function (response) {
-                    $('#loading').show()
+                    $('#loading2').show()
                 },
                 success: function (response) {
                     switch (response['r']) {
