@@ -29,4 +29,5 @@
         </div>
         <div id="score"></div>
     </main>
+    <div id="osmdCanvas"/>
 <?php get_footer(); ?>
