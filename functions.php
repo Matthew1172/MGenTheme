@@ -170,7 +170,7 @@ function run_model()
         'http' => array(
             'header'  => "Content-type: application/json\r\n",
             'method'  => 'POST',
-            'content' => http_build_query($callee_data)
+            'content' => json_encode($callee_data)
         )
     );
     $context  = stream_context_create($options);
