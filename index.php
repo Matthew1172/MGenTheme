@@ -36,7 +36,13 @@
                 <div class="form-group col-md-4 mt-4">
                     <div class='form-check'>
                         <input class='form-check-input' type='checkbox' value='yes' id='random-key'>
-                        <label class='form-check-label' for='random-key'>Random key</label>
+                        <label class='form-check-label' for='random-key'>Random key signature</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4 mt-4">
+                    <div class='form-check'>
+                        <input class='form-check-input' type='checkbox' value='yes' id='random-time'>
+                        <label class='form-check-label' for='random-time'>Random time signature</label>
                     </div>
                 </div>
                 <div class="form-group col-md-4 mt-4">
@@ -49,10 +55,6 @@
                 <div class="form-group col-md-6">
                     <label for="random-seq-length">Random sequence length</label>
                     <input id="random-seq-length" type="text" class="form-control" placeholder="Random sequence length" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="random-time">Random time</label>
-                    <input id="random-time" type="text" class="form-control" placeholder="Random time" />
                 </div>
                 <div class="form-group col-md-6">
                     <label for="songs">Songs</label>

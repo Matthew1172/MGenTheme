@@ -71,9 +71,9 @@
             var random_clef = $('#random-clef').prop('checked') === true ? "True" : "False";
             var random_key = $('#random-key').prop('checked') === true ? "True" : "False";
             var random_seq = $('#random-seq').prop('checked') === true ? "True" : "False";
+            var random_time = $('#random-time').prop('checked') === true ? "True" : "False";
 
             var random_seq_length = $('#random-seq-length').val();
-            var random_time = $('#random-time').val();
             var songs = $('#songs').val();
             var temperature = $('#temperature').val();
 
