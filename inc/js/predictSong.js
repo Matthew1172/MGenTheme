@@ -18,9 +18,6 @@
                     folder: folder,
                     file: file
                 },
-                beforeSend: function (response) {
-                    $('#loading').show()
-                },
                 success: function (response) {
                     switch (response['r']) {
                         case "Good":
@@ -55,6 +52,69 @@
 
             });
         });
+
+
+        /*
+         *
+         *Function to run the model
+         *
+         */
+        $('#run-model').submit(function (event) {
+            event.preventDefault();
+            var dataset = $('#dataset').val();
+            var input_clef = $('#input-clef').val();
+            var input_key = $('#input-key').val();
+            var input_seq = $('#input-seq').val();
+            var input_time = $('#input-time').val();
+            var length = $('#length').val();
+
+            var random_clef = $('#random-clef').prop('checked') === true ? "True" : "False";
+            var random_key = $('#random-key').prop('checked') === true ? "True" : "False";
+            var random_seq = $('#random-seq').prop('checked') === true ? "True" : "False";
+
+            var random_seq_length = $('#random-seq-length').val();
+            var random_time = $('#random-time').val();
+            var songs = $('#songs').val();
+            var temperature = $('#temperature').val();
+
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_run_model',
+                    dataset: dataset,
+                    input_clef: input_clef,
+                    input_key: input_key,
+                    input_seq: input_seq,
+                    input_time: input_time,
+                    length: length,
+                    random_clef: random_clef,
+                    random_key: random_key,
+                    random_seq: random_seq,
+                    random_seq_length: random_seq_length,
+                    random_time: random_time,
+                    songs: songs,
+                    temperature: temperature
+                },
+                success: function (response) {
+                    switch (response['r']) {
+                        case "Good":
+                            alert("Good");
+                            break;
+                        case "Bad":
+                            alert("Bad");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }).done(function() {
+
+            });
+        });
+
+
     });
 })(jQuery);
 

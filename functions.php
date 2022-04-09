@@ -120,3 +120,61 @@ function get_mxl()
     wp_send_json($response);
 }
 add_action('wp_ajax_call_get_mxl', 'get_mxl');
+
+/*
+ *
+ * Function to reset user first and last name
+ *
+ * req = {
+    dataset: "Good"
+    input_clef: "Clef G"
+    input_key: "Key 2"
+    input_seq: "Note C 1.0"
+    input_time: "Time 4 4"
+    length: 100
+    random_clef: False
+    random_key: False
+    random_seq: False
+    random_seq_length: 1
+    random_time: False
+    songs: 1
+    temperature: 0.85
+}
+ *
+ */
+function run_model()
+{
+    $api = '134.74.112.18';
+    $endpoint = "/predict";
+    $port = '1234';
+    $url = "http://$api:$port$endpoint";
+
+    $callee_data = array(
+        'dataset' => esc_attr($_POST['dataset']),
+        'input_clef' => esc_attr($_POST['input_clef']),
+        'input_key' => esc_attr($_POST['input_key']),
+        'input_seq' => esc_attr($_POST['input_seq']),
+        'input_time' => esc_attr($_POST['input_time']),
+        'length' => esc_attr($_POST['length']),
+        'random_clef' => esc_attr($_POST['random_clef']),
+        'random_key' => esc_attr($_POST['random_key']),
+        'random_seq' => esc_attr($_POST['random_seq']),
+        'random_seq_length' => esc_attr($_POST['random_seq_length']),
+        'random_time' => esc_attr($_POST['random_time']),
+        'songs' => esc_attr($_POST['songs']),
+        'temperature' => esc_attr($_POST['temperature']),
+    );
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_POST, 1);
+    if ($callee_data)
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $callee_data);
+    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($curl);
+    curl_close($curl);
+
+    wp_send_json($result);
+}
+add_action('wp_ajax_call_get_mxl', 'get_mxl');
