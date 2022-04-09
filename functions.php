@@ -177,4 +177,4 @@ function run_model()
 
     wp_send_json($result);
 }
-add_action('wp_ajax_call_get_mxl', 'get_mxl');
+add_action('wp_ajax_call_run_model', 'run_model');
