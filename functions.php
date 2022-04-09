@@ -175,6 +175,8 @@ function run_model()
     $result = curl_exec($curl);
     curl_close($curl);
 
+    $result['r'] = "hello";
+
     wp_send_json($result);
 }
 add_action('wp_ajax_call_run_model', 'run_model');
