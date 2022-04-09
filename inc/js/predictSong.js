@@ -25,11 +25,11 @@
                     switch (response['r']) {
                         case "Good":
                             scoreXmlResponse = atob(response['scoreXml']);
-                            scoreXmlResponse = "https://downloads2.makemusic.com/musicxml/MozaVeilSample.xml";
+                            //scoreXmlResponse = "https://downloads2.makemusic.com/musicxml/MozaVeilSample.xml";
                             var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                 // set options here
                                 backend: "svg",
-                                drawFromMeasureNumber: 1,
+                                drawFromMeasureNumber: 0,
                                 drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                             });
                             osmd

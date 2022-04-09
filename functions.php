@@ -103,7 +103,7 @@ function get_mxl()
     //$api = new ApiCaller();
     //$xml = $api->CallGetMxl($callee_data);
     $api = '134.74.112.18';
-    $endpoint = "/mxl";
+    $endpoint = "/test-generate";
     $port = '1234';
     $folder = $callee_data['folder'];
     $file = $callee_data['file'];
