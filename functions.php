@@ -165,6 +165,7 @@ function run_model()
         'temperature' => esc_attr($_POST['temperature']),
     );
 
+    $callee_data = array( "dataset" => "V1");
     // use key 'http' even if you send the request to https://...
     $options = array(
         'http' => array(
