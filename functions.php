@@ -100,21 +100,12 @@ function get_mxl()
         'file' => esc_attr($_POST['file'])
     );
 
-    //$api = new ApiCaller();
-    //$xml = $api->CallGetMxl($callee_data);
-    $api = '134.74.112.18';
-    $endpoint = "/midi";
-    $port = '1234';
-    $folder = $callee_data['folder'];
-    $file = $callee_data['file'];
-    $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
-
-    $xml =  file_get_contents($url);
+    $api = new ApiCaller();
+    $xml = $api->CallGetMxl($callee_data);
+    $response['scoreXml'] = base64_encode($xml);
     if($xml === false){
-        $response['scoreXml'] = $url;
         $response['r'] = "Bad";
     }else{
-        $response['scoreXml'] = base64_encode($xml);
         $response['r'] = "Good";
     }
     wp_send_json($response);
