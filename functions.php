@@ -190,17 +190,6 @@ result = {
         }
      */
     $temp = array($result['mxl']);
-    $folder = $temp[0];
-    $file = $temp[1];
-    $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
-    $xml =  file_get_contents($url);
-    if($xml === false){
-        $response['scoreXml'] = $url;
-        $response['r'] = "Bad";
-    }else{
-        $response['scoreXml'] = base64_encode($xml);
-        $response['r'] = "Good";
-    }
-    wp_send_json($response);
+    wp_send_json($temp);
 }
 add_action('wp_ajax_call_run_model', 'run_model');
