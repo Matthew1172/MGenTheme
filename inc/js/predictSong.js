@@ -130,17 +130,29 @@ function play_and_render(mxl){
         .load(mxl)
         .then(
             async function() {
-                let audioPlayer = new OsmdAudioPlayer();
-
+                audioPlayer = new OsmdAudioPlayer();
+                audioPlayer.cursor.show();
                 window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
                 //console.log("e.target.result: " + e.target.result);
                 await osmd.render();
                 osmd.cursor.show(); // this would show the cursor on the first note
                 await audioPlayer.loadScore(osmd);
-                first = true
                 audioPlayer.on("iteration", notes => {
                     console.log(notes);
                     console.log(notes.length);
+                    if(notes.length > 0){
+                        //audioPlayer.cursor.next();
+                    }
+
+                });
+
+                hideLoadingMessage();
+                registerButtonEvents(audioPlayer, osmd);
+            }
+        );
+}
+
+/*
                     if(first && notes.length < 1){
 
                     }else{
@@ -150,10 +162,4 @@ function play_and_render(mxl){
                             first = false;
                         }
                     }
-                });
-
-                hideLoadingMessage();
-                registerButtonEvents(audioPlayer, osmd);
-            }
-        );
-}
+ */
