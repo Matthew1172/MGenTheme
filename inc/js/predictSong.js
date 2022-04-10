@@ -119,43 +119,44 @@
                                 drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                             });
                             audioPlayer = new OsmdAudioPlayer();
-                            osmd.load(mxl)
-                                .then(function() {
-                                    osmd.render();
-                                    osmd.cursor.show();
-                                    audioPlayer.loadScore(osmd);
-                                    //Cursor is busted! use a flag called first to increment the cursor AFTER the first
-                                    //note is player. (Offsetting it behind by 1).
-                                    first = true;
-                                    audioPlayer.on("iteration", notes => {
-                                        if(!first)
-                                            osmd.cursor.next();
-                                        else
-                                            first = false;
+                            try {
+                                osmd.load(mxl)
+                                    .then(function () {
+                                        osmd.render();
+                                        osmd.cursor.show();
+                                        audioPlayer.loadScore(osmd);
+                                        //Cursor is busted! use a flag called first to increment the cursor AFTER the first
+                                        //note is player. (Offsetting it behind by 1).
+                                        first = true;
+                                        audioPlayer.on("iteration", notes => {
+                                            if (!first)
+                                                osmd.cursor.next();
+                                            else
+                                                first = false;
+                                        });
+                                        $("#btn-play").click(function () {
+                                            if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
+                                                audioPlayer.play();
+                                            }
+                                        });
+                                        $("#btn-pause").click(function () {
+                                            if (audioPlayer.state === "PLAYING") {
+                                                audioPlayer.pause();
+                                            }
+                                        });
+                                        $("#btn-stop").click(function () {
+                                            if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
+                                                audioPlayer.stop();
+                                                osmd.cursor.reset();
+                                                first = true;
+                                            }
+                                        });
+                                        $('#controls').show();
                                     });
-                                    $("#btn-play").click(function() {
-                                        if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
-                                            audioPlayer.play();
-                                        }
-                                    });
-                                    $("#btn-pause").click(function() {
-                                        if (audioPlayer.state === "PLAYING") {
-                                            audioPlayer.pause();
-                                        }
-                                    });
-                                    $("#btn-stop").click(function() {
-                                        if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
-                                            audioPlayer.stop();
-                                            osmd.cursor.reset();
-                                            first = true;
-                                        }
-                                    });
-                                    $('#controls').show();
-                                })
-                                .catch(function (error) {
-                                    //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
-                                    alert(error);
-                                });
+                            }catch (e) {
+                                //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
+                                alert(e);
+                            }
                             break;
                         case "Bad":
                             alert("Bad");
