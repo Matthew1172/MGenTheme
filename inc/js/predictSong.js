@@ -123,11 +123,10 @@
                                 osmd.render();
                                 osmd.cursor.show();
                                 audioPlayer.loadScore(osmd);
+                                //Cursor is busted! use a flag called first to increment the cursor AFTER the first
+                                //note is player. (Offsetting it behind by 1).
                                 first = true;
                                 audioPlayer.on("iteration", notes => {
-                                    console.log(notes);
-                                    console.log(notes.length);
-
                                     if(!first)
                                         osmd.cursor.next();
                                     else
@@ -153,8 +152,6 @@
                                 });
 
                             });
-
-
                             $('#controls').show();
                             break;
                         case "Bad":
