@@ -129,7 +129,6 @@
                                         audioPlayer.loadScore(osmd);
                                         //Cursor is busted! use a flag called first to increment the cursor AFTER the first
                                         //note is player. (Offsetting it behind by 1).
-                                        first = true;
                                         $("#btn-play").click(function () {
                                             if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
                                                 audioPlayer.play();
@@ -143,8 +142,6 @@
                                         $("#btn-stop").click(function () {
                                             if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
                                                 audioPlayer.stop();
-                                                osmd.cursor.reset();
-                                                first = true;
                                             }
                                         });
                                         $('#controls').show();
