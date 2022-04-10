@@ -151,6 +151,9 @@
                                     }
                                 });
 
+                            }).catch(function (error) {
+                                //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
+                                alert(error);
                             });
                             $('#controls').show();
                             break;
