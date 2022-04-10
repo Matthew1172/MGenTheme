@@ -113,11 +113,11 @@
                             osmd.render();
                             osmd.cursor.show();
                             audioPlayer.loadScore(osmd);
-                            first = osmd.cursor.iterator.currentPartIndex === 0 && osmd.cursor.iterator.currentVoiceEntryIndex === 0;
                             audioPlayer.on("iteration", notes => {
                                 console.log(notes);
                                 console.log(notes.length);
                                 console.log(first);
+                                first = osmd.cursor.iterator.currentPartIndex === 0 && osmd.cursor.iterator.currentVoiceEntryIndex === 0;
                                 if(first && notes.length < 1){
 
                                 }else{
