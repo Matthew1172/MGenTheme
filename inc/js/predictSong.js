@@ -128,17 +128,17 @@
                                 osmd.cursor.next();
                             });
 
-                            $("#btn-play").addEventListener("click", () => {
+                            $("#btn-play").click(function() {
                                 if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
                                     audioPlayer.play();
                                 }
                             });
-                            $("#btn-pause").addEventListener("click", () => {
+                            $("#btn-pause").click(function() {
                                 if (audioPlayer.state === "PLAYING") {
                                     audioPlayer.pause();
                                 }
                             });
-                            $("#btn-stop").addEventListener("click", () => {
+                            $("#btn-stop").click(function() {
                                 if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
                                     audioPlayer.stop();
                                     osmd.cursor.reset();
