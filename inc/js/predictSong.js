@@ -109,7 +109,7 @@
                                     drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                                 });
                                 const audioPlayer = new OsmdAudioPlayer();
-                                osmd
+                                await osmd
                                     .load(scoreXml)
                                     .then(
                                         function() {
