@@ -118,10 +118,12 @@
                                             await osmd.render();
                                             osmd.cursor.show(); // this would show the cursor on the first note
                                             await audioPlayer.loadScore(osmd);
+                                            first = true
                                             audioPlayer.on("iteration", notes => {
                                                 console.log(notes);
-                                                if(notes){
+                                                if(notes && !first){
                                                     osmd.cursor.next(); // advance the cursor one note
+                                                    first = false;
                                                 }
                                             });
 
