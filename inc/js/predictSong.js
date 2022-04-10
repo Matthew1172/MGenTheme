@@ -102,24 +102,24 @@
                         case "Good":
                             mxl = atob(response['scoreXml']);
                             //play_and_render(mxl);
-                            osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+                            const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                 // set options here
                                 backend: "svg",
                                 drawFromMeasureNumber: 0,
                                 drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                             });
-                            audioPlayer = new OsmdAudioPlayer();
+                            const audioPlayer = new OsmdAudioPlayer();
                             osmd.load(mxl);
                             osmd.render();
-                            //osmd.cursor.show();
+                            osmd.cursor.show();
                             audioPlayer.loadScore(osmd);
                             audioPlayer.on("iteration", notes => {
                                 console.log(notes);
                                 console.log(notes.length);
-                                //osmd.cursor.next();
+                                osmd.cursor.next();
                             });
 
-                            registerButtonEvents(audioPlayer);
+                            registerButtonEvents(audioPlayer, osmd);
 
                             break;
                         case "Bad":
@@ -139,28 +139,28 @@
 })(jQuery);
 
 function play_and_render(mxl){
-    osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+    const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
         // set options here
         backend: "svg",
         drawFromMeasureNumber: 0,
         drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
     });
-    audioPlayer = new OsmdAudioPlayer();
+    const audioPlayer = new OsmdAudioPlayer();
     osmd.load(mxl);
     osmd.render();
-    //osmd.cursor.show();
+    osmd.cursor.show();
     audioPlayer.loadScore(osmd);
     audioPlayer.on("iteration", notes => {
         console.log(notes);
         console.log(notes.length);
-        //osmd.cursor.next();
+        osmd.cursor.next();
     });
 
-    registerButtonEvents(audioPlayer);
+    registerButtonEvents(audioPlayer, osmd);
 
 }
 
-function registerButtonEvents(audioPlayer) {
+function registerButtonEvents(audioPlayer, osmd) {
     document.getElementById("btn-play").addEventListener("click", () => {
         if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
             audioPlayer.play();
@@ -174,7 +174,7 @@ function registerButtonEvents(audioPlayer) {
     document.getElementById("btn-stop").addEventListener("click", () => {
         if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
             audioPlayer.stop();
-            //osmd.cursor.reset();
+            osmd.cursor.reset();
         }
     });
 }
