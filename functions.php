@@ -177,6 +177,30 @@ function run_model()
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { /* Handle error */ }
     $result = json_decode($result);
-    wp_send_json($result);
+    /*
+result = {
+            "midi": [
+                "output@SatApr92240102022",
+                "generated_1.mid"
+            ],
+            "mxl": [
+                "output@SatApr92240102022",
+                "generated_1.mxl"
+            ]
+        }
+     */
+
+    $folder = $result['mxl'][0];
+    $file = $result['mxl'][1];
+    $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
+    $xml =  file_get_contents($url);
+    if($xml === false){
+        $response['scoreXml'] = $url;
+        $response['r'] = "Bad";
+    }else{
+        $response['scoreXml'] = base64_encode($xml);
+        $response['r'] = "Good";
+    }
+    wp_send_json($response);
 }
 add_action('wp_ajax_call_run_model', 'run_model');
