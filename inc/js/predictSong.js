@@ -100,7 +100,7 @@
                 success: function (response) {
                     switch (response['r']) {
                         case "Good":
-                            mxl = atob(response['scoreXml'])
+                            mxl = atob(response['scoreXml']);
                             (async (scoreXml) => {
                                 const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                     // set options here
