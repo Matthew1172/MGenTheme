@@ -109,7 +109,9 @@
                     $('#loading').show();
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
-
+                    if(audioPlayer.ready()){
+                        alert("I'm ready");
+                    }
                 },
                 success: function (response) {
                     switch (response['r']) {
