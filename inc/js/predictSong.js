@@ -138,8 +138,6 @@
                                         //Cursor is busted! use a flag called first to increment the cursor AFTER the first
                                         //note is player. (Offsetting it behind by 1).
                                         first = true;
-                                        audioPlayer.on("iteration", notes => {
-                                        });
                                         $("#btn-play").click(function () {
                                             if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
                                                 audioPlayer.play();
