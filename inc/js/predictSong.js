@@ -127,17 +127,9 @@ async function play_and_render(mxl){
         drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
     });
     const audioPlayer = new OsmdAudioPlayer();
-    await osmd
-        .load(mxl)
-        .then(
-            async function() {
-                window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
-                //console.log("e.target.result: " + e.target.result);
-                await osmd.render();
-                //osmd.cursor.show(); // this would show the cursor on the first note
-                await audioPlayer.loadScore(osmd);
-            }
-        );
+    await osmd.load(mxl);
+    await osmd.render();
+    await audioPlayer.loadScore(osmd);
 
 
     audioPlayer.on("iteration", notes => {
@@ -146,7 +138,6 @@ async function play_and_render(mxl){
         //audioPlayer.cursor.next();
     });
 
-    hideLoadingMessage();
     registerButtonEvents(audioPlayer);
 
 }

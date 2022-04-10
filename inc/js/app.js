@@ -23,10 +23,6 @@ registerButtonEvents(audioPlayer);
 })();
  */
 
-function hideLoadingMessage() {
-    document.getElementById("loading").style.display = "none";
-}
-
 function registerButtonEvents(audioPlayer) {
     document.getElementById("btn-play").addEventListener("click", () => {
         if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
