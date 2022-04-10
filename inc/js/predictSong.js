@@ -109,7 +109,7 @@
                     $('#loading').show();
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
-                    for (var member in audioPlayer) delete audioPlayer[member];
+
                 },
                 success: function (response) {
                     switch (response['r']) {
