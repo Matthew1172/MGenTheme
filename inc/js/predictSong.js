@@ -101,7 +101,6 @@
                     switch (response['r']) {
                         case "Good":
                             (async (mxl) => {
-                                scoreXmlResponse = atob(mxl);
                                 var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                     // set options here
                                     backend: "svg",
@@ -110,7 +109,7 @@
                                 });
                                 const audioPlayer = new OsmdAudioPlayer();
                                 osmd
-                                    .load(scoreXmlResponse)
+                                    .load(mxl)
                                     .then(
                                         function() {
                                             window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
