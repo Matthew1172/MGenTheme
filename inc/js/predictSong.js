@@ -145,6 +145,7 @@
                                 }
                             });
 
+                            $('#controls').show();
                             break;
                         case "Bad":
                             alert("Bad");
@@ -155,7 +156,6 @@
                 }
             }).done(function() {
                 $('#loading').hide();
-                $('#controls').show();
             });
         });
 
