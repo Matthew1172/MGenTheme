@@ -119,7 +119,7 @@
     });
 })(jQuery);
 
-async function play_and_render(mxl){
+function play_and_render(mxl){
     const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
         // set options here
         backend: "svg",
