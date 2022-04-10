@@ -118,13 +118,11 @@
                                 console.log(notes);
                                 console.log(notes.length);
                                 console.log(first);
-                                if(first && notes.length < 1){
 
-                                }else{
-                                    if(!first) {
-                                        osmd.cursor.next();
-                                    }
+                                if(!first) {
+                                    osmd.cursor.next();
                                 }
+
                             });
 
                             registerButtonEvents(audioPlayer, osmd);
