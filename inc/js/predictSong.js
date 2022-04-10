@@ -101,31 +101,36 @@
                     switch (response['r']) {
                         case "Good":
                             mxl = atob(response['scoreXml'])
-                            var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-                                // set options here
-                                backend: "svg",
-                                drawFromMeasureNumber: 0,
-                                drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
-                            });
-                            audioPlayer = new OsmdAudioPlayer();
-                            osmd
-                                .load(mxl)
-                                .then(
-                                    function() {
-                                        window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
-                                        //console.log("e.target.result: " + e.target.result);
-                                        osmd.render();
-                                        // osmd.cursor.show(); // this would show the cursor on the first note
-                                        // osmd.cursor.next(); // advance the cursor one note
-                                    }
-                                );
-                            audioPlayer.loadScore(osmd);
-                            audioPlayer.on("iteration", notes => {
-                                console.log(notes);
-                            });
+                            (async (scoreXml) => {
+                                const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+                                    // set options here
+                                    backend: "svg",
+                                    drawFromMeasureNumber: 0,
+                                    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
+                                });
+                                const audioPlayer = new OsmdAudioPlayer();
+                                osmd
+                                    .load(scoreXml)
+                                    .then(
+                                        function() {
+                                            window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
+                                            //console.log("e.target.result: " + e.target.result);
+                                            osmd.render();
+                                            // osmd.cursor.show(); // this would show the cursor on the first note
+                                            // osmd.cursor.next(); // advance the cursor one note
+                                        }
+                                    );
 
-                            hideLoadingMessage();
-                            registerButtonEvents(audioPlayer);
+                                await osmd.load(scoreXml);
+                                await osmd.render();
+                                await audioPlayer.loadScore(osmd);
+                                audioPlayer.on("iteration", notes => {
+                                    console.log(notes);
+                                });
+
+                                hideLoadingMessage();
+                                registerButtonEvents(audioPlayer);
+                            })(mxl);
                             break;
                         case "Bad":
                             alert("Bad");
@@ -142,4 +147,32 @@
 
     });
 })(jQuery);
+
+/*
+var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+    // set options here
+    backend: "svg",
+    drawFromMeasureNumber: 0,
+    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
+});
+audioPlayer = new OsmdAudioPlayer();
+osmd
+    .load(mxl)
+    .then(
+        function() {
+            window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
+            //console.log("e.target.result: " + e.target.result);
+            osmd.render();
+            // osmd.cursor.show(); // this would show the cursor on the first note
+            // osmd.cursor.next(); // advance the cursor one note
+        }
+    );
+audioPlayer.loadScore(osmd);
+audioPlayer.on("iteration", notes => {
+    console.log(notes);
+});
+
+hideLoadingMessage();
+registerButtonEvents(audioPlayer);
+ */
 
