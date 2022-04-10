@@ -92,6 +92,7 @@
             </div>
         </form>
     </div>
+
     <main>
         <div class="controls">
             <button id="btn-play">Play</button>
