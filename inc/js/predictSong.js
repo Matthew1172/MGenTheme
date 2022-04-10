@@ -4,6 +4,15 @@
         $('#loading').hide();
         $('#controls').hide();
 
+        const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+            // set options here
+            backend: "canvas",
+            drawingParameters: "compacttight", // more compact spacing, less padding
+            drawFromMeasureNumber: 0,
+            drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
+        });
+        const audioPlayer = new OsmdAudioPlayer();
+
         /*
          *
          *Function to handle inputs when get-mxl is submitted
@@ -112,14 +121,6 @@
                         case "Good":
                             mxl = atob(response['scoreXml']);
                             //play_and_render(mxl);
-                            const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-                                // set options here
-                                backend: "canvas",
-                                drawingParameters: "compacttight", // more compact spacing, less padding
-                                drawFromMeasureNumber: 0,
-                                drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
-                            });
-                            const audioPlayer = new OsmdAudioPlayer();
                             try {
                                 osmd.load(mxl)
                                     .then(function () {
