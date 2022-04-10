@@ -104,7 +104,7 @@ function get_mxl()
     //$xml = $api->CallGetMxl($callee_data);
     $api = '134.74.112.18';
     $endpoint = "/test-generate";
-    $port = '1234';
+    $port = '1235';
     $folder = $callee_data['folder'];
     $file = $callee_data['file'];
     $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
@@ -146,7 +146,7 @@ function run_model()
 {
     $api = '134.74.112.18';
     $endpoint = "/predict";
-    $port = '1234';
+    $port = '1235';
     $url = "http://$api:$port$endpoint";
 
     $callee_data = array(
