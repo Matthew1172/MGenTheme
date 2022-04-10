@@ -25,7 +25,7 @@
             </div>
             <div class="row">
                 <div class='col-sm-12'>
-                    <p class="text-center text-muted">Copyright &copy; 2021 STaR Solutions Consulting. All rights reserved.</p>
+                    <p class="text-center text-muted">Licensed under MIT.</p>
                 </div>
             </div>
         </div>
