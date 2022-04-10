@@ -37,12 +37,6 @@
                         case "Good":
                             scoreXmlResponse = atob(response['scoreXml']);
                             //scoreXmlResponse = "https://downloads2.makemusic.com/musicxml/MozaVeilSample.xml";
-                            var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-                                // set options here
-                                backend: "svg",
-                                drawFromMeasureNumber: 0,
-                                drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
-                            });
                             osmd
                                 .load(scoreXmlResponse)
                                 .then(
@@ -127,23 +121,6 @@
                                         osmd.render();
                                         osmd.cursor.show();
                                         audioPlayer.loadScore(osmd);
-                                        //Cursor is busted! use a flag called first to increment the cursor AFTER the first
-                                        //note is player. (Offsetting it behind by 1).
-                                        $("#btn-play").click(function () {
-                                            if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
-                                                audioPlayer.play();
-                                            }
-                                        });
-                                        $("#btn-pause").click(function () {
-                                            if (audioPlayer.state === "PLAYING") {
-                                                audioPlayer.pause();
-                                            }
-                                        });
-                                        $("#btn-stop").click(function () {
-                                            if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
-                                                audioPlayer.stop();
-                                            }
-                                        });
                                         $('#controls').show();
                                     });
                             }catch (e) {
@@ -163,6 +140,23 @@
             });
         });
 
+        $("#btn-play").click(function () {
+            if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
+                audioPlayer.play();
+            }
+        });
+
+        $("#btn-pause").click(function () {
+            if (audioPlayer.state === "PLAYING") {
+                audioPlayer.pause();
+            }
+        });
+
+        $("#btn-stop").click(function () {
+            if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
+                audioPlayer.stop();
+            }
+        });
 
     });
 })(jQuery);
