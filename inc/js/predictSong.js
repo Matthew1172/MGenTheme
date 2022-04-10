@@ -97,6 +97,9 @@
                     songs: songs,
                     temperature: temperature
                 },
+                beforeSend: function (response) {
+                    $('#loading').show()
+                },
                 success: function (response) {
                     switch (response['r']) {
                         case "Good":
@@ -145,7 +148,7 @@
                     }
                 }
             }).done(function() {
-
+                $('#loading').hide();
             });
         });
 
