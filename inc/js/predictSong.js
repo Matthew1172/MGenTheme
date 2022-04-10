@@ -107,7 +107,7 @@
                                 drawFromMeasureNumber: 0,
                                 drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                             });
-                            const audioPlayer = new OsmdAudioPlayer();
+                            audioPlayer = new OsmdAudioPlayer();
                             osmd
                                 .load(mxl)
                                 .then(
