@@ -101,20 +101,7 @@
                     switch (response['r']) {
                         case "Good":
                             mxl = atob(response['scoreXml']);
-                            osmd = play_and_render(mxl);
-
-                            const audioPlayer = new OsmdAudioPlayer();
-                            audioPlayer.loadScore(osmd);
-
-                            audioPlayer.on("iteration", notes => {
-                                console.log(notes);
-                                console.log(notes.length);
-                                //audioPlayer.cursor.next();
-                            });
-
-                            hideLoadingMessage();
-                            registerButtonEvents(audioPlayer);
-
+                            play_and_render(mxl);
                             break;
                         case "Bad":
                             alert("Bad");
@@ -132,14 +119,15 @@
     });
 })(jQuery);
 
-function play_and_render(mxl){
+async function play_and_render(mxl){
     const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
         // set options here
         backend: "svg",
         drawFromMeasureNumber: 0,
         drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
     });
-    osmd
+    const audioPlayer = new OsmdAudioPlayer();
+    await osmd
         .load(mxl)
         .then(
             async function() {
@@ -147,9 +135,20 @@ function play_and_render(mxl){
                 //console.log("e.target.result: " + e.target.result);
                 await osmd.render();
                 //osmd.cursor.show(); // this would show the cursor on the first note
+                await audioPlayer.loadScore(osmd);
             }
         );
-    return osmd
+
+
+    audioPlayer.on("iteration", notes => {
+        console.log(notes);
+        console.log(notes.length);
+        //audioPlayer.cursor.next();
+    });
+
+    hideLoadingMessage();
+    registerButtonEvents(audioPlayer);
+
 }
 
 /*
