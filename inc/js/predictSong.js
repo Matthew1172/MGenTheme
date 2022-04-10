@@ -140,10 +140,7 @@ function play_and_render(mxl){
                 audioPlayer.on("iteration", notes => {
                     console.log(notes);
                     console.log(notes.length);
-                    if(notes.length > 0){
-                        //audioPlayer.cursor.next();
-                    }
-
+                    audioPlayer.cursor.next();
                 });
 
                 hideLoadingMessage();
