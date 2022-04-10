@@ -136,6 +136,9 @@ function play_and_render(mxl){
                 await osmd.render();
                 //osmd.cursor.show(); // this would show the cursor on the first note
                 await audioPlayer.loadScore(osmd);
+            }
+        ).finally(
+            async function(){
                 //audioPlayer.cursor.show();
                 audioPlayer.on("iteration", notes => {
                     console.log(notes);
