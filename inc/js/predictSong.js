@@ -121,7 +121,7 @@
                                             first = true
                                             audioPlayer.on("iteration", notes => {
                                                 console.log(notes);
-                                                if(notes && !first){
+                                                if(!first){
                                                     osmd.cursor.next(); // advance the cursor one note
                                                 }else{
                                                     first = false;
