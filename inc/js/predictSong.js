@@ -139,10 +139,6 @@
                                         //note is player. (Offsetting it behind by 1).
                                         first = true;
                                         audioPlayer.on("iteration", notes => {
-                                            if (!first)
-                                                osmd.cursor.next();
-                                            else
-                                                first = false;
                                         });
                                         $("#btn-play").click(function () {
                                             if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
