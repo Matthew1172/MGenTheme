@@ -113,37 +113,41 @@
                             //play_and_render(mxl);
                             osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                 // set options here
-                                backend: "svg",
+                                backend: "canvas",
+                                drawingParameters: "compacttight", // more compact spacing, less padding
                                 drawFromMeasureNumber: 0,
                                 drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                             });
                             audioPlayer = new OsmdAudioPlayer();
-                            osmd.load(mxl);
-                            osmd.render();
-                            audioPlayer.loadScore(osmd);
-                            audioPlayer.on("iteration", notes => {
+                            osmd.load(mxl).then(function() {
+                                osmd.render();
                                 osmd.cursor.show();
-                                console.log(notes);
-                                console.log(notes.length);
-                                osmd.cursor.next();
+                                audioPlayer.loadScore(osmd);
+                                audioPlayer.on("iteration", notes => {
+                                    console.log(notes);
+                                    console.log(notes.length);
+                                    osmd.cursor.next();
+                                });
+
+                                $("#btn-play").click(function() {
+                                    if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
+                                        audioPlayer.play();
+                                    }
+                                });
+                                $("#btn-pause").click(function() {
+                                    if (audioPlayer.state === "PLAYING") {
+                                        audioPlayer.pause();
+                                    }
+                                });
+                                $("#btn-stop").click(function() {
+                                    if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
+                                        audioPlayer.stop();
+                                        osmd.cursor.reset();
+                                    }
+                                });
+
                             });
 
-                            $("#btn-play").click(function() {
-                                if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
-                                    audioPlayer.play();
-                                }
-                            });
-                            $("#btn-pause").click(function() {
-                                if (audioPlayer.state === "PLAYING") {
-                                    audioPlayer.pause();
-                                }
-                            });
-                            $("#btn-stop").click(function() {
-                                if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
-                                    audioPlayer.stop();
-                                    osmd.cursor.reset();
-                                }
-                            });
 
                             $('#controls').show();
                             break;
