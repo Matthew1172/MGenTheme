@@ -1,6 +1,8 @@
 (function ($) {
     $(document).ready(function () {
 
+        $('#loading').hide();
+
         /*
          *
          *Function to handle inputs when get-mxl is submitted

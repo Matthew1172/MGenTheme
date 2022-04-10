@@ -80,7 +80,7 @@
             <button id="btn-stop">Stop</button>
         </div>
         <div>
-            <h2 id="loading" aria-hidden="true">Loading...</h2>
+            <h2 id="loading">Loading...</h2>
         </div>
         <div id="score"></div>
     </main>
