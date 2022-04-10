@@ -189,7 +189,7 @@ result = {
             ]
         }
      */
-    wp_send_json($result['mxl']);
+    wp_send_json($result);
 }
 add_action('wp_ajax_call_run_model', 'run_model');
 
