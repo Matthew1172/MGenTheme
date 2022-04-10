@@ -117,12 +117,11 @@
                                             osmd.render();
                                             // osmd.cursor.show(); // this would show the cursor on the first note
                                             // osmd.cursor.next(); // advance the cursor one note
-
+                                            const audioPlayer = new OsmdAudioPlayer();
+                                            audioPlayer.loadScore(osmd);
                                         }
                                     ).finally(
                                         function (){
-                                            const audioPlayer = new OsmdAudioPlayer();
-                                            audioPlayer.loadScore(osmd);
                                             audioPlayer.on("iteration", notes => {
                                                 console.log(notes);
                                             });
