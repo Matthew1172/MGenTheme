@@ -129,16 +129,22 @@ async function play_and_render(mxl){
     const audioPlayer = new OsmdAudioPlayer();
     await osmd.load(mxl);
     await osmd.render();
-    await audioPlayer.loadScore(osmd);
+    osmd.cursor.show();
+    await audioPlayer.loadScore(osmd).then(
+        function () {
+
+            audioPlayer.on("iteration", notes => {
+                console.log(notes);
+                console.log(notes.length);
+                //audioPlayer.cursor.next();
+            });
+
+            registerButtonEvents(audioPlayer);
+        }
+    );
 
 
-    audioPlayer.on("iteration", notes => {
-        console.log(notes);
-        console.log(notes.length);
-        //audioPlayer.cursor.next();
-    });
 
-    registerButtonEvents(audioPlayer);
 
 }
 
