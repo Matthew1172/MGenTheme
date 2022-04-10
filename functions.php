@@ -189,9 +189,9 @@ result = {
             ]
         }
      */
-
-    $folder = $result['mxl'][0];
-    $file = $result['mxl'][1];
+    $temp = array($result['mxl']);
+    $folder = $temp[0];
+    $file = $temp[1];
     $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
     $xml =  file_get_contents($url);
     if($xml === false){
