@@ -126,30 +126,27 @@ function play_and_render(mxl){
         drawFromMeasureNumber: 0,
         drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
     });
+    const audioPlayer = new OsmdAudioPlayer();
     osmd
         .load(mxl)
         .then(
             async function() {
-                audioPlayer = new OsmdAudioPlayer();
                 window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
                 //console.log("e.target.result: " + e.target.result);
                 await osmd.render();
                 //osmd.cursor.show(); // this would show the cursor on the first note
                 await audioPlayer.loadScore(osmd);
             }
-        ).finally(
-            async function(){
-                //audioPlayer.cursor.show();
-                audioPlayer.on("iteration", notes => {
-                    console.log(notes);
-                    console.log(notes.length);
-                    //audioPlayer.cursor.next();
-                });
-
-                hideLoadingMessage();
-                registerButtonEvents(audioPlayer);
-            }
         );
+
+    audioPlayer.on("iteration", notes => {
+        console.log(notes);
+        console.log(notes.length);
+        //audioPlayer.cursor.next();
+    });
+
+    hideLoadingMessage();
+    registerButtonEvents(audioPlayer);
 }
 
 /*
