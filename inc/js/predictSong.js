@@ -123,6 +123,7 @@
                                                 console.log(notes);
                                                 if(notes && !first){
                                                     osmd.cursor.next(); // advance the cursor one note
+                                                }else{
                                                     first = false;
                                                 }
                                             });
