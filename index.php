@@ -74,7 +74,7 @@
     </div>
 
     <main>
-        <div class="controls">
+        <div id="controls" class="controls">
             <button id="btn-play">Play</button>
             <button id="btn-pause">Pause</button>
             <button id="btn-stop">Stop</button>
