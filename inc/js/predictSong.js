@@ -131,12 +131,12 @@ function play_and_render(mxl){
         .then(
             async function() {
                 audioPlayer = new OsmdAudioPlayer();
-                audioPlayer.cursor.show();
                 window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
                 //console.log("e.target.result: " + e.target.result);
                 await osmd.render();
                 osmd.cursor.show(); // this would show the cursor on the first note
                 await audioPlayer.loadScore(osmd);
+                audioPlayer.cursor.show();
                 audioPlayer.on("iteration", notes => {
                     console.log(notes);
                     console.log(notes.length);
