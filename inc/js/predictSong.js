@@ -105,6 +105,7 @@
                 beforeSend: function (response) {
                     $('#loading').show();
                     $('#controls').hide();
+                    $('#osmdCanvas').empty();
                 },
                 success: function (response) {
                     switch (response['r']) {
