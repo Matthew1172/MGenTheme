@@ -113,7 +113,7 @@
                                     .load(scoreXml)
                                     .then(
                                         async function() {
-                                            await window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
+                                            window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
                                             //console.log("e.target.result: " + e.target.result);
                                             await osmd.render();
                                             // osmd.cursor.show(); // this would show the cursor on the first note
