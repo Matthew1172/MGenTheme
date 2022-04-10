@@ -101,7 +101,26 @@
                     switch (response['r']) {
                         case "Good":
                             mxl = atob(response['scoreXml']);
-                            play_and_render(mxl);
+                            //play_and_render(mxl);
+                            const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+                                // set options here
+                                backend: "svg",
+                                drawFromMeasureNumber: 0,
+                                drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
+                            });
+                            audioPlayer = new OsmdAudioPlayer();
+                            osmd.load(mxl);
+                            osmd.render();
+                            //osmd.cursor.show();
+                            audioPlayer.loadScore(osmd);
+                            audioPlayer.on("iteration", notes => {
+                                console.log(notes);
+                                console.log(notes.length);
+                                //osmd.cursor.next();
+                            });
+
+                            registerButtonEvents(audioPlayer);
+
                             break;
                         case "Bad":
                             alert("Bad");
