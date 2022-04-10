@@ -134,8 +134,7 @@ async function play_and_render(mxl){
     audioPlayer.on("iteration", notes => {
         console.log(notes);
         console.log(notes.length);
-        audioPlayer.cursor.next();
-        osmd.cursor.update();
+        osmd.cursor.next();
     });
 
     registerButtonEvents(audioPlayer);
