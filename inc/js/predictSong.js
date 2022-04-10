@@ -20,6 +20,8 @@
                     folder: folder,
                     file: file
                 },
+                cache: false,
+                async: false,
                 success: function (response) {
                     switch (response['r']) {
                         case "Good":
