@@ -27,7 +27,7 @@ function hideLoadingMessage() {
     document.getElementById("loading").style.display = "none";
 }
 
-function registerButtonEvents(audioPlayer, osmd) {
+function registerButtonEvents(audioPlayer) {
     document.getElementById("btn-play").addEventListener("click", () => {
         if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
             audioPlayer.play();
@@ -41,7 +41,7 @@ function registerButtonEvents(audioPlayer, osmd) {
     document.getElementById("btn-stop").addEventListener("click", () => {
         if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
             audioPlayer.stop();
-            osmd.cursor.reset();
+            //osmd.cursor.reset();
         }
     });
 }
