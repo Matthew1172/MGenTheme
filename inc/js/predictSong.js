@@ -101,7 +101,20 @@
                     switch (response['r']) {
                         case "Good":
                             mxl = atob(response['scoreXml']);
-                            play_and_render(mxl);
+                            osmd = play_and_render(mxl);
+
+                            const audioPlayer = new OsmdAudioPlayer();
+                            audioPlayer.loadScore(osmd);
+
+                            audioPlayer.on("iteration", notes => {
+                                console.log(notes);
+                                console.log(notes.length);
+                                //audioPlayer.cursor.next();
+                            });
+
+                            hideLoadingMessage();
+                            registerButtonEvents(audioPlayer);
+
                             break;
                         case "Bad":
                             alert("Bad");
@@ -136,17 +149,7 @@ function play_and_render(mxl){
                 //osmd.cursor.show(); // this would show the cursor on the first note
             }
         );
-    const audioPlayer = new OsmdAudioPlayer();
-    audioPlayer.loadScore(osmd);
-
-    audioPlayer.on("iteration", notes => {
-        console.log(notes);
-        console.log(notes.length);
-        //audioPlayer.cursor.next();
-    });
-
-    hideLoadingMessage();
-    registerButtonEvents(audioPlayer);
+    return osmd
 }
 
 /*
