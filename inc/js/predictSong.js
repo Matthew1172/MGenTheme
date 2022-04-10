@@ -109,7 +109,7 @@
                     $('#loading').show();
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
-                    if(audioPlayer.ready()){
+                    if(audioPlayer.ready){
                         alert("I'm ready");
                     }
                 },
