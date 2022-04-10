@@ -116,7 +116,16 @@
                             audioPlayer.on("iteration", notes => {
                                 console.log(notes);
                                 console.log(notes.length);
-                                osmd.cursor.next();
+                                first = osmd.cursor.iterator.currentPartIndex && osmd.cursor.iterator.currentVoiceEntryIndex;
+                                if(first && notes.length < 1){
+
+                                }else{
+                                    if(!first){
+                                        osmd.cursor.next(); // advance the cursor one note
+                                    }else {
+                                        first = false;
+                                    }
+                                }
                             });
 
                             registerButtonEvents(audioPlayer, osmd);
