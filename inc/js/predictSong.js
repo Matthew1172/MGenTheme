@@ -121,10 +121,8 @@
                                 if(first && notes.length < 1){
 
                                 }else{
-                                    if(!first){
-                                        osmd.cursor.next(); // advance the cursor one note
-                                    }else {
-                                        first = false;
+                                    if(!first) {
+                                        osmd.cursor.next();
                                     }
                                 }
                             });
