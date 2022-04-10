@@ -111,9 +111,9 @@
                             audioPlayer = new OsmdAudioPlayer();
                             osmd.load(mxl);
                             osmd.render();
-                            osmd.cursor.show();
                             audioPlayer.loadScore(osmd);
                             audioPlayer.on("iteration", notes => {
+                                osmd.cursor.show();
                                 console.log(notes);
                                 console.log(notes.length);
                                 osmd.cursor.next();
