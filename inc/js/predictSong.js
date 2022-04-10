@@ -105,7 +105,7 @@
                     songs: songs,
                     temperature: temperature
                 },
-                beforeSend: function (response) {
+                beforeSend: function () {
                     $('#loading').show();
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
