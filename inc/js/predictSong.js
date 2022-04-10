@@ -123,10 +123,15 @@
                                 osmd.render();
                                 osmd.cursor.show();
                                 audioPlayer.loadScore(osmd);
+                                first = true;
                                 audioPlayer.on("iteration", notes => {
                                     console.log(notes);
                                     console.log(notes.length);
-                                    osmd.cursor.next();
+
+                                    if(!first)
+                                        osmd.cursor.next();
+                                    else
+                                        first = false;
                                 });
 
                                 $("#btn-play").click(function() {
@@ -143,6 +148,7 @@
                                     if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
                                         audioPlayer.stop();
                                         osmd.cursor.reset();
+                                        first = true;
                                     }
                                 });
 
