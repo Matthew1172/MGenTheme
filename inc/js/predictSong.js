@@ -164,8 +164,9 @@
                             break;
                     }
                 }
+            }).done(function() {
+                $('#loading').hide();
             });
-            $('#loading').hide();
         });
 
 
