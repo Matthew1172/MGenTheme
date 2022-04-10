@@ -84,5 +84,5 @@
         </div>
         <div id="score"></div>
     </main>
-    <div id="osmdCanvas"/>
+    <div id="osmdCanvas"></div>
 <?php get_footer(); ?>
