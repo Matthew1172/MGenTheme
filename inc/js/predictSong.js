@@ -112,14 +112,14 @@
                         case "Good":
                             mxl = atob(response['scoreXml']);
                             //play_and_render(mxl);
-                            osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+                            const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
                                 // set options here
                                 backend: "canvas",
                                 drawingParameters: "compacttight", // more compact spacing, less padding
                                 drawFromMeasureNumber: 0,
                                 drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
                             });
-                            audioPlayer = new OsmdAudioPlayer();
+                            const audioPlayer = new OsmdAudioPlayer();
                             try {
                                 osmd.load(mxl)
                                     .then(function () {
