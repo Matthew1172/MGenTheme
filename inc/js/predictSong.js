@@ -4,14 +4,7 @@
         $('#loading').hide();
         $('#controls').hide();
 
-        const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-            // set options here
-            backend: "canvas",
-            drawingParameters: "compacttight", // more compact spacing, less padding
-            drawFromMeasureNumber: 0,
-            drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
-        });
-        const audioPlayer = new OsmdAudioPlayer();
+
 
         /*
          *
@@ -115,6 +108,14 @@
                     $('#loading').show();
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
+                    osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+                        // set options here
+                        backend: "canvas",
+                        drawingParameters: "compacttight", // more compact spacing, less padding
+                        drawFromMeasureNumber: 0,
+                        drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
+                    });
+                    audioPlayer = new OsmdAudioPlayer();
                 },
                 success: function (response) {
                     switch (response['r']) {
