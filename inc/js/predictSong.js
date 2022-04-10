@@ -126,15 +126,15 @@ async function play_and_render(mxl){
         drawFromMeasureNumber: 0,
         drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
     });
-    const audioPlayer = new OsmdAudioPlayer();
-    await osmd.load(mxl);
-    await osmd.render();
-    osmd.cursor.show();
-    await audioPlayer.loadScore(osmd);
+    audioPlayer = new OsmdAudioPlayer();
+    osmd.load(mxl);
+    osmd.render();
+    //osmd.cursor.show();
+    audioPlayer.loadScore(osmd);
     audioPlayer.on("iteration", notes => {
         console.log(notes);
         console.log(notes.length);
-        osmd.cursor.next();
+        //osmd.cursor.next();
     });
 
     registerButtonEvents(audioPlayer);
