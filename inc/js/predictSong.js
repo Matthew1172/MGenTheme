@@ -120,11 +120,13 @@
                                             await audioPlayer.loadScore(osmd);
                                             audioPlayer.on("iteration", notes => {
                                                 console.log(notes);
-                                                osmd.cursor.next(); // advance the cursor one note
+                                                if(notes){
+                                                    osmd.cursor.next(); // advance the cursor one note
+                                                }
                                             });
 
                                             hideLoadingMessage();
-                                            registerButtonEvents(audioPlayer);
+                                            registerButtonEvents(audioPlayer, osmd);
                                         }
                                     ).finally(
                                         async function (){
