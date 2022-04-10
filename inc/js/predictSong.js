@@ -121,7 +121,7 @@
                                             first = true
                                             audioPlayer.on("iteration", notes => {
                                                 console.log(notes);
-                                                if(first && !notes){
+                                                if(first && notes.length > 0){
 
                                                 }else{
                                                     if(!first){
