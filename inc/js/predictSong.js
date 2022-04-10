@@ -116,11 +116,11 @@
                                             window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
                                             //console.log("e.target.result: " + e.target.result);
                                             await osmd.render();
-                                            // osmd.cursor.show(); // this would show the cursor on the first note
-                                            // osmd.cursor.next(); // advance the cursor one note
+                                            osmd.cursor.show(); // this would show the cursor on the first note
                                             await audioPlayer.loadScore(osmd);
                                             audioPlayer.on("iteration", notes => {
                                                 console.log(notes);
+                                                osmd.cursor.next(); // advance the cursor one note
                                             });
 
                                             hideLoadingMessage();
