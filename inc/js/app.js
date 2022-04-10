@@ -1,23 +1,11 @@
-(async (mxl) => {
-    scoreXmlResponse = atob(mxl);
-    var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-        // set options here
-        backend: "svg",
-        drawFromMeasureNumber: 0,
-        drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
-    });
+(async (scoreXml) => {
+    const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay(document.getElementById("score"));
     const audioPlayer = new OsmdAudioPlayer();
-    osmd
-        .load(scoreXmlResponse)
-        .then(
-            function() {
-                window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
-                //console.log("e.target.result: " + e.target.result);
-                osmd.render();
-                // osmd.cursor.show(); // this would show the cursor on the first note
-                // osmd.cursor.next(); // advance the cursor one note
-            }
-        );
+    /*
+    const scoreXml = await fetch(
+        "http://134.74.112.18:1234/mxl?folder=output@TueApr51731182022&file=generated_1.mxl"
+    ).then(r => r.text());
+    */
     console.log("Score xml: ", scoreXml);
 
     await osmd.load(scoreXml);
@@ -29,7 +17,7 @@
 
     hideLoadingMessage();
     registerButtonEvents(audioPlayer);
-})(atob(response['scoreXml']));
+})();
 
 function hideLoadingMessage() {
     document.getElementById("loading").style.display = "none";

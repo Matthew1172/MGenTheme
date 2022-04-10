@@ -119,7 +119,7 @@
                                         // osmd.cursor.next(); // advance the cursor one note
                                     }
                                 );
-                            audioPlayer.loadScore(mxl);
+                            audioPlayer.loadScore(osmd);
                             audioPlayer.on("iteration", notes => {
                                 console.log(notes);
                             });
