@@ -110,9 +110,6 @@
                     $('#loading').show();
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
-                    if(audioPlayer.ready){
-                        for (var member in audioPlayer) delete audioPlayer[member];
-                    }
                 },
                 success: function (response) {
                     switch (response['r']) {
