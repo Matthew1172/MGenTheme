@@ -79,7 +79,7 @@
             <button id="btn-pause">Pause</button>
             <button id="btn-stop">Stop</button>
             <label for="slider">BPM</label>
-            <input type="range" id="bpm-slider" value="100" min="50" max="180" step="1" />
+            <input type="range" id="bpm-slider" value="100" min="50" max="300" step="1" />
             <span id="bpm-value">100</span>
         </div>
         <div>
