@@ -123,7 +123,6 @@ let audioPlayer = new OsmdAudioPlayer();
                                         osmd.render();
                                         osmd.cursor.show();
                                         audioPlayer.loadScore(osmd);
-                                        audioPlayer.setInstrument(new Soundfont.instrument(audioPlayer.ac['_nativeAudioContext'], 'acoustic_grand_piano'), 0);
                                         $('#controls').show();
                                     });
                             }catch (e) {
@@ -159,6 +158,10 @@ let audioPlayer = new OsmdAudioPlayer();
             if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
                 audioPlayer.stop();
             }
+        });
+
+        $('#bpm-slider').on('input', function() {
+            alert($(this).val());
         });
 
     });
