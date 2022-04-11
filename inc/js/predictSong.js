@@ -161,7 +161,7 @@ let audioPlayer = new OsmdAudioPlayer();
         });
 
         $(document).on('input', '#bpm-slider', function() {
-            $('#slider_value').html( $(this).val() );
+            $('#bpm-value').html( $(this).val() );
         });
 
     });
