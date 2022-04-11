@@ -123,6 +123,7 @@ let audioPlayer = new OsmdAudioPlayer();
                                         osmd.render();
                                         osmd.cursor.show();
                                         audioPlayer.loadScore(osmd);
+                                        audioPlayer.setInstrument(new Soundfont.instrument(audioPlayer.ac['_nativeAudioContext'], 'acoustic_grand_piano'), 0);
                                         $('#controls').show();
                                     });
                             }catch (e) {
