@@ -149,6 +149,8 @@ function run_model()
     $port = '1235';
     $url = "http://$api:$port$endpoint";
 
+    wp_send_json(array("msg" => $url));
+
     $callee_data = array(
         'dataset' => esc_attr($_POST['dataset']),
         'input_clef' => esc_attr($_POST['input_clef']),
