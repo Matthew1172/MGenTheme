@@ -207,6 +207,8 @@ result = {
     wp_send_json($response);
 }
 add_action('wp_ajax_call_run_model', 'run_model');
+//for non authenticated users
+add_action('wp_ajax_nopriv_call_run_model', 'run_model');
 
 /*
  *     $folder = $temp[0];
