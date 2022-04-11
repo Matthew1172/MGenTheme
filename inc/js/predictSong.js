@@ -160,8 +160,8 @@ let audioPlayer = new OsmdAudioPlayer();
             }
         });
 
-        $('#bpm-slider').on('input', function() {
-            alert($(this).val());
+        $(document).on('input', '#bpm-slider', function() {
+            alert( $(this).val() );
         });
 
     });
