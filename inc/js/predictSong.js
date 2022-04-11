@@ -110,7 +110,7 @@
                     $('#controls').hide();
                     $('#osmdCanvas').empty();
                     if(audioPlayer.ready){
-                        alert("I'm ready");
+                        for (var member in audioPlayer) delete audioPlayer[member];
                     }
                 },
                 success: function (response) {
