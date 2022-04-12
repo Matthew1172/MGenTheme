@@ -175,7 +175,11 @@ function run_model()
     );
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) { /* Handle error */ }
+    if ($result === FALSE) {
+        /* Handle error */
+        $response['r'] = 2;
+        wp_send_json($response);
+    }
     $result = json_decode($result, true);
     /*
 result = {
@@ -197,10 +201,10 @@ result = {
     $xml =  file_get_contents($url);
     if($xml === false){
         $response['scoreXml'] = $url;
-        $response['r'] = "Bad";
+        $response['r'] = 1;
     }else{
         $response['scoreXml'] = base64_encode($xml);
-        $response['r'] = "Good";
+        $response['r'] = 0;
     }
     wp_send_json($response);
 }

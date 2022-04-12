@@ -7,9 +7,13 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
 });
 let audioPlayer = new OsmdAudioPlayer();
 
+let err_codes = [
+    "Success.",
+    "The MXL file could not be fetched.",
+    "The model couldn't generate an MXL file base on the inputs."
+]
+
 (function ($) {
-
-
     $(document).ready(function () {
 
         $('#loading').hide();
@@ -114,7 +118,7 @@ let audioPlayer = new OsmdAudioPlayer();
                 },
                 success: function (response) {
                     switch (response['r']) {
-                        case "Good":
+                        case 0:
                             mxl = atob(response['scoreXml']);
                             //play_and_render(mxl);
                             try {
@@ -127,11 +131,14 @@ let audioPlayer = new OsmdAudioPlayer();
                                     });
                             }catch (e) {
                                 //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
-                                alert(e);
+                                alert("OSMD could not load the mxl. Please try again.");
                             }
                             break;
-                        case "Bad":
-                            alert("Bad");
+                        case 1:
+                            alert(err_codes[1]);
+                            break;
+                        case 2:
+                            alert(err_codes[2]);
                             break;
                         default:
                             break;
@@ -168,6 +175,23 @@ let audioPlayer = new OsmdAudioPlayer();
 
     });
 })(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function play_and_render(mxl){
     const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
