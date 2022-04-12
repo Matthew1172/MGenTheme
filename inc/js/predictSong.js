@@ -117,7 +117,7 @@ let err_codes = [
                     $('#osmdCanvas').empty();
                 },
                 success: function (response) {
-                    switch (response['r']) {
+                    switch (parseInt(response['r'], 10)) {
                         case 0:
                             mxl = atob(response['scoreXml']);
                             //play_and_render(mxl);
