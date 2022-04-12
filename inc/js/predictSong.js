@@ -10,7 +10,8 @@ let audioPlayer = new OsmdAudioPlayer();
 const err_codes = [
     "Success.",
     "The MXL file could not be fetched.",
-    "The model couldn't generate an MXL file base on the inputs."
+    "The model couldn't generate an MXL file base on the inputs.",
+    "Not found in dictionary"
 ];
 
 (function ($) {
@@ -139,6 +140,9 @@ const err_codes = [
                             break;
                         case 2:
                             alert(err_codes[2]);
+                            break;
+                        case 3:
+                            alert(response['err']);
                             break;
                         default:
                             break;

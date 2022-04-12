@@ -181,6 +181,12 @@ function run_model()
         wp_send_json($response);
     }
     $result = json_decode($result, true);
+    /* Check for errors */
+    if($result['error']){
+        $response['r'] = 3;
+        $response['err'] = $result['error'];
+        wp_send_json($response);
+    }
     /*
 result = {
             "midi": [
