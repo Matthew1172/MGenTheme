@@ -19,7 +19,7 @@
                 <div class="col-sm-6">
                 </div>
                 <div class="col-sm-6">
-                    <h5 class="pb-3">Sitemap</h5>
+                    <h5 class="pb-3">Music Generator</h5>
                     <hr/>
                 </div>
             </div>
