@@ -7,11 +7,11 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
 });
 let audioPlayer = new OsmdAudioPlayer();
 
-let err_codes = [
+const err_codes = [
     "Success.",
     "The MXL file could not be fetched.",
     "The model couldn't generate an MXL file base on the inputs."
-]
+];
 
 (function ($) {
     $(document).ready(function () {
