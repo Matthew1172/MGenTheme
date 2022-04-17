@@ -83,24 +83,14 @@
     </div>
 
     <div>
-
-        <div class="form-group col-md-6">
-            <button id="display-clefs" class="btn btn-warning main-btn">Display clefs</button>
-        </div>
+        <button id="display-clefs">Display clefs</button>
         <div id="clefs"></div>
-        <div class="form-group col-md-6">
-            <button id="display-keys" class="btn btn-warning main-btn">Display key signatures</button>
-        </div>
+        <button id="display-keys">Display key signatures</button>
         <div id="keys"></div>
-        <div class="form-group col-md-6">
-            <button id="display-notes" class="btn btn-warning main-btn">Display notes</button>
-        </div>
+        <button id="display-notes">Display notes</button>
         <div id="notes"></div>
-        <div class="form-group col-md-6">
-            <button id="display-times" class="btn btn-warning main-btn">Display time signatures</button>
-        </div>
+        <button id="display-times">Display time signatures</button>
         <div id="times"></div>
-
     </div>
 
     <main>
