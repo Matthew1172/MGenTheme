@@ -1,10 +1,14 @@
 <?php get_header(); ?>
     <div>
+        <h1>Instructions:</h1>
+        <p>To start, leave all the default values the same. For the Clef, enter "G". Leave the Key and Input fields blank. For the time signature, enter "4 4". Check the "Random key signature" box, and the "Random sequence" box.</p>
+    </div>
+    <div>
         <form id="run-model">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="dataset">Dataset name</label>
-                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V1"/>
+                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V3"/>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="input-clef">Input clef</label>

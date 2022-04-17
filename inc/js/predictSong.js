@@ -78,9 +78,16 @@ const err_codes = [
             event.preventDefault();
             var dataset = $('#dataset').val();
             var input_clef = $('#input-clef').val();
+            input_clef = "Clef "+input_clef;
             var input_key = $('#input-key').val();
-            var input_seq = $('#input-seq').val();
+            input_clef = "Key "+input_clef;
+            var input_seq = "";
+            $('#input-seq').val().split(' ').forEach(note => {
+                input_seq += "Note "+note;
+            });
+
             var input_time = $('#input-time').val();
+            input_clef = "Time "+input_clef;
             var length = $('#length').val();
 
             var random_clef = $('#random-clef').prop('checked') === true ? "True" : "False";
