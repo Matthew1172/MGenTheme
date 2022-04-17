@@ -170,11 +170,9 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    html = ""
                     response['clefs'].forEach(i => {
-                        html += i+"\n";
+                        $("#clefs").append(`<li>${i}</li>`);
                     });
-                    $("#clefs").html(html);
                 }
             });
         });
@@ -192,11 +190,9 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    html = ""
                     response['keys'].forEach(i => {
-                        html += i+"\n";
+                        $("#keys").append(`<li>${i}</li>`);
                     });
-                    $("#keys").html(html);
                 }
             });
         });
@@ -214,11 +210,9 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    html = ""
                     response['times'].forEach(i => {
-                        html += i+"\n";
+                        $("#times").append(`<li>${i}</li>`);
                     });
-                    $("#times").html(html);
                 }
             });
         });
@@ -236,11 +230,9 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    html = ""
                     response['notes'].forEach(i => {
-                        html += i+"\n";
+                        $("#notes").append(`<li>${i}</li>`);
                     });
-                    $("#notes").html(html);
                 }
             });
         });

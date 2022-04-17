@@ -100,12 +100,12 @@
 
     <div>
         <button id="display-clefs">Display clefs</button>
-        <div id="clefs"></div>
+        <ul id="clefs"></ul>
         <button id="display-keys">Display key signatures</button>
-        <div id="keys"></div>
+        <ul id="keys"></ul>
         <button id="display-notes">Display notes</button>
-        <div id="notes"></div>
+        <ul id="notes"></ul>
         <button id="display-times">Display time signatures</button>
-        <div id="times"></div>
+        <ul id="times"></ul>
     </div>
 <?php get_footer(); ?>
