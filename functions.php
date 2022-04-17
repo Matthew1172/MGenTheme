@@ -235,8 +235,14 @@ function get_clefs()
     $port = '1235';
     $dataset = $callee_data['dataset'];
     $url = "http://$api:$port$endpoint?dataset=$dataset";
-    $xml =  file_get_contents($url);
-    wp_send_json($xml);
+    $result =  file_get_contents($url);
+    if ($result === FALSE) {
+        /* Handle error */
+        $response['r'] = 2;
+        wp_send_json($response);
+    }
+    $result = json_decode($result, true);
+    wp_send_json($result);
 }
 add_action('wp_ajax_call_get_clefs', 'get_clefs');
 add_action('wp_ajax_nopriv_call_get_clefs', 'get_clefs');
@@ -257,8 +263,14 @@ function get_keys()
     $port = '1235';
     $dataset = $callee_data['dataset'];
     $url = "http://$api:$port$endpoint?dataset=$dataset";
-    $xml =  file_get_contents($url);
-    wp_send_json($xml);
+    $result =  file_get_contents($url);
+    if ($result === FALSE) {
+        /* Handle error */
+        $response['r'] = 2;
+        wp_send_json($response);
+    }
+    $result = json_decode($result, true);
+    wp_send_json($result);
 }
 add_action('wp_ajax_call_get_keys', 'get_keys');
 add_action('wp_ajax_nopriv_call_get_keys', 'get_keys');
@@ -279,8 +291,14 @@ function get_times()
     $port = '1235';
     $dataset = $callee_data['dataset'];
     $url = "http://$api:$port$endpoint?dataset=$dataset";
-    $xml =  file_get_contents($url);
-    wp_send_json($xml);
+    $result =  file_get_contents($url);
+    if ($result === FALSE) {
+        /* Handle error */
+        $response['r'] = 2;
+        wp_send_json($response);
+    }
+    $result = json_decode($result, true);
+    wp_send_json($result);
 }
 add_action('wp_ajax_call_get_times', 'get_times');
 add_action('wp_ajax_nopriv_call_get_times', 'get_times');
@@ -301,8 +319,14 @@ function get_notes()
     $port = '1235';
     $dataset = $callee_data['dataset'];
     $url = "http://$api:$port$endpoint?dataset=$dataset";
-    $xml =  file_get_contents($url);
-    wp_send_json($xml);
+    $result =  file_get_contents($url);
+    if ($result === FALSE) {
+        /* Handle error */
+        $response['r'] = 2;
+        wp_send_json($response);
+    }
+    $result = json_decode($result, true);
+    wp_send_json($result);
 }
 add_action('wp_ajax_call_get_notes', 'get_notes');
 add_action('wp_ajax_nopriv_call_get_notes', 'get_notes');
