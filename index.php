@@ -82,17 +82,6 @@
         </form>
     </div>
 
-    <div>
-        <button id="display-clefs">Display clefs</button>
-        <div id="clefs"></div>
-        <button id="display-keys">Display key signatures</button>
-        <div id="keys"></div>
-        <button id="display-notes">Display notes</button>
-        <div id="notes"></div>
-        <button id="display-times">Display time signatures</button>
-        <div id="times"></div>
-    </div>
-
     <main>
         <div id="controls" class="controls">
             <button id="btn-play">Play</button>
@@ -108,4 +97,15 @@
         <div id="score"></div>
     </main>
     <div id="osmdCanvas"></div>
+
+    <div>
+        <button id="display-clefs">Display clefs</button>
+        <div id="clefs"></div>
+        <button id="display-keys">Display key signatures</button>
+        <div id="keys"></div>
+        <button id="display-notes">Display notes</button>
+        <div id="notes"></div>
+        <button id="display-times">Display time signatures</button>
+        <div id="times"></div>
+    </div>
 <?php get_footer(); ?>

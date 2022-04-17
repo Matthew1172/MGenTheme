@@ -170,7 +170,11 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    $("#clefs").html(response['clefs']);
+                    html = ""
+                    response['clefs'].forEach(i => {
+                        html += i+"\n";
+                    });
+                    $("#clefs").html(html);
                 }
             });
         });
@@ -188,7 +192,11 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    $("#keys").html(response['keys']);
+                    html = ""
+                    response['keys'].forEach(i => {
+                        html += i+"\n";
+                    });
+                    $("#keys").html(html);
                 }
             });
         });
@@ -206,7 +214,11 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    $("#times").html(response['times']);
+                    html = ""
+                    response['times'].forEach(i => {
+                        html += i+"\n";
+                    });
+                    $("#times").html(html);
                 }
             });
         });
@@ -224,7 +236,11 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    $("#notes").html(response['notes']);
+                    html = ""
+                    response['notes'].forEach(i => {
+                        html += i+"\n";
+                    });
+                    $("#notes").html(html);
                 }
             });
         });
