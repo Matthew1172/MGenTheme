@@ -19,7 +19,7 @@ $callee_data = array(
 //$api = new ApiCaller();
 //$xml = $api->CallGetMxl($callee_data);
 $api = '134.74.112.18';
-$endpoint = "/keys";
+$endpoint = "/clefs";
 $port = '1235';
 $dataset = $callee_data['dataset'];
 $url = "http://$api:$port$endpoint?dataset=$dataset";
