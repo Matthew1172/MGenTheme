@@ -10,22 +10,44 @@
                     <label for="dataset">Dataset name</label>
                     <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V3"/>
                 </div>
+
                 <div class="form-group col-md-6">
                     <label for="input-clef">Input clef</label>
                     <input id="input-clef" type="text" class="form-control" placeholder="Input clef" />
                 </div>
                 <div class="form-group col-md-6">
+                    <button id="display-clefs" class="btn btn-warning main-btn">Display clefs</button>
+                </div>
+                <div id="clefs"></div>
+
+
+                <div class="form-group col-md-6">
                     <label for="input-key">Input key</label>
                     <input id="input-key" type="text" class="form-control" placeholder="Input key" />
                 </div>
+                <div class="form-group col-md-6">
+                    <button id="display-keys" class="btn btn-warning main-btn">Display key signatures</button>
+                </div>
+                <div id="keys"></div>
+
                 <div class="form-group col-md-6">
                     <label for="input-seq">Input seq</label>
                     <input id="input-seq" type="text" class="form-control" placeholder="Input seq" />
                 </div>
                 <div class="form-group col-md-6">
+                    <button id="display-notes" class="btn btn-warning main-btn">Display notes</button>
+                </div>
+                <div id="notes"></div>
+
+                <div class="form-group col-md-6">
                     <label for="input-time">Input time</label>
                     <input id="input-time" type="text" class="form-control" placeholder="Input time" />
                 </div>
+                <div class="form-group col-md-6">
+                    <button id="display-times" class="btn btn-warning main-btn">Display time signatures</button>
+                </div>
+                <div id="times"></div>
+
                 <div class="form-group col-md-6">
                     <label for="length">Length</label>
                     <input id="length" type="text" class="form-control" placeholder="Length" value="100"/>

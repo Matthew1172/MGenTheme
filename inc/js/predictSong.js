@@ -157,6 +157,33 @@ const err_codes = [
             });
         });
 
+        $("#display-clefs").click(function () {
+            var dataset = $('#dataset').val();
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_clefs',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#clefs").html(response['clefs']);
+                }
+            });
+        });
+
+        $("#display-keys").click(function () {
+        });
+
+        $("#display-times").click(function () {
+        });
+
+        $("#display-notes").click(function () {
+        });
+
         $("#btn-play").click(function () {
             if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
                 audioPlayer.play();
