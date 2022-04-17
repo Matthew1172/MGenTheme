@@ -176,12 +176,57 @@ const err_codes = [
         });
 
         $("#display-keys").click(function () {
+            var dataset = $('#dataset').val();
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_keys',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#keys").html(response['keys']);
+                }
+            });
         });
 
         $("#display-times").click(function () {
+            var dataset = $('#dataset').val();
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_times',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#times").html(response['times']);
+                }
+            });
         });
 
         $("#display-notes").click(function () {
+            var dataset = $('#dataset').val();
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_notes',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#notes").html(response['notes']);
+                }
+            });
         });
 
         $("#btn-play").click(function () {
