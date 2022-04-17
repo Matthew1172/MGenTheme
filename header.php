@@ -25,15 +25,19 @@ $dataset = $callee_data['dataset'];
 $endpoint = "/clefs";
 $url = "http://$api:$port$endpoint?dataset=$dataset";
 $xml =  file_get_contents($url);
+print_r($xml);
 $endpoint = "/keys";
 $url = "http://$api:$port$endpoint?dataset=$dataset";
 $xml =  file_get_contents($url);
+print_r($xml);
 $endpoint = "/times";
 $url = "http://$api:$port$endpoint?dataset=$dataset";
 $xml =  file_get_contents($url);
+print_r($xml);
 $endpoint = "/notes";
 $url = "http://$api:$port$endpoint?dataset=$dataset";
 $xml =  file_get_contents($url);
+print_r($xml);
 
 ?>
 <!DOCTYPE html>
