@@ -19,13 +19,21 @@ $callee_data = array(
 //$api = new ApiCaller();
 //$xml = $api->CallGetMxl($callee_data);
 $api = '134.74.112.18';
-$endpoint = "/clefs";
 $port = '1235';
 $dataset = $callee_data['dataset'];
-$url = "http://$api:$port$endpoint?dataset=$dataset";
 
+$endpoint = "/clefs";
+$url = "http://$api:$port$endpoint?dataset=$dataset";
 $xml =  file_get_contents($url);
-wp_send_json($xml);
+$endpoint = "/keys";
+$url = "http://$api:$port$endpoint?dataset=$dataset";
+$xml =  file_get_contents($url);
+$endpoint = "/times";
+$url = "http://$api:$port$endpoint?dataset=$dataset";
+$xml =  file_get_contents($url);
+$endpoint = "/notes";
+$url = "http://$api:$port$endpoint?dataset=$dataset";
+$xml =  file_get_contents($url);
 
 ?>
 <!DOCTYPE html>
