@@ -77,17 +77,14 @@ const err_codes = [
         $('#run-model').submit(function (event) {
             event.preventDefault();
             var dataset = $('#dataset').val();
-            var input_clef = $('#input-clef').val();
-            input_clef = "Clef "+input_clef;
-            var input_key = $('#input-key').val();
-            input_clef = "Key "+input_clef;
+            var input_clef = "Clef "+$('#input-clef').val();
+            var input_key = "Key "+$('#input-key').val();
             var input_seq = "";
             $('#input-seq').val().split(' ').forEach(note => {
                 input_seq += "Note "+note;
             });
 
-            var input_time = $('#input-time').val();
-            input_clef = "Time "+input_clef;
+            var input_time = "Time "+$('#input-time').val();
             var length = $('#length').val();
 
             var random_clef = $('#random-clef').prop('checked') === true ? "True" : "False";

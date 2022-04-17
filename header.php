@@ -9,6 +9,24 @@
  * @subpackage mgen
  * @since 1.0.0
  */
+
+
+$response = array();
+$callee_data = array(
+    'dataset' => "V3"
+);
+
+//$api = new ApiCaller();
+//$xml = $api->CallGetMxl($callee_data);
+$api = '134.74.112.18';
+$endpoint = "/keys";
+$port = '1235';
+$dataset = $callee_data['dataset'];
+$url = "http://$api:$port$endpoint?dataset=$dataset";
+
+$xml =  file_get_contents($url);
+wp_send_json($xml);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

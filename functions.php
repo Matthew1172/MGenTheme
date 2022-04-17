@@ -218,17 +218,30 @@ add_action('wp_ajax_call_run_model', 'run_model');
 //for non authenticated users
 add_action('wp_ajax_nopriv_call_run_model', 'run_model');
 
+
 /*
- *     $folder = $temp[0];
-    $file = $temp[1];
-    $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
-    $xml =  file_get_contents($url);
-    if($xml === false){
-        $response['scoreXml'] = $url;
-        $response['r'] = "Bad";
-    }else{
-        $response['scoreXml'] = base64_encode($xml);
-        $response['r'] = "Good";
-    }
-    wp_send_json($response);
+ *
+ * Function to get key signatures
+ *
  */
+function get_keys()
+{
+    $response = array();
+    $callee_data = array(
+        'dataset' => esc_attr($_POST['dataset'])
+    );
+
+    //$api = new ApiCaller();
+    //$xml = $api->CallGetMxl($callee_data);
+    $api = '134.74.112.18';
+    $endpoint = "/keys";
+    $port = '1235';
+    $dataset = $callee_data['dataset'];
+    $url = "http://$api:$port$endpoint?dataset=$dataset";
+
+    $xml =  file_get_contents($url);
+    wp_send_json($xml);
+}
+add_action('wp_ajax_call_run_model', 'get_keys');
+//for non authenticated users
+add_action('wp_ajax_nopriv_call_run_model', 'get_keys');
