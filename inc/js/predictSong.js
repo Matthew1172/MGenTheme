@@ -152,6 +152,10 @@ const err_codes = [
                                         $('#controls').show();
                                     });
                                 const instrument = osmd.Sheet.Instruments.flatMap(i => i.Voices);
+
+                                for (var i = 0; i < instruments.length; i++) {
+                                    $('#instruments option[value="'+instruments[i].midiId+'"]').remove();
+                                }
                                 $('#instruments option[value="'+instrument[0].midiInstrumentId+'"]');
                             }catch (e) {
                                 //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
