@@ -20,6 +20,11 @@ const err_codes = [
         $('#loading').hide();
         $('#controls').hide();
 
+        const instruments = audioPlayer.availableInstruments;
+        for (var i = 0; i < instruments.length; i++) {
+            $('#instruments').append('<option value="' + instruments[i].midiId + '">' + instruments[i].name + '</option>');
+        }
+
         /*
          *
          *Function to handle inputs when get-mxl is submitted
@@ -134,6 +139,8 @@ const err_codes = [
                                         audioPlayer.loadScore(osmd);
                                         $('#controls').show();
                                     });
+                                const instrument = osmd.Sheet.Instruments.flatMap(i => i.Voices);
+                                $('#instruments option[value="'+instrument[0].midiInstrumentId+'"]');
                             }catch (e) {
                                 //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
                                 alert("OSMD could not load the mxl. Please try again.");
@@ -170,6 +177,7 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
+                    $("#clefs").empty();
                     response['clefs'].forEach(i => {
                         $("#clefs").append(`<li>${i}</li>`);
                     });
@@ -190,6 +198,7 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
+                    $("#keys").empty();
                     response['keys'].forEach(i => {
                         $("#keys").append(`<li>${i}</li>`);
                     });
@@ -210,6 +219,7 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
+                    $("#times").empty();
                     response['times'].forEach(i => {
                         $("#times").append(`<li>${i}</li>`);
                     });
@@ -230,6 +240,7 @@ const err_codes = [
                 beforeSend: function () {
                 },
                 success: function (response) {
+                    $("#notes").empty();
                     response['notes'].forEach(i => {
                         $("#notes").append(`<li>${i}</li>`);
                     });

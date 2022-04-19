@@ -82,7 +82,7 @@
         </form>
     </div>
 
-    <main>
+    <div>
         <div id="controls" class="controls">
             <button id="btn-play">Play</button>
             <button id="btn-pause">Pause</button>
@@ -90,12 +90,13 @@
             <label for="slider">BPM</label>
             <input type="range" id="bpm-slider" value="100" min="50" max="300" step="1" />
             <span id="bpm-value">100</span>
+            <select id="instruments"></select>
         </div>
         <div>
             <h2 id="loading">Loading...</h2>
         </div>
         <div id="score"></div>
-    </main>
+    </div>
     <div id="osmdCanvas"></div>
 
     <div>
