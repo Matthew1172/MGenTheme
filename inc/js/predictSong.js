@@ -31,7 +31,7 @@ const err_codes = [
          *
          */
         $( "#instruments" ).change(function() {
-            var id = $(this).val();
+            var id = Number($(this).val());
             osmd.Sheet.Instruments
                 .flatMap(i => i.Voices)
                 .forEach(v => audioPlayer.setInstrument(v, id));
