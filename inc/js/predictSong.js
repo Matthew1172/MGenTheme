@@ -25,6 +25,18 @@ const err_codes = [
             $('#instruments').append('<option value="' + instruments[i].midiId + '">' + instruments[i].name + '</option>');
         }
 
+        /**
+         *
+         * Handle instrument selector change. Change the instrument of the audio sheet
+         *
+         */
+        $( "#instruments" ).change(function() {
+            var id = $(this).val();
+            osmd.Sheet.Instruments
+                .flatMap(i => i.Voices)
+                .forEach(v => audioPlayer.setInstrument(v, id))
+        });
+
         /*
          *
          *Function to handle inputs when get-mxl is submitted
