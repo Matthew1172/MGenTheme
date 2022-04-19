@@ -34,7 +34,7 @@ const err_codes = [
             var id = $(this).val();
             osmd.Sheet.Instruments
                 .flatMap(i => i.Voices)
-                .forEach(v => audioPlayer.setInstrument(v, id))
+                .forEach(v => audioPlayer.setInstrument(v, id));
         });
 
         /*
