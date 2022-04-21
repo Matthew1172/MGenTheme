@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <div>
         <h1>Instructions:</h1>
-        <p>To start, leave all the default values the same. For the Clef, enter "G". Leave the Key and Input fields blank. For the time signature, enter "4 4". Check the "Random key signature" box, and the "Random sequence" box.</p>
+        <p>To get started, just click the Generate button, then click play. If you want to give the model some initial information to go off of, just type in your ABC notation song in the text box, and then click the Generate button.</p>
     </div>
     <div>
         <form id="run-model">
@@ -25,6 +25,7 @@
                 <div class="form-group col-md-6">
                     <label for="temperature">Temperature</label>
                     <input type="range" id="temperature" value="0.85" min="0" max="1" step="0.01" />
+                    <span id="temperature-value">0.85</span>
                 </div>
                 <div>
                     <label for="abc">ABC song</label>
@@ -38,7 +39,7 @@ K:?
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <button id="submit-run-model" type="submit" class="btn btn-warning main-btn">Submit</button>
+                    <button id="submit-run-model" type="submit" class="btn btn-warning main-btn">Generate</button>
                 </div>
             </div>
         </form>

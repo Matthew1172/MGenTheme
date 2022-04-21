@@ -39,55 +39,6 @@ const err_codes = [
 
         /*
          *
-         *Function to handle inputs when get-mxl is submitted
-         *
-         */
-        $('#get-mxl').submit(function (event) {
-            event.preventDefault();
-            var folder = $('#mxl-folder').val();
-            var file = $('#mxl-file').val();
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_mxl',
-                    folder: folder,
-                    file: file
-                },
-                cache: false,
-                async: false,
-                success: function (response) {
-                    switch (response['r']) {
-                        case "Good":
-                            scoreXmlResponse = atob(response['scoreXml']);
-                            //scoreXmlResponse = "https://downloads2.makemusic.com/musicxml/MozaVeilSample.xml";
-                            osmd
-                                .load(scoreXmlResponse)
-                                .then(
-                                    function() {
-                                        window.osmd = osmd; // give access to osmd object in Browser console, e.g. for osmd.setOptions()
-                                        //console.log("e.target.result: " + e.target.result);
-                                        osmd.render();
-                                        // osmd.cursor.show(); // this would show the cursor on the first note
-                                        // osmd.cursor.next(); // advance the cursor one note
-                                    }
-                                );
-                            break;
-                        case "Bad":
-                            alert("Bad");
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }).done(function() {
-
-            });
-        });
-
-
-        /*
-         *
          *Function to run the model
          *
          */
@@ -268,76 +219,10 @@ const err_codes = [
             audioPlayer.setBpm(bpm);
         });
 
+        $(document).on('input', '#temperature', function() {
+            let bpm = $(this).val()
+            $('#temperature-value').html(bpm);
+        });
+
     });
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function play_and_render(mxl){
-    const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-        // set options here
-        backend: "svg",
-        drawFromMeasureNumber: 0,
-        drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
-    });
-    const audioPlayer = new OsmdAudioPlayer();
-    osmd.load(mxl);
-    osmd.render();
-    osmd.cursor.show();
-    audioPlayer.loadScore(osmd);
-    audioPlayer.on("iteration", notes => {
-        console.log(notes);
-        console.log(notes.length);
-        osmd.cursor.next();
-    });
-
-    registerButtonEvents(audioPlayer, osmd);
-
-}
-
-function registerButtonEvents(audioPlayer, osmd) {
-    document.getElementById("btn-play").addEventListener("click", () => {
-        if (audioPlayer.state === "STOPPED" || audioPlayer.state === "PAUSED") {
-            audioPlayer.play();
-        }
-    });
-    document.getElementById("btn-pause").addEventListener("click", () => {
-        if (audioPlayer.state === "PLAYING") {
-            audioPlayer.pause();
-        }
-    });
-    document.getElementById("btn-stop").addEventListener("click", () => {
-        if (audioPlayer.state === "PLAYING" || audioPlayer.state === "PAUSED") {
-            audioPlayer.stop();
-            osmd.cursor.reset();
-        }
-    });
-}
-
-
-/*
-                    if(first && notes.length < 1){
-
-                    }else{
-                        if(!first){
-                            osmd.cursor.next(); // advance the cursor one note
-                        }else {
-                            first = false;
-                        }
-                    }
- */
