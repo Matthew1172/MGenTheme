@@ -145,7 +145,7 @@ add_action('wp_ajax_call_get_mxl', 'get_mxl');
 function run_model()
 {
     $api = '134.74.112.18';
-    $endpoint = "/predict";
+    $endpoint = "/mgen";
     $port = '1235';
     $url = "http://$api:$port$endpoint";
 
