@@ -220,8 +220,8 @@ const err_codes = [
         });
 
         $(document).on('input', '#temperature', function() {
-            let bpm = $(this).val()
-            $('#temperature-value').html(bpm);
+            let temp = $(this).val()
+            $('#temperature-value').html(temp);
         });
 
     });
