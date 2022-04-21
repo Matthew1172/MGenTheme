@@ -195,7 +195,7 @@ result = {
     $temp = $result['mxl'];
     $folder = $temp[0];
     $file = $temp[1];
-    $endpoint = "/test-generate";
+    $endpoint = "/mxl-data";
     $url = "http://$api:$port$endpoint?folder=$folder&file=$file";
     $xml =  file_get_contents($url);
     if($xml === false){
