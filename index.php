@@ -30,8 +30,8 @@
                 <div>
                     <label for="abc">ABC song</label>
                     <textarea id="abc" rows="8" cols="50">
-M:?
-V:1 name=?
+M:4/4
+V:1 name=treble
 K:?
 ?
                     </textarea>
