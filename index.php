@@ -29,7 +29,7 @@
                 </div>
                 <div>
                     <label for="abc">ABC song</label>
-                    <textarea id="abc">
+                    <textarea id="abc" rows="8" cols="50">
 M:?
 V:1 name=?
 K:?
