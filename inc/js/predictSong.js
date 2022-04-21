@@ -53,7 +53,6 @@ const err_codes = [
             var temperature = $('#temperature').val();
 
             var abc = $('#abc').val();
-            alert(abc);
 
             $.ajax({
                 type: "POST",
