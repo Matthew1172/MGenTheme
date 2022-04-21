@@ -28,10 +28,12 @@
                 </div>
                 <div>
                     <label for="abc">ABC song</label>
-                    <textarea id="abc">M:?
-                        V:1 name=?
-                        K:?
-                        ?</textarea>
+                    <textarea id="abc">
+M:?
+V:1 name=?
+K:?
+?
+                    </textarea>
                 </div>
             </div>
             <div class="form-row">
