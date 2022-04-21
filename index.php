@@ -10,57 +10,10 @@
                     <label for="dataset">Dataset name</label>
                     <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V3"/>
                 </div>
-
-                <div class="form-group col-md-6">
-                    <label for="input-clef">Input clef</label>
-                    <input id="input-clef" type="text" class="form-control" placeholder="Input clef" />
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="input-key">Input key</label>
-                    <input id="input-key" type="text" class="form-control" placeholder="Input key" />
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="input-seq">Input seq</label>
-                    <input id="input-seq" type="text" class="form-control" placeholder="Input seq" />
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="input-time">Input time</label>
-                    <input id="input-time" type="text" class="form-control" placeholder="Input time" />
-                </div>
-
                 <div class="form-group col-md-6">
                     <label for="length">Length</label>
                     <input id="length" type="text" class="form-control" placeholder="Length" value="100"/>
                 </div>
-
-                <div class="form-group col-md-4 mt-4">
-                    <div class='form-check'>
-                        <input class='form-check-input' type='checkbox' value='yes' id='random-clef'>
-                        <label class='form-check-label' for='random-clef'>Random clef</label>
-                    </div>
-                </div>
-                <div class="form-group col-md-4 mt-4">
-                    <div class='form-check'>
-                        <input class='form-check-input' type='checkbox' value='yes' id='random-key'>
-                        <label class='form-check-label' for='random-key'>Random key signature</label>
-                    </div>
-                </div>
-                <div class="form-group col-md-4 mt-4">
-                    <div class='form-check'>
-                        <input class='form-check-input' type='checkbox' value='yes' id='random-time'>
-                        <label class='form-check-label' for='random-time'>Random time signature</label>
-                    </div>
-                </div>
-                <div class="form-group col-md-4 mt-4">
-                    <div class='form-check'>
-                        <input class='form-check-input' type='checkbox' value='yes' id='random-seq'>
-                        <label class='form-check-label' for='random-seq'>Random seq</label>
-                    </div>
-                </div>
-
                 <div class="form-group col-md-6">
                     <label for="random-seq-length">Random sequence length</label>
                     <input id="random-seq-length" type="text" class="form-control" placeholder="Random sequence length" value="1"/>
@@ -71,7 +24,14 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="temperature">Temperature</label>
-                    <input id="temperature" type="text" class="form-control" placeholder="Temperature" value="0.85"/>
+                    <input type="range" id="temperature" value="0.85" min="0" max="1" step="0.01" />
+                </div>
+                <div>
+                    <label for="abc">ABC song</label>
+                    <textarea id="abc">M:?
+                        V:1 name=?
+                        K:?
+                        ?</textarea>
                 </div>
             </div>
             <div class="form-row">

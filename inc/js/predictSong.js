@@ -94,25 +94,15 @@ const err_codes = [
         $('#run-model').submit(function (event) {
             event.preventDefault();
             var dataset = $('#dataset').val();
-            var input_clef = "Clef "+$('#input-clef').val();
-            var input_key = "Key "+$('#input-key').val();
-            var input_seq = "";
-            $('#input-seq').val().split(' ').forEach(note => {
-                input_seq += "Note "+note;
-            });
 
-            var input_time = "Time "+$('#input-time').val();
             var length = $('#length').val();
-
-            var random_clef = $('#random-clef').prop('checked') === true ? "True" : "False";
-            var random_key = $('#random-key').prop('checked') === true ? "True" : "False";
-            var random_seq = $('#random-seq').prop('checked') === true ? "True" : "False";
-            var random_time = $('#random-time').prop('checked') === true ? "True" : "False";
 
             var random_seq_length = $('#random-seq-length').val();
             var songs = $('#songs').val();
             var temperature = $('#temperature').val();
 
+            var abc = $('#abc').val();
+            alert(abc);
 
             $.ajax({
                 type: "POST",
@@ -120,18 +110,11 @@ const err_codes = [
                 data: {
                     action: 'call_run_model',
                     dataset: dataset,
-                    input_clef: input_clef,
-                    input_key: input_key,
-                    input_seq: input_seq,
-                    input_time: input_time,
                     length: length,
-                    random_clef: random_clef,
-                    random_key: random_key,
-                    random_seq: random_seq,
                     random_seq_length: random_seq_length,
-                    random_time: random_time,
                     songs: songs,
-                    temperature: temperature
+                    temperature: temperature,
+                    abc: abc
                 },
                 beforeSend: function () {
                     $('#loading').show();
