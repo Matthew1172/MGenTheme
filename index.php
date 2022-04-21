@@ -8,7 +8,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="dataset">Dataset name</label>
-                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V3"/>
+                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V3-88776-P3"/>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="length">Length</label>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="temperature">Temperature</label>
-                    <input type="range" id="temperature" value="0.85" min="0" max="1" step="0.01" />
+                    <input type="range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
                     <span id="temperature-value">0.85</span>
                 </div>
                 <div>
