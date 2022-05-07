@@ -235,7 +235,6 @@ const err_codes = [
             var key = $('#key').val();
             var time = $('#time').val();
             var seq = $('#start').val();
-            seq += "$"
 
             $.ajax({
                 type: "POST",
