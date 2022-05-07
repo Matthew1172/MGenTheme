@@ -54,7 +54,7 @@ const err_codes = [
                     beforeSend: function () {
                     },
                     success: function (response) {
-                        response['datasets'].forEach(i => {
+                        response['clefs'].forEach(i => {
                             $("#clef").append(`<option value="${i}">${i}</option>`);
                         });
                         $('#clef').prop('disabled', false);
