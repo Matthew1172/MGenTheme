@@ -49,7 +49,7 @@ const err_codes = [
         getClefs(dataset).forEach(i => {
             $("#clef").append(`<option value="${i}">${i}</option>`);
         });
-
+        $('#clef').prop('disabled', false);
 
         /**
          *
