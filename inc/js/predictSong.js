@@ -43,7 +43,6 @@ const err_codes = [
                 });
                 $("#dataset")[0].selectedIndex = 0;
 
-
                 let dataset = $("#dataset option:first").val();
                 alert(getClefs(dataset));
                 getClefs(dataset).forEach(i => {
