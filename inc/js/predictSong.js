@@ -42,16 +42,18 @@ const err_codes = [
                     $("#dataset").append(`<option value="${i}">${i}</option>`);
                 });
                 $("#dataset")[0].selectedIndex = 0;
+
+
+                let dataset = $("#dataset option:first").val();
+                alert(dataset);
+                $("#clef").empty();
+                getClefs(dataset).forEach(i => {
+                    $("#clef").append(`<option value="${i}">${i}</option>`);
+                });
+                $('#clef').prop('disabled', false);
+
             }
         });
-
-        let dataset = $("#dataset option:first").val();
-        alert(dataset);
-        $("#clef").empty();
-        getClefs(dataset).forEach(i => {
-            $("#clef").append(`<option value="${i}">${i}</option>`);
-        });
-        $('#clef').prop('disabled', false);
 
         /**
          *
