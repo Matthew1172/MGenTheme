@@ -6,27 +6,31 @@
     <div>
         <form id="run-model">
             <div class="form-row">
+
+
                 <div class="form-group col-md-6">
                     <label for="dataset">Dataset name</label>
-                    <input id="dataset" type="text" class="form-control" placeholder="Dataset name" value="V3-88776-P3"/>
+                    <select id="dataset" class="form-select form-select-sm" aria-label=".form-select-sm">
+                    </select>
                 </div>
+
+
                 <div class="form-group col-md-6">
                     <label for="length">Length</label>
                     <input id="length" type="text" class="form-control" placeholder="Length" value="100"/>
                 </div>
+
                 <div class="form-group col-md-6">
                     <label for="random-seq-length">Random sequence length</label>
                     <input id="random-seq-length" type="text" class="form-control" placeholder="Random sequence length" value="1"/>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="songs">Songs</label>
-                    <input id="songs" type="text" class="form-control" placeholder="Songs" value="1"/>
-                </div>
+
                 <div class="form-group col-md-6">
                     <label for="temperature">Temperature</label>
                     <input type="range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
                     <span id="temperature-value">0.85</span>
                 </div>
+
                 <div>
                     <label for="abc">ABC song</label>
                     <textarea id="abc" rows="8" cols="50">
@@ -36,6 +40,7 @@ K:?
 ?
                     </textarea>
                 </div>
+
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">

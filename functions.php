@@ -214,6 +214,30 @@ add_action('wp_ajax_nopriv_call_run_model', 'run_model');
 
 /*
  *
+ * Function to get datasets
+ *
+ */
+function get_datasets()
+{
+    $response = array();
+    $api = '134.74.112.18';
+    $endpoint = "/datasets";
+    $port = '1235';
+    $url = "http://$api:$port$endpoint";
+    $result =  file_get_contents($url);
+    if ($result === FALSE) {
+        /* Handle error */
+        $response['r'] = 2;
+        wp_send_json($response);
+    }
+    $result = json_decode($result, true);
+    wp_send_json($result);
+}
+add_action('wp_ajax_call_get_datasets', 'get_datasets');
+add_action('wp_ajax_nopriv_call_get_datasets', 'get_datasets');
+
+/*
+ *
  * Function to get clefs
  *
  */

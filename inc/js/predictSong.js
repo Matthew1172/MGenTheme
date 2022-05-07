@@ -26,6 +26,24 @@ const err_codes = [
             $('#instruments').append('<option value="' + instruments[i].midiId + '">' + instruments[i].name + '</option>');
         }
 
+        /*
+        Populate datasets dropdown with available datasets as soon as page loads.
+         */
+        $.ajax({
+            type: "POST",
+            dataType: 'JSON',
+            data: {
+                action: 'call_get_clefs'
+            },
+            beforeSend: function () {
+            },
+            success: function (response) {
+                response['datasets'].forEach(i => {
+                    $("#datasets").append(`<option value="${i}">${i}</option>`);
+                });
+            }
+        });
+
         /**
          *
          * Handle instrument selector change. Change the instrument of the audio sheet
