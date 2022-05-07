@@ -153,10 +153,10 @@ function run_model()
         'dataset' => esc_attr($_POST['dataset']),
         'length' => esc_attr($_POST['length']),
         'temperature' => esc_attr($_POST['temperature']),
-        'clef' => esc_attr($_POST['clef']),
-        'key' => esc_attr($_POST['key']),
-        'time' => esc_attr($_POST['time']),
-        'start' => esc_attr($_POST['start'])
+        'input_clef' => esc_attr($_POST['clef']),
+        'input_key' => esc_attr($_POST['key']),
+        'input_time' => esc_attr($_POST['time']),
+        'input_seq' => esc_attr($_POST['seq'])
     );
 
     // use key 'http' even if you send the request to https://...

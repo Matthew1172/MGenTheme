@@ -234,7 +234,8 @@ const err_codes = [
             var clef = $('#clef').val();
             var key = $('#key').val();
             var time = $('#time').val();
-            var start = $('#start').val();
+            var seq = $('#start').val();
+            seq += "$"
 
             $.ajax({
                 type: "POST",
@@ -247,7 +248,7 @@ const err_codes = [
                     clef: clef,
                     key: key,
                     time: time,
-                    start: start
+                    seq: seq
                 },
                 beforeSend: function () {
                     $('#loading').show();
