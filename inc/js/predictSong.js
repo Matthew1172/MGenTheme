@@ -45,7 +45,7 @@ const err_codes = [
             }
         });
 
-        let dataset = $('#dataset').val();
+        let dataset = $("#dataset option:first").val();
         alert(dataset);
         $("#clef").empty();
         getClefs(dataset).forEach(i => {
