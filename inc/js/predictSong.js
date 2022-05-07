@@ -44,6 +44,10 @@ const err_codes = [
                 $("#dataset")[0].selectedIndex = 0;
 
                 let dataset = $("#dataset option:first").val();
+
+                /*
+                put this in a function somehow
+                 */
                 $.ajax({
                     type: "POST",
                     dataType: 'JSON',
@@ -54,6 +58,7 @@ const err_codes = [
                     beforeSend: function () {
                     },
                     success: function (response) {
+                        $("#clef").empty();
                         response['clefs'].forEach(i => {
                             $("#clef").append(`<option value="${i}">${i}</option>`);
                         });
@@ -61,13 +66,73 @@ const err_codes = [
                     }
                 });
 
+                $.ajax({
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {
+                        action: 'call_get_keys',
+                        dataset: dataset
+                    },
+                    beforeSend: function () {
+                    },
+                    success: function (response) {
+                        $("#key").empty();
+                        response['keys'].forEach(i => {
+                            $("#key").append(`<option value="${i}">${i}</option>`);
+                        });
+                        $('#key').prop('disabled', false);
+                    }
+                });
 
+                $.ajax({
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {
+                        action: 'call_get_times',
+                        dataset: dataset
+                    },
+                    beforeSend: function () {
+                    },
+                    success: function (response) {
+                        $("#time").empty();
+                        response['times'].forEach(i => {
+                            $("#time").append(`<option value="${i}">${i}</option>`);
+                        });
+                        $('#time').prop('disabled', false);
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {
+                        action: 'call_get_notes',
+                        dataset: dataset
+                    },
+                    beforeSend: function () {
+                    },
+                    success: function (response) {
+                        $("#start").empty();
+                        response['notes'].forEach(i => {
+                            $("#start").append(`<option value="${i}">${i}</option>`);
+                        });
+                        $('#start').prop('disabled', false);
+                    }
+                });
 
             }
         });
 
         $( "#dataset" ).change(function() {
             var dataset = $(this).val();
+
+
+            /*
+            put the following ajax calls in their own respective functions
+             */
+            /*
+            put this in a function somehow
+             */
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
@@ -85,6 +150,62 @@ const err_codes = [
                     $('#clef').prop('disabled', false);
                 }
             });
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_keys',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#key").empty();
+                    response['keys'].forEach(i => {
+                        $("#key").append(`<option value="${i}">${i}</option>`);
+                    });
+                    $('#key').prop('disabled', false);
+                }
+            });
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_times',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#time").empty();
+                    response['times'].forEach(i => {
+                        $("#time").append(`<option value="${i}">${i}</option>`);
+                    });
+                    $('#time').prop('disabled', false);
+                }
+            });
+
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_notes',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#start").empty();
+                    response['notes'].forEach(i => {
+                        $("#start").append(`<option value="${i}">${i}</option>`);
+                    });
+                    $('#start').prop('disabled', false);
+                }
+            });
+
+
 
         });
 
@@ -181,74 +302,25 @@ const err_codes = [
         $("#display-clefs").click(function () {
             var dataset = $('#dataset').val();
 
-            $("#clefs").empty();
-            getClefs(dataset).forEach(i => {
-                $("#clefs").append(`<li>${i}</li>`);
-            });
 
         });
 
         $("#display-keys").click(function () {
             var dataset = $('#dataset').val();
 
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_keys',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#keys").empty();
-                    response['keys'].forEach(i => {
-                        $("#keys").append(`<li>${i}</li>`);
-                    });
-                }
-            });
+
         });
 
         $("#display-times").click(function () {
             var dataset = $('#dataset').val();
 
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_times',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#times").empty();
-                    response['times'].forEach(i => {
-                        $("#times").append(`<li>${i}</li>`);
-                    });
-                }
-            });
+
         });
 
         $("#display-notes").click(function () {
             var dataset = $('#dataset').val();
 
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_notes',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#notes").empty();
-                    response['notes'].forEach(i => {
-                        $("#notes").append(`<li>${i}</li>`);
-                    });
-                }
-            });
+
         });
 
         $("#btn-play").click(function () {
