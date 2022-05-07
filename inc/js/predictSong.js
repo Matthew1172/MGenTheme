@@ -39,7 +39,7 @@ const err_codes = [
             },
             success: function (response) {
                 response['datasets'].forEach(i => {
-                    $("#datasets").append(`<option value="${i}">${i}</option>`);
+                    $("#dataset").append(`<option value="${i}">${i}</option>`);
                 });
             }
         });
