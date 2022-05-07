@@ -66,6 +66,28 @@ const err_codes = [
             }
         });
 
+        $( "#dataset" ).change(function() {
+            var dataset = $(this).val();
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_clefs',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    $("#clef").empty();
+                    response['clefs'].forEach(i => {
+                        $("#clef").append(`<option value="${i}">${i}</option>`);
+                    });
+                    $('#clef').prop('disabled', false);
+                }
+            });
+
+        });
+
         /**
          *
          * Handle instrument selector change. Change the instrument of the audio sheet
