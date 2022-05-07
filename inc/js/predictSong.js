@@ -44,13 +44,24 @@ const err_codes = [
                 $("#dataset")[0].selectedIndex = 0;
 
                 let dataset = $("#dataset option:first").val();
-
-                alert(getClefs(dataset));
-
-                getClefs(dataset).forEach(i => {
-                    $("#clef").append(`<option value="${i}">${i}</option>`);
+                $.ajax({
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {
+                        action: 'call_get_clefs',
+                        dataset: dataset
+                    },
+                    beforeSend: function () {
+                    },
+                    success: function (response) {
+                        response['datasets'].forEach(i => {
+                            $("#clef").append(`<option value="${i}">${i}</option>`);
+                        });
+                        $('#clef').prop('disabled', false);
+                    }
                 });
-                $('#clef').prop('disabled', false);
+
+
 
             }
         });
@@ -248,22 +259,4 @@ const err_codes = [
         });
 
     });
-
-    function getClefs(dataset){
-        var clefs = [];
-        $.ajax({
-            type: "POST",
-            dataType: 'JSON',
-            data: {
-                action: 'call_get_clefs',
-                dataset: dataset
-            },
-            beforeSend: function () {
-            },
-            success: function (response) {
-                clefs = response['clefs'];
-            }
-        });
-        return clefs;
-    }
 })(jQuery);
