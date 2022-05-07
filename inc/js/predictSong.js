@@ -33,7 +33,7 @@ const err_codes = [
             type: "POST",
             dataType: 'JSON',
             data: {
-                action: 'call_get_clefs'
+                action: 'call_get_datasets'
             },
             beforeSend: function () {
             },
