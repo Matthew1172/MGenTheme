@@ -45,6 +45,7 @@ const err_codes = [
         });
 
         let dataset = $('#dataset').val();
+        alert(dataset);
         $("#clef").empty();
         getClefs(dataset).forEach(i => {
             $("#clef").append(`<option value="${i}">${i}</option>`);
