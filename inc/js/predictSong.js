@@ -41,6 +41,7 @@ const err_codes = [
                 response['datasets'].forEach(i => {
                     $("#dataset").append(`<option value="${i}">${i}</option>`);
                 });
+                $("#dataset")[0].selectedIndex = 0;
             }
         });
 
