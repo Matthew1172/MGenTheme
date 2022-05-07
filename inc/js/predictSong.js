@@ -44,6 +44,13 @@ const err_codes = [
             }
         });
 
+        let dataset = $('#dataset').val();
+        $("#clef").empty();
+        getClefs(dataset).forEach(i => {
+            $("#clef").append(`<option value="${i}">${i}</option>`);
+        });
+
+
         /**
          *
          * Handle instrument selector change. Change the instrument of the audio sheet
@@ -71,7 +78,10 @@ const err_codes = [
             var songs = $('#songs').val();
             var temperature = $('#temperature').val();
 
-            var abc = $('#abc').val();
+            var clef = $('#clef').val();
+            var key = $('#key').val();
+            var time = $('#time').val();
+            var start = $('#start').val();
 
             $.ajax({
                 type: "POST",
@@ -80,10 +90,12 @@ const err_codes = [
                     action: 'call_run_model',
                     dataset: dataset,
                     length: length,
-                    random_seq_length: random_seq_length,
                     songs: songs,
                     temperature: temperature,
-                    abc: abc
+                    clef: clef,
+                    key: key,
+                    time: time,
+                    start: start
                 },
                 beforeSend: function () {
                     $('#loading').show();
@@ -132,22 +144,11 @@ const err_codes = [
         $("#display-clefs").click(function () {
             var dataset = $('#dataset').val();
 
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_clefs',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#clefs").empty();
-                    response['clefs'].forEach(i => {
-                        $("#clefs").append(`<li>${i}</li>`);
-                    });
-                }
+            $("#clefs").empty();
+            getClefs(dataset).forEach(i => {
+                $("#clefs").append(`<li>${i}</li>`);
             });
+
         });
 
         $("#display-keys").click(function () {
@@ -241,6 +242,25 @@ const err_codes = [
             let temp = $(this).val()
             $('#temperature-value').html(temp);
         });
+
+
+        function getClefs(dataset){
+            var clefs = [];
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                data: {
+                    action: 'call_get_clefs',
+                    dataset: dataset
+                },
+                beforeSend: function () {
+                },
+                success: function (response) {
+                    clefs = response['clefs'];
+                }
+            });
+            return clefs;
+        }
 
     });
 })(jQuery);

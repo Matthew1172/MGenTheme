@@ -152,10 +152,12 @@ function run_model()
     $callee_data = array(
         'dataset' => esc_attr($_POST['dataset']),
         'length' => esc_attr($_POST['length']),
-        'random_seq_length' => esc_attr($_POST['random_seq_length']),
         'songs' => esc_attr($_POST['songs']),
         'temperature' => esc_attr($_POST['temperature']),
-        'abc' => esc_attr($_POST['abc'])
+        'clef' => esc_attr($_POST['clef']),
+        'key' => esc_attr($_POST['key']),
+        'time' => esc_attr($_POST['time']),
+        'start' => esc_attr($_POST['start'])
     );
 
     // use key 'http' even if you send the request to https://...
