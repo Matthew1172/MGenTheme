@@ -229,13 +229,8 @@ const err_codes = [
         $('#run-model').submit(function (event) {
             event.preventDefault();
             var dataset = $('#dataset').val();
-
             var length = $('#length').val();
-
-            var random_seq_length = $('#random-seq-length').val();
-            var songs = $('#songs').val();
             var temperature = $('#temperature').val();
-
             var clef = $('#clef').val();
             var key = $('#key').val();
             var time = $('#time').val();
@@ -248,7 +243,6 @@ const err_codes = [
                     action: 'call_run_model',
                     dataset: dataset,
                     length: length,
-                    songs: songs,
                     temperature: temperature,
                     clef: clef,
                     key: key,
@@ -297,30 +291,6 @@ const err_codes = [
             }).done(function() {
                 $('#loading').hide();
             });
-        });
-
-        $("#display-clefs").click(function () {
-            var dataset = $('#dataset').val();
-
-
-        });
-
-        $("#display-keys").click(function () {
-            var dataset = $('#dataset').val();
-
-
-        });
-
-        $("#display-times").click(function () {
-            var dataset = $('#dataset').val();
-
-
-        });
-
-        $("#display-notes").click(function () {
-            var dataset = $('#dataset').val();
-
-
         });
 
         $("#btn-play").click(function () {

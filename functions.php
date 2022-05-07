@@ -152,7 +152,6 @@ function run_model()
     $callee_data = array(
         'dataset' => esc_attr($_POST['dataset']),
         'length' => esc_attr($_POST['length']),
-        'songs' => esc_attr($_POST['songs']),
         'temperature' => esc_attr($_POST['temperature']),
         'clef' => esc_attr($_POST['clef']),
         'key' => esc_attr($_POST['key']),
