@@ -124,7 +124,10 @@ const err_codes = [
                         for(let key in info){
                             let $optgroup = $(`<optgroup label="${key}">`);
                             for(let note in info[key]){
-                                $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
+                                //dirty trick to remove super long chords that cause dropdown to be very wide.
+                                if(info[key][note].length < 60){
+                                    $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
+                                }
                             }
                             $("#start").append($optgroup);
                         }
