@@ -131,7 +131,6 @@ const err_codes = [
                             }
                             $("#start").append($optgroup);
                         }
-                        console.log(info);
                         $('#start').prop('disabled', false);
                         $('#start').select2();
                     }
@@ -215,10 +214,26 @@ const err_codes = [
                 },
                 success: function (response) {
                     $("#start").empty();
+                    const info = {};
                     response['notes'].forEach(i => {
-                        $("#start").append(`<option value="${i}">${i}</option>`);
+                        const groupOption = i.split(" ")[0];
+                        if(!(groupOption in info)){
+                            info[groupOption] = [];
+                        }
+                        info[groupOption].push(i);
                     });
+                    for(let key in info){
+                        let $optgroup = $(`<optgroup label="${key}">`);
+                        for(let note in info[key]){
+                            //dirty trick to remove super long chords that cause dropdown to be very wide.
+                            if(info[key][note].length < 120){
+                                $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
+                            }
+                        }
+                        $("#start").append($optgroup);
+                    }
                     $('#start').prop('disabled', false);
+                    $('#start').select2();
                 }
             });
 
