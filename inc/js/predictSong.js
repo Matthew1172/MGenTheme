@@ -122,10 +122,9 @@ const err_codes = [
                             info[groupOption].push(i);
                         });
                         for(let key in info){
-                            let $optgroup = $(`<optgroup label={key}>`);
+                            let $optgroup = $(`<optgroup label="${key}">`);
                             for(let note in info[key]){
-                                let op = `<option value='{note}'>{note}</option>`;
-                                $optgroup.append(op);
+                                $optgroup.append(`<option value="${note}">${note}</option>`);
                             }
                             $("#start").append($optgroup);
                         }
