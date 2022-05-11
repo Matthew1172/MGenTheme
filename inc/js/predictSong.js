@@ -116,6 +116,9 @@ const err_codes = [
                         const info = {};
                         response['notes'].forEach(i => {
                             const groupOption = i.split(" ")[0];
+                            if(info[groupOption].length < 1){
+                                info[groupOption] = [];
+                            }
                             info[groupOption].push(i);
                         });
 
