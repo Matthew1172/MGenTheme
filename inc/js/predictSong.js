@@ -20,6 +20,7 @@ const err_codes = [
 
         $('#loading').hide();
         $('#controls').hide();
+        $('#start').select2();
 
         const instruments = audioPlayer.availableInstruments;
         for (var i = 0; i < instruments.length; i++) {

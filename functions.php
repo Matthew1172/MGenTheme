@@ -74,6 +74,7 @@ add_action('wp_enqueue_scripts', 'index_style_enqueue');
 
 function index_script_enqueue()
 {
+    wp_enqueue_script('select2JS', "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js", array('jquery'), '1.0');
 
     wp_enqueue_script('osmdJS', get_template_directory_uri() . '/inc/opensheetmusicdisplay.min.js', array('jquery'));
     wp_enqueue_script('osmdpJS', get_template_directory_uri() . '/inc/OsmdAudioPlayer.min.js', array('jquery'));
@@ -81,7 +82,6 @@ function index_script_enqueue()
     wp_enqueue_script('configJS', get_template_directory_uri() . '/inc/js/config.js', array('jquery'), '1.0', false);
     wp_enqueue_script('predictJS', get_template_directory_uri() . '/inc/js/predictSong.js', array('jquery'), '1.0', true);
 
-    wp_enqueue_script('select2JS', "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js", array('jquery'), '1.0');
 
     wp_localize_script('configJS', 'mgen', array(
         'url' => admin_url('admin-ajax.php')
