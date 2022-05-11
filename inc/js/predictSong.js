@@ -121,7 +121,14 @@ const err_codes = [
                             }
                             info[groupOption].push(i);
                         });
-
+                        for(let key in info){
+                            let $optgroup = $(`<optgroup label={key}>`);
+                            for(let note in info[key]){
+                                let op = `<option value='{note}'>{note}</option>`;
+                                $optgroup.append(op);
+                            }
+                            $("#start").append(enabled, disabled, $optgroup);
+                        }
                         console.log(info);
                         $('#start').prop('disabled', false);
                     }
