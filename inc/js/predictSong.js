@@ -113,9 +113,12 @@ const err_codes = [
                     },
                     success: function (response) {
                         $("#start").empty();
+                        const info = [];
                         response['notes'].forEach(i => {
-                            $("#start").append(`<option value="${i}">${i}</option>`);
+                            const groupOption = i.split(" ")[0];
+                            info.push({groupOption: i});
                         });
+                        console.log(info);
                         $('#start').prop('disabled', false);
                     }
                 });
