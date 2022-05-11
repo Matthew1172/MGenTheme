@@ -127,7 +127,7 @@ const err_codes = [
                                 let op = `<option value='{note}'>{note}</option>`;
                                 $optgroup.append(op);
                             }
-                            $("#start").append(enabled, disabled, $optgroup);
+                            $("#start").append($optgroup);
                         }
                         console.log(info);
                         $('#start').prop('disabled', false);
