@@ -113,13 +113,12 @@ const err_codes = [
                     },
                     success: function (response) {
                         $("#start").empty();
-                        const info = [];
+                        const info = {};
                         response['notes'].forEach(i => {
                             const groupOption = i.split(" ")[0];
-                            var dic = {};
-                            dic[groupOption] = i;
-                            info.push(dic);
+                            info[groupOption].push(i);
                         });
+
                         console.log(info);
                         $('#start').prop('disabled', false);
                     }
