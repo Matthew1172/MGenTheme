@@ -73,15 +73,4 @@
         <div id="score"></div>
     </div>
     <div id="osmdCanvas"></div>
-
-    <div>
-        <button id="display-clefs">Display clefs</button>
-        <ul id="clefs"></ul>
-        <button id="display-keys">Display key signatures</button>
-        <ul id="keys"></ul>
-        <button id="display-notes">Display notes</button>
-        <ul id="notes"></ul>
-        <button id="display-times">Display time signatures</button>
-        <ul id="times"></ul>
-    </div>
 <?php get_footer(); ?>
