@@ -116,7 +116,9 @@ const err_codes = [
                         const info = [];
                         response['notes'].forEach(i => {
                             const groupOption = i.split(" ")[0];
-                            info.push({groupOption: i});
+                            var dic = {};
+                            dic[groupOption] = i;
+                            info.push(dic);
                         });
                         console.log(info);
                         $('#start').prop('disabled', false);
