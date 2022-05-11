@@ -125,7 +125,7 @@ const err_codes = [
                             let $optgroup = $(`<optgroup label="${key}">`);
                             for(let note in info[key]){
                                 //dirty trick to remove super long chords that cause dropdown to be very wide.
-                                if(info[key][note].length < 60){
+                                if(info[key][note].length < 120){
                                     $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
                                 }
                             }
