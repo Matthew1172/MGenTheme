@@ -124,9 +124,7 @@ const err_codes = [
                         for(let key in info){
                             let $optgroup = $(`<optgroup label="${key}">`);
                             for(let note in info[key]){
-                                if(info[key][note].length < 20){
-                                    $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
-                                }
+                                $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
                             }
                             $("#start").append($optgroup);
                         }
