@@ -1,26 +1,37 @@
-/*
-(async (scoreXml) => {
-    const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay(document.getElementById("score"));
-    const audioPlayer = new OsmdAudioPlayer();
+(function($) {
+    $(document).ready(function() {
+        $("#wizard").steps({
+            headerTag: "h4",
+            bodyTag: "section",
+            transitionEffect: "fade",
+            enableAllSteps: true,
+            enablePagination: false,
+            transitionEffectSpeed: 500,
+            labels: {
+                current: ""
+            }
+        });
 
-    //
-    const scoreXml = await fetch(
-        "http://134.74.112.18:1234/mxl?folder=output@TueApr51731182022&file=generated_1.mxl"
-    ).then(r => r.text());
-    //
+        // Custome Button Jquery Step
+        $('.forward').click(function(){
+            $("#wizard").steps('next');
+        });
 
-console.log("Score xml: ", scoreXml);
+        // Select Dropdown
+        $('html').click(function() {
+            $('.select .dropdown').hide();
+        });
+        $('.select').click(function(event){
+            event.stopPropagation();
+        });
+        $('.select .select-control').click(function(){
+            $(this).parent().next().toggle();
+        });
+        $('.select .dropdown li').click(function(){
+            $(this).parent().toggle();
+            var text = $(this).attr('rel');
+            $(this).parent().prev().find('div').text(text);
+        });
 
-await osmd.load(scoreXml);
-await osmd.render();
-await audioPlayer.loadScore(osmd);
-audioPlayer.on("iteration", notes => {
-    console.log(notes);
-});
-
-hideLoadingMessage();
-registerButtonEvents(audioPlayer);
-})();
- */
-
-
+    })
+})(jQuery);
