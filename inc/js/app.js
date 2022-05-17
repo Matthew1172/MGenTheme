@@ -12,10 +12,6 @@
             }
         });
 
-        // Custome Button Jquery Step
-        $('.forward').click(function(){
-            $("#wizard").steps('next');
-        });
 
         // Select Dropdown
         $('html').click(function() {

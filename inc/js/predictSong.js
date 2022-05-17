@@ -260,6 +260,7 @@ const err_codes = [
          */
         $('#run-model').submit(function (event) {
             event.preventDefault();
+            $("#wizard").steps('next');
             var dataset = $('#dataset').val();
             var length = $('#length').val();
             var temperature = $('#temperature').val();
