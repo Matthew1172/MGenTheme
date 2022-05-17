@@ -9,67 +9,30 @@
                 <!-- SECTION 1 -->
                 <h4>Musical Info</h4>
                 <section>
-                    <!--					<form id="run model">-->
                     <div class="form-row">
                         <div class="select">
-                            <div class="form-holder">
-                                <div class="select-control">Dataset Name :</div>
-                                <span class="lnr lnr-chevron-down"></span>
-                            </div>
-                            <ul id="dataset" class="dropdown">
-                                <li rel="Dataset 1">Dataset 1</li>
-                                <li rel="Dataset 2">Dataset 2</li>
-                                <li rel="Dataset 3">Dataset 3</li>
-                            </ul>
+                            <select id="dataset" class="form-select form-select-sm" aria-label=".form-select-sm">
                         </div>
                         <div class="select">
-                            <div class="form-holder">
-                                <div class="select-control">Clef :</div>
-                                <span class="lnr lnr-chevron-down"></span>
-                            </div>
-                            <ul id="clef" class="dropdown">
-                                <li rel="Clef 1">Clef 1</li>
-                                <li rel="Clef 2">Clef 2</li>
-                            </ul>
+                            <select id="clef" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="select">
-                            <div class="form-holder">
-                                <div class="select-control">Key Signature :</div>
-                                <span class="lnr lnr-chevron-down"></span>
-                            </div>
-                            <ul id="key" class="dropdown">
-                                <li rel="Key Signature 1">Key Signature 1</li>
-                                <li rel="Key Signature 2">Key Signature 2</li>
-                            </ul>
+                            <select id="key" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </div>
                         <div class="select">
-                            <div class="form-holder">
-                                <div class="select-control">Time Signature :</div>
-                                <span class="lnr lnr-chevron-down"></span>
-                            </div>
-                            <ul id="time" class="dropdown">
-                                <li rel="Time Signature 1">Time Signature 1</li>
-                                <li rel="Time Signature 2">Time Signature 2</li>
-                            </ul>
+                            <select id="time" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="select">
-                            <div class="form-holder">
-                                <div class="select-control">Starting Note :</div>
-                                <span class="lnr lnr-chevron-down"></span>
-                            </div>
-                            <ul id="start" class="dropdown">
-                                <li rel="Key Signature 1">Starting Note 1</li>
-                                <li rel="Key Signature 2">Starting Note 2</li>
-                            </ul>
+                            <select id="start" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </div>
                         <div class="form-holder">
-                            <input id="length" type="text" class="form-control" placeholder="Length">
+                            <input id="length" type="text" class="form-control" placeholder="Length" value="100"/>
                         </div>
                     </div>
 
@@ -84,7 +47,6 @@
                     <button class="forward">Generate Music
                         <i id="submit-run-model" type="submit" class="zmdi zmdi-long-arrow-right"></i>
                     </button>
-                    <!--					</form>-->
                 </section>
 
                 <!-- SECTION 2 -->
