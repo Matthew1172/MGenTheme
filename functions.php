@@ -69,11 +69,11 @@ function index_style_enqueue()
     wp_enqueue_style( 'mgenStyle', get_stylesheet_uri(), array(), $theme_version );
     wp_enqueue_style( 'select2CSS', "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", array(), $theme_version );
     // LINEARICONS
-    wp_enqueue_style( 'linearCSS', get_stylesheet_uri() . "/assets/fonts/linearicons/style.css", array(), $theme_version );
+    wp_enqueue_style( 'linearCSS', get_template_directory_uri() . "/assets/fonts/linearicons/style.css", array(), $theme_version );
     //MATERIAL DESIGN ICONIC FONT
-    wp_enqueue_style( 'iconicCSS', get_stylesheet_uri() . "/assets/fonts/material-design-iconic-font/css/material-design-iconic-font.css", array(), $theme_version );
+    wp_enqueue_style( 'iconicCSS', get_template_directory_uri() . "/assets/fonts/material-design-iconic-font/css/material-design-iconic-font.css", array(), $theme_version );
     //STYLE CSS -->
-    wp_enqueue_style( 'indexCSS', get_stylesheet_uri() . "/inc/style/style.css", array(), $theme_version );
+    wp_enqueue_style( 'indexCSS', get_template_directory_uri() . "/inc/style/style.css", array(), $theme_version );
     wp_enqueue_style( 'bootstrapCSS',"https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", array(), $theme_version );
 }
 add_action('wp_enqueue_scripts', 'index_style_enqueue');
