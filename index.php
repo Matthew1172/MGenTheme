@@ -9,6 +9,8 @@
                 <!-- SECTION 1 -->
                 <h4>Musical Info</h4>
                 <section>
+
+                    <form id="run-model">
                     <div class="form-row">
                         <div class="select">
                             <select id="dataset" class="form-select form-select-sm" aria-label=".form-select-sm">
@@ -44,9 +46,10 @@
                         </div>
                     </div>
 
-                    <button class="forward" id="submit-run-model">Generate Music
+                    <button class="forward" id="submit-run-model" type="submit">Generate Music
                         <i class="zmdi zmdi-long-arrow-right"></i>
                     </button>
+                    </form>
                 </section>
 
                 <!-- SECTION 2 -->
