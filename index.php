@@ -44,8 +44,8 @@
                         </div>
                     </div>
 
-                    <button class="forward">Generate Music
-                        <i id="submit-run-model" type="submit" class="zmdi zmdi-long-arrow-right"></i>
+                    <button class="forward" id="submit-run-model">Generate Music
+                        <i class="zmdi zmdi-long-arrow-right"></i>
                     </button>
                 </section>
 
