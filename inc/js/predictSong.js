@@ -17,7 +17,7 @@ const err_codes = [
 
 (function ($) {
 
-    function getClefs(dataset){
+    function getClefs(dataset, callback, loading){
         $.ajax({
             type: "POST",
             dataType: 'JSON',
@@ -25,18 +25,97 @@ const err_codes = [
                 action: 'call_get_clefs',
                 dataset: dataset
             },
-            beforeSend: function () {
-            },
-            success: function (response) {
-                $("#clef").empty();
-                response['clefs'].forEach(i => {
-                    $("#clef").append(`<option value="${i}">${i}</option>`);
-                });
-                $('#clef').prop('disabled', false);
-            }
+            beforeSend: loading,
+            success: callback
         });
     }
 
+    function getKeys(dataset, callback, loading){
+        $.ajax({
+            type: "POST",
+            dataType: 'JSON',
+            data: {
+                action: 'call_get_keys',
+                dataset: dataset
+            },
+            beforeSend: loading,
+            success: callback
+        });
+    }
+
+    function getTimes(dataset, callback, loading){
+        $.ajax({
+            type: "POST",
+            dataType: 'JSON',
+            data: {
+                action: 'call_get_times',
+                dataset: dataset
+            },
+            beforeSend: loading,
+            success: callback
+        });
+    }
+
+    function getNotes(dataset, callback, loading){
+        $.ajax({
+            type: "POST",
+            dataType: 'JSON',
+            data: {
+                action: 'call_get_notes',
+                dataset: dataset
+            },
+            beforeSend: loading,
+            success: callback
+        });
+    }
+
+    function populateClefDropdown(response){
+        $("#clef").empty();
+        response['clefs'].forEach(i => {
+            $("#clef").append(`<option value="${i}">${i}</option>`);
+        });
+        $('#clef').prop('disabled', false);
+    }
+
+    function populateKeyDropdown(response){
+        $("#key").empty();
+        response['keys'].forEach(i => {
+            $("#key").append(`<option value="${i}">${i}</option>`);
+        });
+        $('#key').prop('disabled', false);
+    }
+
+    function populateTimeDropdown(response){
+        $("#time").empty();
+        response['times'].forEach(i => {
+            $("#time").append(`<option value="${i}">${i}</option>`);
+        });
+        $('#time').prop('disabled', false);
+    }
+
+    function populateNoteDropdown(response){
+        $("#start").empty();
+        const info = {};
+        response['notes'].forEach(i => {
+            const groupOption = i.split(" ")[0];
+            if(!(groupOption in info)){
+                info[groupOption] = [];
+            }
+            info[groupOption].push(i);
+        });
+        for(let key in info){
+            let $optgroup = $(`<optgroup label="${key}">`);
+            for(let note in info[key]){
+                //dirty trick to remove super long chords that cause dropdown to be very wide.
+                if(info[key][note].length < 120){
+                    $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
+                }
+            }
+            $("#start").append($optgroup);
+        }
+        $('#start').prop('disabled', false);
+        $('#start').select2();
+    }
 
     $(document).ready(function () {
 
@@ -68,184 +147,20 @@ const err_codes = [
 
                 let dataset = $("#dataset option:first").val();
 
-                /*
-                put this in a function somehow
-                 */
-                getClefs(dataset);
-
-                $.ajax({
-                    type: "POST",
-                    dataType: 'JSON',
-                    data: {
-                        action: 'call_get_keys',
-                        dataset: dataset
-                    },
-                    beforeSend: function () {
-                    },
-                    success: function (response) {
-                        $("#key").empty();
-                        response['keys'].forEach(i => {
-                            $("#key").append(`<option value="${i}">${i}</option>`);
-                        });
-                        $('#key').prop('disabled', false);
-                    }
-                });
-
-                $.ajax({
-                    type: "POST",
-                    dataType: 'JSON',
-                    data: {
-                        action: 'call_get_times',
-                        dataset: dataset
-                    },
-                    beforeSend: function () {
-                    },
-                    success: function (response) {
-                        $("#time").empty();
-                        response['times'].forEach(i => {
-                            $("#time").append(`<option value="${i}">${i}</option>`);
-                        });
-                        $('#time').prop('disabled', false);
-                    }
-                });
-
-                $.ajax({
-                    type: "POST",
-                    dataType: 'JSON',
-                    data: {
-                        action: 'call_get_notes',
-                        dataset: dataset
-                    },
-                    beforeSend: function () {
-                    },
-                    success: function (response) {
-                        $("#start").empty();
-                        const info = {};
-                        response['notes'].forEach(i => {
-                            const groupOption = i.split(" ")[0];
-                            if(!(groupOption in info)){
-                                info[groupOption] = [];
-                            }
-                            info[groupOption].push(i);
-                        });
-                        for(let key in info){
-                            let $optgroup = $(`<optgroup label="${key}">`);
-                            for(let note in info[key]){
-                                //dirty trick to remove super long chords that cause dropdown to be very wide.
-                                if(info[key][note].length < 120){
-                                    $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
-                                }
-                            }
-                            $("#start").append($optgroup);
-                        }
-                        $('#start').prop('disabled', false);
-                        $('#start').select2();
-                    }
-                });
-
+                getClefs(dataset, populateClefDropdown);
+                getKeys(dataset, populateKeyDropdown);
+                getTimes(dataset, populateTimeDropdown);
+                getNotes(dataset, populateNoteDropdown);
             }
         });
 
         $( "#dataset" ).change(function() {
             var dataset = $(this).val();
 
-
-            /*
-            put the following ajax calls in their own respective functions
-             */
-            /*
-            put this in a function somehow
-             */
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_clefs',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#clef").empty();
-                    response['clefs'].forEach(i => {
-                        $("#clef").append(`<option value="${i}">${i}</option>`);
-                    });
-                    $('#clef').prop('disabled', false);
-                }
-            });
-
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_keys',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#key").empty();
-                    response['keys'].forEach(i => {
-                        $("#key").append(`<option value="${i}">${i}</option>`);
-                    });
-                    $('#key').prop('disabled', false);
-                }
-            });
-
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_times',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#time").empty();
-                    response['times'].forEach(i => {
-                        $("#time").append(`<option value="${i}">${i}</option>`);
-                    });
-                    $('#time').prop('disabled', false);
-                }
-            });
-
-            $.ajax({
-                type: "POST",
-                dataType: 'JSON',
-                data: {
-                    action: 'call_get_notes',
-                    dataset: dataset
-                },
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $("#start").empty();
-                    const info = {};
-                    response['notes'].forEach(i => {
-                        const groupOption = i.split(" ")[0];
-                        if(!(groupOption in info)){
-                            info[groupOption] = [];
-                        }
-                        info[groupOption].push(i);
-                    });
-                    for(let key in info){
-                        let $optgroup = $(`<optgroup label="${key}">`);
-                        for(let note in info[key]){
-                            //dirty trick to remove super long chords that cause dropdown to be very wide.
-                            if(info[key][note].length < 120){
-                                $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
-                            }
-                        }
-                        $("#start").append($optgroup);
-                    }
-                    $('#start').prop('disabled', false);
-                    $('#start').select2();
-                }
-            });
-
-
-
+            getClefs(dataset, populateClefDropdown);
+            getKeys(dataset, populateKeyDropdown);
+            getTimes(dataset, populateTimeDropdown);
+            getNotes(dataset, populateNoteDropdown);
         });
 
         /**
