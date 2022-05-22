@@ -351,3 +351,21 @@ function get_notes()
 }
 add_action('wp_ajax_call_get_notes', 'get_notes');
 add_action('wp_ajax_nopriv_call_get_notes', 'get_notes');
+
+/**
+ *
+ * add to the $_GET variables available on the site
+ *
+ */
+function add_music_query_vars_filter($vars)
+{
+    $vars[] = "dataset";
+    $vars[] = "clef";
+    $vars[] = "key";
+    $vars[] = "time";
+    $vars[] = "note";
+    $vars[] = "length";
+    $vars[] = "temp";
+    return $vars;
+}
+add_filter('query_vars', 'add_music_query_vars_filter');

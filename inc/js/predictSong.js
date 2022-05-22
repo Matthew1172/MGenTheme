@@ -16,6 +16,28 @@ const err_codes = [
 ];
 
 (function ($) {
+
+    function getClefs(dataset){
+        $.ajax({
+            type: "POST",
+            dataType: 'JSON',
+            data: {
+                action: 'call_get_clefs',
+                dataset: dataset
+            },
+            beforeSend: function () {
+            },
+            success: function (response) {
+                $("#clef").empty();
+                response['clefs'].forEach(i => {
+                    $("#clef").append(`<option value="${i}">${i}</option>`);
+                });
+                $('#clef').prop('disabled', false);
+            }
+        });
+    }
+
+
     $(document).ready(function () {
 
         $('#loading').hide();
@@ -38,6 +60,7 @@ const err_codes = [
             beforeSend: function () {
             },
             success: function (response) {
+
                 response['datasets'].forEach(i => {
                     $("#dataset").append(`<option value="${i}">${i}</option>`);
                 });
@@ -48,23 +71,7 @@ const err_codes = [
                 /*
                 put this in a function somehow
                  */
-                $.ajax({
-                    type: "POST",
-                    dataType: 'JSON',
-                    data: {
-                        action: 'call_get_clefs',
-                        dataset: dataset
-                    },
-                    beforeSend: function () {
-                    },
-                    success: function (response) {
-                        $("#clef").empty();
-                        response['clefs'].forEach(i => {
-                            $("#clef").append(`<option value="${i}">${i}</option>`);
-                        });
-                        $('#clef').prop('disabled', false);
-                    }
-                });
+                getClefs(dataset);
 
                 $.ajax({
                     type: "POST",
