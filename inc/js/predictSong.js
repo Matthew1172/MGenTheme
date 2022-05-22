@@ -127,6 +127,16 @@ const err_codes = [
             $('#instruments').append('<option value="' + instruments[i].midiId + '">' + instruments[i].name + '</option>');
         }
 
+        /**
+         * TODO:
+         * Add some control here.
+         * If the url has all the necessary parameters encoded correctly, then
+         * populate all the dropdowns with the encoded dataset. Select the encoded values in the populated dropdowns.
+         * else,
+         * do what we would normally do. get a list of all available datasets, and pick the first one.
+         * Populate all the dropdowns with the selected dataset.
+         */
+
         /*
         Populate datasets dropdown with available datasets as soon as page loads.
          */
