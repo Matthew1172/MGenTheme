@@ -86,6 +86,23 @@ const err_codes = [
         response['datasets'].forEach(i => {
             $("#dataset").append(`<option value="${i}">${i}</option>`);
         });
+        //datasets dropdown is populated. Get the option index of the user supplied the dataset name
+        var index = 0;
+        if($(`#dataset option[value='${url_dataset}']`).length > 0) {
+            index = $(`#dataset option[value="${url_dataset}"]`).attr('selected', true)[0].index
+        }
+        console.log(index);
+
+        $("#dataset")[0].selectedIndex = index;
+        let dataset = $("#dataset").val();
+        console.log(dataset);
+
+        getClefs(dataset, populateClefDropdown);
+        getKeys(dataset, populateKeyDropdown);
+        getTimes(dataset, populateTimeDropdown);
+        getNotes(dataset, populateNoteDropdown);
+
+        setValues(url_clef, url_key, url_time, url_note, url_length, url_temp);
     }
 
     function populateClefDropdown(response){
@@ -197,26 +214,6 @@ const err_codes = [
          * Populate all the dropdowns with the selected dataset.
          * https://geoteci.engr.ccny.cuny.edu/~pec21/?dataset=V3-84447-p2&clef=Clef%20F&key=Key%203&time=Time%204%204&note=Note%20E5%202.0&length=300&temp=0.5
          */
-
-        //datasets dropdown is populated. Get the option index of the user supplied the dataset name
-        var index = 0;
-        if($(`#dataset option[value='${url_dataset}']`).length > 0) {
-            index = $(`#dataset option[value="${url_dataset}"]`).attr('selected', true)[0].index
-        }
-        console.log(index);
-
-        $("#dataset")[0].selectedIndex = index;
-        let dataset = $("#dataset").val();
-        console.log(dataset);
-
-        getClefs(dataset, populateClefDropdown);
-        getKeys(dataset, populateKeyDropdown);
-        getTimes(dataset, populateTimeDropdown);
-        getNotes(dataset, populateNoteDropdown);
-
-        setValues(url_clef, url_key, url_time, url_note, url_length, url_temp);
-
-
 
 
         $( "#dataset" ).change(function() {
