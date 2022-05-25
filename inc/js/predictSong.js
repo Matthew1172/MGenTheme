@@ -126,7 +126,6 @@ const err_codes = [
         });
         getNotes(dataset, function (response){
             $("#start").empty();
-            $('#start').select2();
             const info = {};
             response['notes'].forEach(i => {
                 const groupOption = i.split(" ")[0];
@@ -149,6 +148,7 @@ const err_codes = [
                 $("#start").val(url_note).change();
             }
             $('#start').prop('disabled', false);
+            $('#start').select2();
         });
 
         var l = 100;
