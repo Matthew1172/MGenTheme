@@ -202,6 +202,7 @@ const err_codes = [
         var index = 0;
         if($(`#dataset option[value='${url_dataset}']`).length > 0){
             index = $(`#dataset option[value="${url_dataset}"]`).attr('selected', true)[0].index
+            console.log(index);
         }
         $("#dataset")[0].selectedIndex = index;
         let dataset = $("#dataset").val();
