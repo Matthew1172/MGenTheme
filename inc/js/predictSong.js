@@ -226,6 +226,7 @@ const err_codes = [
         $('#loading').hide();
         $('#controls').hide();
         $('#share').hide();
+        $('#start').select2();
 
         const instruments = audioPlayer.availableInstruments;
         for (var i = 0; i < instruments.length; i++) {
@@ -257,7 +258,6 @@ const err_codes = [
             $('#time').prop('disabled', false);
             getNotes(dataset, populateNoteDropdown);
             $('#start').prop('disabled', false);
-            $('#start').select2();
         });
 
         /**
