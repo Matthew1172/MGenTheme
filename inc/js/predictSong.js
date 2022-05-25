@@ -320,8 +320,10 @@ const err_codes = [
                                         audioPlayer.loadScore(osmd);
                                         $('#controls').show();
                                         $('#createLink').show();
-                                        let home = new URL(document.location).href;
-                                        let link_raw = `${home}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
+                                        let url = new URL(document.location);
+                                        let home = url.origin;
+                                        let path = url.pathname;
+                                        let link_raw = `${home}${path}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
                                         let link = encodeURI(link_raw);
                                         $('#link').text(link);
                                     });
