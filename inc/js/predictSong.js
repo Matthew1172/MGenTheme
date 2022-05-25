@@ -205,6 +205,7 @@ const err_codes = [
         }
         $("#dataset")[0].selectedIndex = index;
         let dataset = $("#dataset").val();
+        console.log(dataset);
 
         getClefs(dataset, populateClefDropdown);
         getKeys(dataset, populateKeyDropdown);
