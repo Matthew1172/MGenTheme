@@ -319,7 +319,7 @@ const err_codes = [
                                         osmd.cursor.show();
                                         audioPlayer.loadScore(osmd);
                                         $('#controls').show();
-                                        $('#createLink').show();
+                                        $('#share').show();
                                         let url = new URL(document.location);
                                         let path = url.origin+url.pathname;
                                         let link_raw = `${path}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
