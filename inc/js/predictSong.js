@@ -104,19 +104,51 @@ const err_codes = [
             }
             $('#clef').prop('disabled', false);
         });
-        getKeys(dataset, populateKeyDropdown);
-        getTimes(dataset, populateTimeDropdown);
-        getNotes(dataset, populateNoteDropdown);
-
-        if($(`#key option[value='${url_key}']`).length > 0) {
-            $("#key").val(url_key).change();
-        }
-        if($(`#time option[value='${url_time}']`).length > 0) {
-            $("#time").val(url_time).change();
-        }
-        if($(`#start option[value='${url_note}']`).length > 0) {
-            $("#start").val(url_note).change();
-        }
+        getKeys(dataset, function (response){
+            $("#key").empty();
+            response['keys'].forEach(i => {
+                $("#key").append(`<option value="${i}">${i}</option>`);
+            });
+            if($(`#key option[value='${url_key}']`).length > 0) {
+                $("#key").val(url_key).change();
+            }
+            $('#key').prop('disabled', false);
+        });
+        getTimes(dataset, function (response){
+            $("#time").empty();
+            response['times'].forEach(i => {
+                $("#time").append(`<option value="${i}">${i}</option>`);
+            });
+            if($(`#time option[value='${url_time}']`).length > 0) {
+                $("#time").val(url_time).change();
+            }
+            $('#time').prop('disabled', false);
+        });
+        getNotes(dataset, function (response){
+            $("#start").empty();
+            const info = {};
+            response['notes'].forEach(i => {
+                const groupOption = i.split(" ")[0];
+                if(!(groupOption in info)){
+                    info[groupOption] = [];
+                }
+                info[groupOption].push(i);
+            });
+            for(let key in info){
+                let $optgroup = $(`<optgroup label="${key}">`);
+                for(let note in info[key]){
+                    //dirty trick to remove super long chords that cause dropdown to be very wide.
+                    if(info[key][note].length < 120){
+                        $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
+                    }
+                }
+                $("#start").append($optgroup);
+            }
+            if($(`#start option[value='${url_note}']`).length > 0) {
+                $("#start").val(url_note).change();
+            }
+            $('#start').prop('disabled', false);
+        });
 
         var l = 100;
         if(url_length > 0 && url_length < 1000){
