@@ -225,6 +225,7 @@ const err_codes = [
 
         $('#loading').hide();
         $('#controls').hide();
+        $('#share').hide();
 
         const instruments = audioPlayer.availableInstruments;
         for (var i = 0; i < instruments.length; i++) {
@@ -302,6 +303,8 @@ const err_codes = [
                 beforeSend: function () {
                     $('#loading').show();
                     $('#controls').hide();
+                    $('#createLink').hide();
+                    $('#link').empty();
                     $('#osmdCanvas').empty();
                 },
                 success: function (response) {
@@ -316,6 +319,11 @@ const err_codes = [
                                         osmd.cursor.show();
                                         audioPlayer.loadScore(osmd);
                                         $('#controls').show();
+                                        $('#createLink').show();
+                                        let home = new URL(document.location).href;
+                                        let link_raw = `${home}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
+                                        let link = encodeURI(link_raw);
+                                        $('#link').text(link);
                                     });
                                 const instrument = osmd.Sheet.Instruments.flatMap(i => i.Voices);
                                 $("#instruments option:selected").prop("selected", false)
