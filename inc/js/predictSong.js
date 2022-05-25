@@ -17,6 +17,18 @@ const err_codes = [
 
 (function ($) {
 
+    function getDatasets(callback, loading){
+        $.ajax({
+            type: "POST",
+            dataType: 'JSON',
+            data: {
+                action: 'call_get_datasets'
+            },
+            beforeSend: loading,
+            success: callback
+        });
+    }
+
     function getClefs(dataset, callback, loading){
         $.ajax({
             type: "POST",
@@ -69,12 +81,94 @@ const err_codes = [
         });
     }
 
+    function populateDatasetDropdown(response){
+        //TODO: check if datasets exist before forEach
+        response['datasets'].forEach(i => {
+            $("#dataset").append(`<option value="${i}">${i}</option>`);
+        });
+        //datasets dropdown is populated. Get the option index of the user supplied the dataset name
+        var index = 0;
+        if($(`#dataset option[value='${url_dataset}']`).length > 0) {
+            index = $(`#dataset option[value="${url_dataset}"]`).attr('selected', true)[0].index
+        }
+        $("#dataset")[0].selectedIndex = index;
+        let dataset = $("#dataset").val();
+
+        getClefs(dataset, function (response){
+            $("#clef").empty();
+            response['clefs'].forEach(i => {
+                $("#clef").append(`<option value="${i}">${i}</option>`);
+            });
+            if($(`#clef option[value='${url_clef}']`).length > 0) {
+                $("#clef").val(url_clef).change();
+            }
+            $('#clef').prop('disabled', false);
+        });
+        getKeys(dataset, function (response){
+            $("#key").empty();
+            response['keys'].forEach(i => {
+                $("#key").append(`<option value="${i}">${i}</option>`);
+            });
+            if($(`#key option[value='${url_key}']`).length > 0) {
+                $("#key").val(url_key).change();
+            }
+            $('#key').prop('disabled', false);
+        });
+        getTimes(dataset, function (response){
+            $("#time").empty();
+            response['times'].forEach(i => {
+                $("#time").append(`<option value="${i}">${i}</option>`);
+            });
+            if($(`#time option[value='${url_time}']`).length > 0) {
+                $("#time").val(url_time).change();
+            }
+            $('#time').prop('disabled', false);
+        });
+        getNotes(dataset, function (response){
+            $("#start").empty();
+            const info = {};
+            response['notes'].forEach(i => {
+                const groupOption = i.split(" ")[0];
+                if(!(groupOption in info)){
+                    info[groupOption] = [];
+                }
+                info[groupOption].push(i);
+            });
+            for(let key in info){
+                let $optgroup = $(`<optgroup label="${key}">`);
+                for(let note in info[key]){
+                    //dirty trick to remove super long chords that cause dropdown to be very wide.
+                    if(info[key][note].length < 120){
+                        $optgroup.append(`<option value="${info[key][note]}">${info[key][note]}</option>`);
+                    }
+                }
+                $("#start").append($optgroup);
+            }
+            if($(`#start option[value='${url_note}']`).length > 0) {
+                $("#start").val(url_note).change();
+            }
+            $('#start').prop('disabled', false);
+        });
+
+        var l = 100;
+        if(url_length > 0 && url_length < 1000){
+            l = url_length;
+        }
+        $("#length").val(l);
+
+        var t = 0.85;
+        if(url_temp > 0 && url_temp < 1){
+            t = url_temp;
+        }
+        $("#temperature").val(t);
+        $('#temperature-value').html(t);
+    }
+
     function populateClefDropdown(response){
         $("#clef").empty();
         response['clefs'].forEach(i => {
             $("#clef").append(`<option value="${i}">${i}</option>`);
         });
-        $('#clef').prop('disabled', false);
     }
 
     function populateKeyDropdown(response){
@@ -82,7 +176,6 @@ const err_codes = [
         response['keys'].forEach(i => {
             $("#key").append(`<option value="${i}">${i}</option>`);
         });
-        $('#key').prop('disabled', false);
     }
 
     function populateTimeDropdown(response){
@@ -90,7 +183,6 @@ const err_codes = [
         response['times'].forEach(i => {
             $("#time").append(`<option value="${i}">${i}</option>`);
         });
-        $('#time').prop('disabled', false);
     }
 
     function populateNoteDropdown(response){
@@ -113,9 +205,21 @@ const err_codes = [
             }
             $("#start").append($optgroup);
         }
-        $('#start').prop('disabled', false);
-        $('#start').select2();
     }
+
+    let params = (new URL(document.location)).searchParams;
+    let url_dataset = params.get('dataset');
+    console.log(url_dataset);
+    let url_clef = params.get('clef');
+    console.log(url_clef);
+    let url_key = params.get('key');
+    console.log(url_key);
+    let url_time = params.get('time');
+    console.log(url_time);
+    let url_note = params.get('note');
+    console.log(url_note);
+    let url_length = parseInt(params.get("length"), 10);
+    let url_temp = parseFloat(params.get("temp"));
 
     $(document).ready(function () {
 
@@ -127,6 +231,9 @@ const err_codes = [
             $('#instruments').append('<option value="' + instruments[i].midiId + '">' + instruments[i].name + '</option>');
         }
 
+        //get all the datasets
+        getDatasets(populateDatasetDropdown);
+
         /**
          * TODO:
          * Add some control here.
@@ -135,42 +242,21 @@ const err_codes = [
          * else,
          * do what we would normally do. get a list of all available datasets, and pick the first one.
          * Populate all the dropdowns with the selected dataset.
+         * https://geoteci.engr.ccny.cuny.edu/~pec21/?dataset=V3-84447-p2&clef=Clef%20F&key=Key%203&time=Time%204%204&note=Note%20E5%202.0&length=300&temp=0.5
          */
 
-        /*
-        Populate datasets dropdown with available datasets as soon as page loads.
-         */
-        $.ajax({
-            type: "POST",
-            dataType: 'JSON',
-            data: {
-                action: 'call_get_datasets'
-            },
-            beforeSend: function () {
-            },
-            success: function (response) {
-
-                response['datasets'].forEach(i => {
-                    $("#dataset").append(`<option value="${i}">${i}</option>`);
-                });
-                $("#dataset")[0].selectedIndex = 0;
-
-                let dataset = $("#dataset option:first").val();
-
-                getClefs(dataset, populateClefDropdown);
-                getKeys(dataset, populateKeyDropdown);
-                getTimes(dataset, populateTimeDropdown);
-                getNotes(dataset, populateNoteDropdown);
-            }
-        });
 
         $( "#dataset" ).change(function() {
             var dataset = $(this).val();
-
             getClefs(dataset, populateClefDropdown);
+            $('#clef').prop('disabled', false);
             getKeys(dataset, populateKeyDropdown);
+            $('#key').prop('disabled', false);
             getTimes(dataset, populateTimeDropdown);
+            $('#time').prop('disabled', false);
             getNotes(dataset, populateNoteDropdown);
+            $('#start').prop('disabled', false);
+            $('#start').select2();
         });
 
         /**
@@ -288,3 +374,5 @@ const err_codes = [
 
     });
 })(jQuery);
+
+
