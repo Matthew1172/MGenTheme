@@ -321,9 +321,8 @@ const err_codes = [
                                         $('#controls').show();
                                         $('#createLink').show();
                                         let url = new URL(document.location);
-                                        let home = url.origin;
-                                        let path = url.pathname;
-                                        let link_raw = `${home}${path}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
+                                        let path = url.origin+url.pathname;
+                                        let link_raw = `${path}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
                                         let link = encodeURI(link_raw);
                                         $('#link').text(link);
                                     });
