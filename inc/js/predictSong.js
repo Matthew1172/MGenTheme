@@ -94,14 +94,20 @@ const err_codes = [
         $("#dataset")[0].selectedIndex = index;
         let dataset = $("#dataset").val();
 
-        getClefs(dataset, populateClefDropdown);
+        getClefs(dataset, function (response){
+            $("#clef").empty();
+            response['clefs'].forEach(i => {
+                $("#clef").append(`<option value="${i}">${i}</option>`);
+            });
+            if($(`#clef option[value='${url_clef}']`).length > 0) {
+                $("#clef").val(url_clef).change();
+            }
+            $('#clef').prop('disabled', false);
+        });
         getKeys(dataset, populateKeyDropdown);
         getTimes(dataset, populateTimeDropdown);
         getNotes(dataset, populateNoteDropdown);
 
-        if($(`#clef option[value='${url_clef}']`).length > 0) {
-            $("#clef").val(url_clef).change();
-        }
         if($(`#key option[value='${url_key}']`).length > 0) {
             $("#key").val(url_key).change();
         }
