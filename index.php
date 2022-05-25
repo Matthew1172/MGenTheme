@@ -73,4 +73,8 @@
         <div id="score"></div>
     </div>
     <div id="osmdCanvas"></div>
+    <div id="share">
+        <button id="createLink">Share this song</button>
+        <span id="link"></span>
+    </div>
 <?php get_footer(); ?>
