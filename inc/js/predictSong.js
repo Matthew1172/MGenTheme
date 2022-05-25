@@ -91,18 +91,39 @@ const err_codes = [
         if($(`#dataset option[value='${url_dataset}']`).length > 0) {
             index = $(`#dataset option[value="${url_dataset}"]`).attr('selected', true)[0].index
         }
-        console.log(index);
-
         $("#dataset")[0].selectedIndex = index;
         let dataset = $("#dataset").val();
-        console.log(dataset);
 
         getClefs(dataset, populateClefDropdown);
         getKeys(dataset, populateKeyDropdown);
         getTimes(dataset, populateTimeDropdown);
         getNotes(dataset, populateNoteDropdown);
 
-        setValues(url_clef, url_key, url_time, url_note, url_length, url_temp);
+        if($(`#clef option[value='${url_clef}']`).length > 0) {
+            $("#clef").val(url_clef).change();
+        }
+        if($(`#key option[value='${url_key}']`).length > 0) {
+            $("#key").val(url_key).change();
+        }
+        if($(`#time option[value='${url_time}']`).length > 0) {
+            $("#time").val(url_time).change();
+        }
+        if($(`#start option[value='${url_note}']`).length > 0) {
+            $("#start").val(url_note).change();
+        }
+
+        var l = 100;
+        if(url_length > 0 && url_length < 1000){
+            l = url_length;
+        }
+        $("#length").val(l);
+
+        var t = 0.85;
+        if(url_temp > 0 && url_temp < 1){
+            t = url_temp;
+        }
+        $("#temperature").val(t);
+        $('#temperature-value').html(t);
     }
 
     function populateClefDropdown(response){
@@ -146,35 +167,6 @@ const err_codes = [
             }
             $("#start").append($optgroup);
         }
-    }
-
-    function setValues(url_clef, url_key, url_time, url_note, url_length, url_temp){
-
-        if($(`#clef option[value='${url_clef}']`).length > 0) {
-            $("#clef").val(url_clef).change();
-        }
-        if($(`#key option[value='${url_key}']`).length > 0) {
-            $("#key").val(url_key).change();
-        }
-        if($(`#time option[value='${url_time}']`).length > 0) {
-            $("#time").val(url_time).change();
-        }
-        if($(`#start option[value='${url_note}']`).length > 0) {
-            $("#start").val(url_note).change();
-        }
-
-        var l = 100;
-        if(url_length > 0 && url_length < 1000){
-            l = url_length;
-        }
-        $("#length").val(l);
-
-        var t = 0.85;
-        if(url_temp > 0 && url_temp < 1){
-            t = url_temp;
-        }
-        $("#temperature").val(t);
-        $('#temperature-value').html(t);
     }
 
     let params = (new URL(document.location)).searchParams;
