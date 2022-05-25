@@ -126,6 +126,7 @@ const err_codes = [
         });
         getNotes(dataset, function (response){
             $("#start").empty();
+            $('#start').select2();
             const info = {};
             response['notes'].forEach(i => {
                 const groupOption = i.split(" ")[0];
@@ -162,7 +163,6 @@ const err_codes = [
         }
         $("#temperature").val(t);
         $('#temperature-value').html(t);
-        $('#start').select2();
     }
 
     function populateClefDropdown(response){
