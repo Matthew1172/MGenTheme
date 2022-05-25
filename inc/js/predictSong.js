@@ -162,6 +162,7 @@ const err_codes = [
         }
         $("#temperature").val(t);
         $('#temperature-value').html(t);
+        $('#start').select2();
     }
 
     function populateClefDropdown(response){
@@ -226,7 +227,6 @@ const err_codes = [
         $('#loading').hide();
         $('#controls').hide();
         $('#share').hide();
-        $('#start').select2();
 
         const instruments = audioPlayer.availableInstruments;
         for (var i = 0; i < instruments.length; i++) {
