@@ -60,8 +60,8 @@
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <div class="col-md-12">
-                        <button id="submit-run-model" type="submit" class="btn btn-warning main-btn">Generate</button>
+                    <div class="col-md-2">
+                        <button id="submit-run-model" type="submit" class="w-100 btn btn-warning main-btn">Generate</button>
                     </div>
                 </div>
             </form>
