@@ -20,11 +20,11 @@ Use it to make something cool, have fun, and share what you've learned
 with others.
  */
 
-#run-model {
+#run-model, #share {
       margin-top: 30px;
 }
 
-#run-model .row {
+.controls, #run-model .row {
       margin-bottom: 30px;
 }
 

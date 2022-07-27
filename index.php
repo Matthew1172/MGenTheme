@@ -53,10 +53,9 @@
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="temperature" class="col-sm-2 col-form-label">Temperature</label>
+                    <label for="temperature" class="col-sm-2 col-form-label">Temperature: <span id="temperature-value">0.85</span></label>
                     <div class="col-md-4">
                         <input type="range" class="form-range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
-                        <span id="temperature-value">0.85</span>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
