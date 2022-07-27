@@ -77,11 +77,11 @@
         <div class="col-sm-1">
             <button id="btn-stop" class="w-100 btn btn-danger"><i class="bi bi-stop-fill"></i></button>
         </div>
-        <label for="slider" class="col-sm-1 col-form-label">BPM: <span id="bpm-value">100</span></label>
+        <label for="slider" class="col-sm-2 col-form-label">BPM: <span id="bpm-value">100</span></label>
         <div class="col-sm-4">
             <input type="range" class="form-range" id="bpm-slider" value="100" min="50" max="300" step="1" />
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <select id="instruments" class="form-select form-select-sm"></select>
         </div>
     </div>
