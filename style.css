@@ -20,6 +20,10 @@ Use it to make something cool, have fun, and share what you've learned
 with others.
  */
 
+#bpm-value, #temperature-value {
+      color:rgba(248, 193, 51, 1.0)
+}
+
 #run-model, #share {
       margin-top: 30px;
 }
