@@ -61,7 +61,7 @@
                 </div>
                 <div class="row justify-content-md-center">
                     <div class="col-md-2">
-                        <button id="submit-run-model" type="submit" class="w-100 btn btn-warning main-btn">Generate</button>
+                        <button id="submit-run-model" type="submit" class="w-100 btn btn-primary main-btn">Generate</button>
                     </div>
                 </div>
             </form>
@@ -70,13 +70,13 @@
 
     <div id="controls" class="row controls">
         <div class="col-sm-2">
-            <button id="btn-play" class="w-100 btn btn-secondary">Play</button>
+            <button id="btn-play" class="w-100 btn btn-success">Play</button>
         </div>
         <div class="col-sm-2">
-            <button id="btn-pause" class="w-100 btn btn-secondary">Pause</button>
+            <button id="btn-pause" class="w-100 btn btn-warning">Pause</button>
         </div>
         <div class="col-sm-2">
-            <button id="btn-stop" class="w-100 btn btn-secondary">Stop</button>
+            <button id="btn-stop" class="w-100 btn btn-danger">Stop</button>
         </div>
         <label for="slider" class="col-sm-2 col-form-label">BPM</label>
         <div class="col-sm-2">
