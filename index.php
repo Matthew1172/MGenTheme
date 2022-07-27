@@ -84,7 +84,7 @@
             <span id="bpm-value">100</span>
         </div>
         <div class="col-sm-2">
-            <select id="instruments"></select>
+            <select id="instruments" class="form-select form-select-sm"></select>
         </div>
     </div>
     <div class="row">
