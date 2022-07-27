@@ -4,12 +4,9 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
     drawingParameters: "compacttight", // more compact spacing, less padding
     drawMeasureNumbers: false,
     drawFromMeasureNumber: 0,
-    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
+    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER, // draw all measures, up to the end of the sample
+    darkMode: true
 });
-
-//set dark mode
-osmd.setOptions({defaultColorMusic: "#FFFFFF"});
-osmd.EngravingRules.PageBackgroundColor = "#000000";
 
 let audioPlayer = new OsmdAudioPlayer();
 
