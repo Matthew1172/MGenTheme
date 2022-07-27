@@ -68,13 +68,13 @@
     </div>
 
     <div id="controls" class="row controls">
-        <div class="col-sm-1">
+        <div class="col-sm-1 p-0">
             <button id="btn-play" class="w-100 btn btn-success"><i class="bi bi-play-fill"></i></button>
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-1 p-0">
             <button id="btn-pause" class="w-100 btn btn-warning"><i class="bi bi-pause-fill"></i></button>
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-1 p-0">
             <button id="btn-stop" class="w-100 btn btn-danger"><i class="bi bi-stop-fill"></i></button>
         </div>
         <label for="slider" class="col-sm-2 col-form-label">BPM: <span id="bpm-value">100</span></label>
