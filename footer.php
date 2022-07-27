@@ -13,7 +13,7 @@
  */
 
 ?>
-<footer style="background-color: #ededed;">
+<footer>
     <div class="container">
         <div class="row py-5">
             <div class="col-sm-12">
