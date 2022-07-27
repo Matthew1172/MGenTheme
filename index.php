@@ -68,20 +68,20 @@
     </div>
 
     <div id="controls" class="row controls">
-        <div class="col-sm-1 p-0">
+        <div class="col-lg-1">
             <button id="btn-play" class="w-100 btn btn-success"><i class="bi bi-play-fill"></i></button>
         </div>
-        <div class="col-sm-1 p-0">
+        <div class="col-lg-1">
             <button id="btn-pause" class="w-100 btn btn-warning"><i class="bi bi-pause-fill"></i></button>
         </div>
-        <div class="col-sm-1 p-0">
+        <div class="col-lg-1">
             <button id="btn-stop" class="w-100 btn btn-danger"><i class="bi bi-stop-fill"></i></button>
         </div>
-        <label for="slider" class="col-sm-2 col-form-label">BPM: <span id="bpm-value">100</span></label>
-        <div class="col-sm-4">
+        <label for="slider" class="col-lg-2 col-form-label">BPM: <span id="bpm-value">100</span></label>
+        <div class="col-lg-4">
             <input type="range" class="form-range" id="bpm-slider" value="100" min="50" max="300" step="1" />
         </div>
-        <div class="col-sm-3">
+        <div class="col-lg-3">
             <select id="instruments" class="form-select form-select-sm"></select>
         </div>
     </div>
