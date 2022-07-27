@@ -69,10 +69,7 @@
 
     <div id="controls" class="row controls">
         <div class="col-sm-1">
-            <button id="btn-play" class="w-100 btn btn-success">
-                <svg class="bi" width="32" height="32" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#play-fill" />
-                </svg>
+            <button id="btn-play" class="w-100 btn btn-success"><i class="bi bi-alarm"></i>
             </button>
         </div>
         <div class="col-sm-1">
