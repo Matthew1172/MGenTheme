@@ -4,10 +4,9 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
     drawingParameters: "compacttight", // more compact spacing, less padding
     drawMeasureNumbers: false,
     drawFromMeasureNumber: 0,
-    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER, // draw all measures, up to the end of the sample
-    darkMode: true
+    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER
 });
-
+osmd.setOptions({darkMode: true});
 let audioPlayer = new OsmdAudioPlayer();
 
 const err_codes = [
