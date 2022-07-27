@@ -1,12 +1,14 @@
 let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
-    // set options here
     backend: "canvas",
-    drawingParameters: "compacttight", // more compact spacing, less padding
+    drawingParameters: "compacttight",
     drawMeasureNumbers: false,
     drawFromMeasureNumber: 0,
-    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER
+    drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER,
+    darkMode: true
 });
-osmd.EngravingRules.PageBackgroundColor = "#fafafa";
+
+//osmd.EngravingRules.PageBackgroundColor = "#fafafa";
+
 let audioPlayer = new OsmdAudioPlayer();
 
 const err_codes = [
