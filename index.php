@@ -20,47 +20,47 @@
                 </div>
                 <div class="row justify-content-md-center">
                     <label for="clef" class="col-sm-2 col-form-label">Clef</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <select id="clef" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <label for="key" class="col-sm-2 col-form-label">Key signature</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <select id="key" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <label for="time" class="col-sm-2 col-form-label">Time signature</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <select id="time" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <label for="start" class="col-sm-2 col-form-label">Starting note</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <select id="start" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <label for="length" class="col-sm-2 col-form-label">Length</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <input id="length" type="text" class="form-control" placeholder="Length" value="100" />
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <label for="temperature" class="col-sm-2 col-form-label">Temperature</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <input type="range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
                         <span id="temperature-value">0.85</span>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <div class="form-group col-md-12">
+                    <div class="col-md-12">
                         <button id="submit-run-model" type="submit" class="btn btn-warning main-btn">Generate</button>
                     </div>
                 </div>

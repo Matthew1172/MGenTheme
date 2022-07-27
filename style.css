@@ -20,6 +20,10 @@ Use it to make something cool, have fun, and share what you've learned
 with others.
  */
 
+#run-model .row{
+      margin-bottom: 15px;
+}
+
 #three {
       width: 100vw;
       height: 100vh;
