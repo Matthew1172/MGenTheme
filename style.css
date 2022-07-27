@@ -21,17 +21,17 @@ with others.
  */
 
 #three {
-width: 100vw;
-height: 100vh;
-display: block;
-position: fixed;
-top: 0;
-left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
       z-index: -9999;
 }
 
 main {
-width: 1400px;
-       max-width: 90%;
-margin: 40px auto 20px auto;
+      width: 1400px;
+      max-width: 90%;
+      margin: 40px auto 20px auto;
 }

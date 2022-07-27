@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions and definitions
  *
@@ -12,51 +13,52 @@
  * First, let's set the maximum content width based on the theme's design and stylesheet.
  * This will limit the width of all uploaded images and embeds.
  */
-if ( ! isset( $content_width ) )
+if (!isset($content_width))
 	$content_width = 800; /* pixels */
 
-	if ( ! function_exists( 'mgen_setup' ) ) :
+if (!function_exists('mgen_setup')) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which runs
+	 * before the init hook. The init hook is too late for some features, such as indicating
+	 * support post thumbnails.
+	 */
+	function mgen_setup()
+	{
+
 		/**
-		 * Sets up theme defaults and registers support for various WordPress features.
-		 *
-		 * Note that this function is hooked into the after_setup_theme hook, which runs
-		 * before the init hook. The init hook is too late for some features, such as indicating
-		 * support post thumbnails.
+		 * Make theme available for translation.
+		 * Translations can be placed in the /languages/ directory.
 		 */
-		function mgen_setup() {
+		load_theme_textdomain('mgen', get_template_directory() . '/languages');
 
-			/**
-			 * Make theme available for translation.
-			 * Translations can be placed in the /languages/ directory.
-			 */
-			load_theme_textdomain( 'mgen', get_template_directory() . '/languages' );
+		/**
+		 * Add default posts and comments RSS feed links to &lt;head>.
+		 */
+		add_theme_support('automatic-feed-links');
 
-			/**
-			 * Add default posts and comments RSS feed links to &lt;head>.
-			 */
-			add_theme_support( 'automatic-feed-links' );
+		/**
+		 * Enable support for post thumbnails and featured images.
+		 */
+		add_theme_support('post-thumbnails');
 
-			/**
-			 * Enable support for post thumbnails and featured images.
-			 */
-			add_theme_support( 'post-thumbnails' );
+		/**
+		 * Add support for two custom navigation menus.
+		 */
+		register_nav_menus(array(
+			'primary'   => __('Primary Menu', 'mgen'),
+			'secondary' => __('Secondary Menu', 'mgen')
+		));
 
-			/**
-			 * Add support for two custom navigation menus.
-			 */
-			register_nav_menus( array(
-						'primary'   => __( 'Primary Menu', 'mgen' ),
-						'secondary' => __('Secondary Menu', 'mgen' )
-						) );
-
-			/**
-			 * Enable support for the following post formats:
-			 * aside, gallery, quote, image, and video
-			 */
-			add_theme_support( 'post-formats', array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
-		}
+		/**
+		 * Enable support for the following post formats:
+		 * aside, gallery, quote, image, and video
+		 */
+		add_theme_support('post-formats', array('aside', 'gallery', 'quote', 'image', 'video'));
+	}
 endif; // mgen_setup
-add_action( 'after_setup_theme', 'mgen_setup' );
+add_action('after_setup_theme', 'mgen_setup');
 
 /*
  *
@@ -65,11 +67,10 @@ add_action( 'after_setup_theme', 'mgen_setup' );
  */
 function index_style_enqueue()
 {
-	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'mgenStyle', get_stylesheet_uri(), array(), $theme_version );
-	wp_enqueue_style( 'select2CSS', "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", array(), $theme_version );
-	wp_enqueue_style( 'bootstrapCSS', get_template_directory_uri()."/inc/bootstrap-5.2.0-dist/css/bootstrap.min.css", array(), $theme_version );
-
+	$theme_version = wp_get_theme()->get('Version');
+	wp_enqueue_style('mgenStyle', get_stylesheet_uri(), array(), $theme_version);
+	wp_enqueue_style('select2CSS', "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", array(), $theme_version);
+	wp_enqueue_style('bootstrapCSS', get_template_directory_uri() . "/inc/bootstrap-5.2.0-dist/css/bootstrap.min.css", array(), $theme_version);
 }
 add_action('wp_enqueue_scripts', 'index_style_enqueue');
 
@@ -85,8 +86,8 @@ function index_script_enqueue()
 	wp_enqueue_script('bootstrapJS', get_template_directory_uri() . '/inc/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js', array('jquery'), '1.0', true);
 
 	wp_localize_script('configJS', 'mgen', array(
-				'url' => admin_url('admin-ajax.php')
-				));
+		'url' => admin_url('admin-ajax.php')
+	));
 }
 add_action('wp_enqueue_scripts', 'index_script_enqueue');
 
@@ -99,9 +100,9 @@ function get_mxl()
 {
 	$response = array();
 	$callee_data = array(
-			'folder' => esc_attr($_POST['folder']),
-			'file' => esc_attr($_POST['file'])
-			);
+		'folder' => esc_attr($_POST['folder']),
+		'file' => esc_attr($_POST['file'])
+	);
 
 	//$api = new ApiCaller();
 	//$xml = $api->CallGetMxl($callee_data);
@@ -113,10 +114,10 @@ function get_mxl()
 	$url = "http://$api:$port$endpoint?folder=$folder&file=$file";
 
 	$xml =  file_get_contents($url);
-	if($xml === false){
+	if ($xml === false) {
 		$response['scoreXml'] = $url;
 		$response['r'] = "Bad";
-	}else{
+	} else {
 		$response['scoreXml'] = base64_encode($xml);
 		$response['r'] = "Good";
 	}
@@ -153,23 +154,23 @@ function run_model()
 	$url = "http://$api:$port$endpoint";
 
 	$callee_data = array(
-			'dataset' => esc_attr($_POST['dataset']),
-			'length' => esc_attr($_POST['length']),
-			'temperature' => esc_attr($_POST['temperature']),
-			'input_clef' => esc_attr($_POST['clef']),
-			'input_key' => esc_attr($_POST['key']),
-			'input_time' => esc_attr($_POST['time']),
-			'input_seq' => esc_attr($_POST['seq'])
-			);
+		'dataset' => esc_attr($_POST['dataset']),
+		'length' => esc_attr($_POST['length']),
+		'temperature' => esc_attr($_POST['temperature']),
+		'input_clef' => esc_attr($_POST['clef']),
+		'input_key' => esc_attr($_POST['key']),
+		'input_time' => esc_attr($_POST['time']),
+		'input_seq' => esc_attr($_POST['seq'])
+	);
 
 	// use key 'http' even if you send the request to https://...
 	$options = array(
-			'http' => array(
-				'header'  => "Content-type: application/json\r\n",
-				'method'  => 'POST',
-				'content' => json_encode($callee_data)
-				)
-			);
+		'http' => array(
+			'header'  => "Content-type: application/json\r\n",
+			'method'  => 'POST',
+			'content' => json_encode($callee_data)
+		)
+	);
 	$context  = stream_context_create($options);
 	$result = file_get_contents($url, false, $context);
 	if ($result === FALSE) {
@@ -179,7 +180,7 @@ function run_model()
 	}
 	$result = json_decode($result, true);
 	/* Check for errors */
-	if($result['error']){
+	if ($result['error']) {
 		$response['r'] = 3;
 		$response['err'] = $result['error'];
 		wp_send_json($response);
@@ -202,10 +203,10 @@ function run_model()
 	$endpoint = "/mxl-data";
 	$url = "http://$api:$port$endpoint?folder=$folder&file=$file";
 	$xml =  file_get_contents($url);
-	if($xml === false){
+	if ($xml === false) {
 		$response['scoreXml'] = $url;
 		$response['r'] = 1;
-	}else{
+	} else {
 		$response['scoreXml'] = base64_encode($xml);
 		$response['r'] = 0;
 	}
@@ -249,8 +250,8 @@ function get_clefs()
 {
 	$response = array();
 	$callee_data = array(
-			'dataset' => esc_attr($_POST['dataset'])
-			);
+		'dataset' => esc_attr($_POST['dataset'])
+	);
 	$api = '134.74.112.18';
 	$endpoint = "/clefs";
 	$port = '1235';
@@ -277,8 +278,8 @@ function get_keys()
 {
 	$response = array();
 	$callee_data = array(
-			'dataset' => esc_attr($_POST['dataset'])
-			);
+		'dataset' => esc_attr($_POST['dataset'])
+	);
 	$api = '134.74.112.18';
 	$endpoint = "/keys";
 	$port = '1235';
@@ -305,8 +306,8 @@ function get_times()
 {
 	$response = array();
 	$callee_data = array(
-			'dataset' => esc_attr($_POST['dataset'])
-			);
+		'dataset' => esc_attr($_POST['dataset'])
+	);
 	$api = '134.74.112.18';
 	$endpoint = "/times";
 	$port = '1235';
@@ -333,8 +334,8 @@ function get_notes()
 {
 	$response = array();
 	$callee_data = array(
-			'dataset' => esc_attr($_POST['dataset'])
-			);
+		'dataset' => esc_attr($_POST['dataset'])
+	);
 	$api = '134.74.112.18';
 	$endpoint = "/notes";
 	$port = '1235';
