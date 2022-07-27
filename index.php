@@ -89,7 +89,7 @@
                 <h2 id="loading">Loading...</h2>
             </div>
             <div id="score"></div>
-            <div id="osmdCanvas"></div>
+            <div id="osmd_container"></div>
         </div>
     </div>
     <div id="share" class="row">
