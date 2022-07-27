@@ -69,13 +69,25 @@
 
     <div id="controls" class="row controls">
         <div class="col-sm-1">
-            <button id="btn-play" class="w-100 btn btn-success"><i class="play-fill"></i></button>
+            <button id="btn-play" class="w-100 btn btn-success">
+                <svg class="bi" width="32" height="32" fill="currentColor">
+                    <use xlink:href="bootstrap-icons.svg#play-fill" />
+                </svg>
+            </button>
         </div>
         <div class="col-sm-1">
-            <button id="btn-pause" class="w-100 btn btn-warning"><i class="pause-fill"></i></button>
+            <button id="btn-pause" class="w-100 btn btn-warning">
+                <svg class="bi" width="32" height="32" fill="currentColor">
+                    <use xlink:href="bootstrap-icons.svg#pause-fill" />
+                </svg>
+            </button>
         </div>
         <div class="col-sm-1">
-            <button id="btn-stop" class="w-100 btn btn-danger"><i class="stop-fill"></i></button>
+            <button id="btn-stop" class="w-100 btn btn-danger">
+                <svg class="bi" width="32" height="32" fill="currentColor">
+                    <use xlink:href="bootstrap-icons.svg#stop-fill" />
+                </svg>
+            </button>
         </div>
         <label for="slider" class="col-sm-1 col-form-label">BPM: <span id="bpm-value">100</span></label>
         <div class="col-sm-4">
