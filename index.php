@@ -3,13 +3,15 @@
 <canvas id="three"></canvas>
 <div class="container">
 
-<div>
+<div class="row">
 <h1>Instructions:</h1>
 <p>To get started, just click the Generate button, then click play. If you want to give the model some initial information to go off of, just type in your ABC notation song in the text box, and then click the Generate button.</p>
 </div>
-<div>
+
+<div class="row justify-content-lg-center">
+<div class="col-md-12">
 <form id="run-model">
-<div class="form-row">
+<div class="row justify-content-md-center">
 
 
 <div class="form-group col-md-6">
@@ -53,15 +55,16 @@
 
 
 </div>
-<div class="form-row">
+<div class="row justify-content-md-center">
 <div class="form-group col-md-12">
 <button id="submit-run-model" type="submit" class="btn btn-warning main-btn">Generate</button>
 </div>
 </div>
 </form>
 </div>
+</div>
 
-<div>
+<div class="row">
 <div id="controls" class="controls">
 <button id="btn-play">Play</button>
 <button id="btn-pause">Pause</button>
@@ -77,7 +80,7 @@
 <div id="score"></div>
 </div>
 <div id="osmdCanvas"></div>
-<div id="share">
+<div id="share" class="row">
 <button id="createLink">Share this song</button>
 <p id="link"></p>
 </div>

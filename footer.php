@@ -17,7 +17,7 @@
 <div class="container">
 <div class="row py-5">
 <div class="col-sm-12">
-<h5 class="pb-3">Music Generator</h5>
+<h5 class="pb-3">Music Generator by Matthew Pecko</h5>
 <hr/>
 </div>
 </div>
