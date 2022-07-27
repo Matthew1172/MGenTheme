@@ -45,5 +45,6 @@ main {
 }
 
 footer {
+      margin-top: 120px;
       background-color: rgba(100, 255, 255, 0.0);
 }
