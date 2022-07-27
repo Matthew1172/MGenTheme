@@ -68,7 +68,7 @@
     </div>
 
     <div id="controls" class="row controls">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button id="btn-play" class="w-100 btn btn-success"><i class="bi bi-play-fill"></i></button>
                 <button id="btn-pause" class="w-100 btn btn-warning"><i class="bi bi-pause-fill"></i></button>
@@ -79,7 +79,7 @@
         <div class="col-md-4">
             <input type="range" class="form-range" id="bpm-slider" value="100" min="50" max="300" step="1" />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <select id="instruments" class="form-select form-select-sm"></select>
         </div>
     </div>
