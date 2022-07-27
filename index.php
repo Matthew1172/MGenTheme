@@ -68,22 +68,34 @@
         </div>
     </div>
 
-    <div class="row">
-        <div id="controls" class="controls">
+    <div id="controls" class="row controls">
+        <div class="col-sm-2">
             <button id="btn-play" class="w-100 btn btn-secondary">Play</button>
+        </div>
+        <div class="col-sm-2">
             <button id="btn-pause" class="w-100 btn btn-secondary">Pause</button>
+        </div>
+        <div class="col-sm-2">
             <button id="btn-stop" class="w-100 btn btn-secondary">Stop</button>
-            <label for="slider">BPM</label>
+        </div>
+        <label for="slider" class="col-sm-2 col-form-label">BPM</label>
+        <div class="col-sm-2">
             <input type="range" class="form-range" id="bpm-slider" value="100" min="50" max="300" step="1" />
             <span id="bpm-value">100</span>
+        </div>
+        <div class="col-sm-2">
             <select id="instruments"></select>
         </div>
-        <div>
-            <h2 id="loading">Loading...</h2>
-        </div>
-        <div id="score"></div>
     </div>
-    <div id="osmdCanvas"></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                <h2 id="loading">Loading...</h2>
+            </div>
+            <div id="score"></div>
+            <div id="osmdCanvas"></div>
+        </div>
+    </div>
     <div id="share" class="row">
         <button id="createLink">Share this song</button>
         <p id="link"></p>
