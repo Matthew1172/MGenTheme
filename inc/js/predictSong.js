@@ -6,6 +6,11 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
     drawFromMeasureNumber: 0,
     drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER // draw all measures, up to the end of the sample
 });
+
+//set dark mode
+osmd.setOptions({defaultColorMusic: "#FFFFFF"});
+osmd.EngravingRules.PageBackgroundColor = "#000000";
+
 let audioPlayer = new OsmdAudioPlayer();
 
 const err_codes = [
