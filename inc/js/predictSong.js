@@ -334,6 +334,7 @@ const err_codes = [
                                 $('#instruments option[value="'+instrument[0].midiInstrumentId+'"]');
                             }catch (e) {
                                 //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
+                                console.log(e);
                                 alert("OSMD could not load the mxl. Please try again.");
                             }
                             break;
