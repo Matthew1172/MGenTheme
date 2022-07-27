@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <canvas id="three"></canvas>
-<div class="container">
+<div class="container mt-5">
 
     <div class="row">
         <h1>Instructions:</h1>
@@ -55,7 +55,7 @@
                 <div class="row justify-content-md-center">
                     <label for="temperature" class="col-sm-2 col-form-label">Temperature</label>
                     <div class="col-md-4">
-                        <input type="range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
+                        <input type="range" class="form-range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
                         <span id="temperature-value">0.85</span>
                     </div>
                 </div>
@@ -70,11 +70,11 @@
 
     <div class="row">
         <div id="controls" class="controls">
-            <button id="btn-play">Play</button>
-            <button id="btn-pause">Pause</button>
-            <button id="btn-stop">Stop</button>
+            <button id="btn-play" class="w-100 btn btn-secondary">Play</button>
+            <button id="btn-pause" class="w-100 btn btn-secondary">Pause</button>
+            <button id="btn-stop" class="w-100 btn btn-secondary">Stop</button>
             <label for="slider">BPM</label>
-            <input type="range" id="bpm-slider" value="100" min="50" max="300" step="1" />
+            <input type="range" class="form-range" id="bpm-slider" value="100" min="50" max="300" step="1" />
             <span id="bpm-value">100</span>
             <select id="instruments"></select>
         </div>
