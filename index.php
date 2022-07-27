@@ -13,7 +13,7 @@
             <form id="run-model">
                 <div class="row justify-content-md-center">
                     <label for="dataset" class="col-sm-2 col-form-label">Dataset name</label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <select id="dataset" class="form-select form-select-sm" aria-label=".form-select-sm">
                         </select>
                     </div>
