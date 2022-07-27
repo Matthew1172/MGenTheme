@@ -12,48 +12,48 @@
         <div class="col-md-12">
             <form id="run-model">
                 <div class="row justify-content-md-center">
-                    <label for="dataset" class="col-sm-2 col-form-label">Dataset name</label>
+                    <label for="dataset" class="col-md-2 col-form-label">Dataset name</label>
                     <div class="col-md-4">
                         <select id="dataset" class="form-select form-select-sm" aria-label=".form-select-sm">
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="clef" class="col-sm-2 col-form-label">Clef</label>
+                    <label for="clef" class="col-md-2 col-form-label">Clef</label>
                     <div class="col-md-4">
                         <select id="clef" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="key" class="col-sm-2 col-form-label">Key signature</label>
+                    <label for="key" class="col-md-2 col-form-label">Key signature</label>
                     <div class="col-md-4">
                         <select id="key" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="time" class="col-sm-2 col-form-label">Time signature</label>
+                    <label for="time" class="col-md-2 col-form-label">Time signature</label>
                     <div class="col-md-4">
                         <select id="time" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="start" class="col-sm-2 col-form-label">Starting note</label>
+                    <label for="start" class="col-md-2 col-form-label">Starting note</label>
                     <div class="col-md-4">
                         <select id="start" class="form-select form-select-sm" aria-label=".form-select-sm" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="length" class="col-sm-2 col-form-label">Length</label>
+                    <label for="length" class="col-md-2 col-form-label">Length</label>
                     <div class="col-md-4">
                         <input id="length" type="text" class="form-control" placeholder="Length" value="100" />
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <label for="temperature" class="col-sm-2 col-form-label">Temperature: <span id="temperature-value">0.85</span></label>
+                    <label for="temperature" class="col-md-2 col-form-label">Temperature: <span id="temperature-value">0.85</span></label>
                     <div class="col-md-4">
                         <input type="range" class="form-range" id="temperature" value="0.85" min="0.01" max="1" step="0.01" />
                     </div>
@@ -68,25 +68,23 @@
     </div>
 
     <div id="controls" class="row controls">
-        <div class="col-lg-1">
-            <button id="btn-play" class="w-100 btn btn-success"><i class="bi bi-play-fill"></i></button>
+        <div class="col-md-2">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="btn-play" class="w-100 btn btn-success"><i class="bi bi-play-fill"></i></button>
+                <button id="btn-pause" class="w-100 btn btn-warning"><i class="bi bi-pause-fill"></i></button>
+                <button id="btn-stop" class="w-100 btn btn-danger"><i class="bi bi-stop-fill"></i></button>
+            </div>
         </div>
-        <div class="col-lg-1">
-            <button id="btn-pause" class="w-100 btn btn-warning"><i class="bi bi-pause-fill"></i></button>
-        </div>
-        <div class="col-lg-1">
-            <button id="btn-stop" class="w-100 btn btn-danger"><i class="bi bi-stop-fill"></i></button>
-        </div>
-        <label for="slider" class="col-lg-2 col-form-label">BPM: <span id="bpm-value">100</span></label>
-        <div class="col-lg-4">
+        <label for="slider" class="col-md-2 col-form-label">BPM: <span id="bpm-value">100</span></label>
+        <div class="col-md-4">
             <input type="range" class="form-range" id="bpm-slider" value="100" min="50" max="300" step="1" />
         </div>
-        <div class="col-lg-3">
+        <div class="col-md-4">
             <select id="instruments" class="form-select form-select-sm"></select>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-12">
             <div>
                 <h2 id="loading">Loading...</h2>
             </div>
