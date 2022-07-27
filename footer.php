@@ -13,24 +13,23 @@
  */
 
 ?>
-    <footer style="background-color: #ededed;">
-        <div class="container">
-            <div class="row py-5">
-                <div class="col-sm-6">
-                </div>
-                <div class="col-sm-6">
-                    <h5 class="pb-3">Music Generator</h5>
-                    <hr/>
-                </div>
-            </div>
-            <div class="row">
-                <div class='col-sm-12'>
-                    <p class="text-center text-muted">Licensed under MIT.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    </body>
+<footer style="background-color: #ededed;">
+<div class="container">
+<div class="row py-5">
+<div class="col-sm-12">
+<h5 class="pb-3">Music Generator</h5>
+<hr/>
+</div>
+</div>
+<div class="row">
+<div class='col-sm-12'>
+<p class="text-center text-muted">Created by <a href="https://matthewpecko.com">Matthew Pecko</a></p>
+<p class="text-center text-muted">Licensed under MIT.</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
 
-    </html>
+</html>
 <?php wp_footer(); ?>
