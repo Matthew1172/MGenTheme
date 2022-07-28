@@ -1,4 +1,4 @@
-let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd_container", {
+let osmd = new OpenSheetMusicDisplay("osmd_container", {
     backend: "svg",
     drawingParameters: "compacttight",
     drawMeasureNumbers: false,
@@ -6,6 +6,8 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd_container", {
     drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER,
     darkMode: true
 });
+
+
 
 //osmd.EngravingRules.PageBackgroundColor = "#fafafa";
 
