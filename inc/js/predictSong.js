@@ -8,6 +8,66 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd_container", {
 });
 
 
+var demoPlaybackControl = function(osmd2) {
+
+    var playbackListener = {
+        play() {
+            followCursorCheckbox.checked = true;
+            osmd.FollowCursor = true;
+        },
+        pause() {},
+        reset() {},
+        bpmChanged() {},
+        volumeChanged() {},
+        volumeMute() {},
+        volumeUnmute() {}
+    }
+
+    var timingSource = new opensheetmusicdisplay.LinearTimingSource();
+    var playbackManager = new opensheetmusicdisplay.PlaybackManager(timingSource, undefined, new opensheetmusicdisplay.BasicAudioPlayer(), undefined);
+    playbackManager.DoPlayback = true;
+    playbackManager.DoPreCount = false; 
+    playbackManager.PreCountMeasures = 1; // note that DoPreCount has to be true for a precount to happen
+    var playbackControlPanel = new opensheetmusicdisplay.ControlPanel();
+    playbackControlPanel.addListener(playbackManager);
+    playbackControlPanel.addListener(playbackListener);
+
+    function initialize() {
+        timingSource.reset();
+        timingSource.pause();
+        timingSource.Settings = osmd2.Sheet.playbackSettings;
+        playbackManager.initialize(osmd2.Sheet.musicPartManager);
+        playbackManager.addListener(osmd2.cursor);
+        playbackManager.reset();
+        osmd2.PlaybackManager = playbackManager;
+        playbackControlPanel.clearVolumeTracks();
+        playbackControlPanel.addVolumeTrack(playbackManager.Metronome.Name, playbackManager.Metronome.Id, playbackManager.Metronome.Volume*100);
+        for(const instrId of playbackManager.InstrumentIdMapping.keys()) {
+            const instr = playbackManager.InstrumentIdMapping.getValue(instrId);
+            playbackControlPanel.addVolumeTrack(instr.Name, instrId, instr.Volume * 100);
+        }
+        playbackControlPanel.bpmChanged(osmd2.Sheet.DefaultStartTempoInBpm);
+    }
+
+    function showControls() {
+        playbackControlPanel.show();
+    }
+
+    function hideControls() {
+        playbackControlPanel.hideAndClear();
+    }
+
+    function IsClosed() {
+        return playbackControlPanel.IsClosed;
+    }
+
+    return { 
+        initialize: initialize,
+        showControls: showControls,
+        hideControls: hideControls,
+        IsClosed: IsClosed
+    }
+};
 
 //osmd.EngravingRules.PageBackgroundColor = "#fafafa";
 
