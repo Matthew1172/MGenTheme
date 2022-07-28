@@ -4,7 +4,8 @@ let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd_container", {
     drawMeasureNumbers: false,
     drawFromMeasureNumber: 0,
     drawUpToMeasureNumber: Number.MAX_SAFE_INTEGER,
-    darkMode: true
+    darkMode: false,
+    defaultColorMusic: "#78f8e3"
 });
 
 
@@ -393,7 +394,7 @@ const err_codes = [
                                         let link_raw = `${path}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
                                         let link = encodeURI(link_raw);
                                         $('#link').text(link);
-                                        
+
                                         const instrument = osmd.Sheet.Instruments.flatMap(i => i.Voices);
                                         $("#instruments option:selected").prop("selected", false)
                                         $('#instruments option[value="'+instrument[0].midiInstrumentId+'"]');
