@@ -1,3 +1,5 @@
+import { PlaybackManager, LinearTimingSource, BasicAudioPlayer, ControlPanel } from '../opensheetmusicdisplay.min.js';
+
 let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd_container", {
     backend: "svg",
     drawingParameters: "compacttight",
