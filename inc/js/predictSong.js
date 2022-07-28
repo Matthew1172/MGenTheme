@@ -393,10 +393,11 @@ const err_codes = [
                                         let link_raw = `${path}?dataset=${dataset}&clef=${clef}&key=${key}&time=${time}&note=${seq}&length=${length}&temp=${temperature}`;
                                         let link = encodeURI(link_raw);
                                         $('#link').text(link);
+                                        
+                                        const instrument = osmd.Sheet.Instruments.flatMap(i => i.Voices);
+                                        $("#instruments option:selected").prop("selected", false)
+                                        $('#instruments option[value="'+instrument[0].midiInstrumentId+'"]');
                                     });
-                                const instrument = osmd.Sheet.Instruments.flatMap(i => i.Voices);
-                                $("#instruments option:selected").prop("selected", false)
-                                $('#instruments option[value="'+instrument[0].midiInstrumentId+'"]');
                             }catch (e) {
                                 //osmd could not load the mxl. Most likely it is 'BadArguments' provided duration is not valid.
                                 console.log(e);
