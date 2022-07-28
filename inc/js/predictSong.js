@@ -1,4 +1,4 @@
-let osmd = new OpenSheetMusicDisplay("osmd_container", {
+let osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd_container", {
     backend: "svg",
     drawingParameters: "compacttight",
     drawMeasureNumbers: false,
