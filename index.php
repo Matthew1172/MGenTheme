@@ -74,7 +74,7 @@
 
 
 
-    
+
     <div class="row">
         <div class="playback-buttons">
             <div class="control-panel__play-controls">
@@ -85,8 +85,8 @@
 
                 <button class="mdc-fab playpause-button" aria-label="Play" style="margin-left: 20px;">
                     <div class="mdc-fab__ripple"></div>
-                    <span class="mdc-fab__icon material-icons play-icon">play_arrow</span>
-                    <span class="mdc-fab__icon material-icons pause-icon">pause</span>
+                    <span class="mdc-fab__icon material-icons play-icon"><i class="bi bi-play-fill"></i></span>
+                    <span class="mdc-fab__icon material-icons pause-icon"><i class="bi bi-pause-fill"></i></span>
                 </button>
             </div>
         </div>
