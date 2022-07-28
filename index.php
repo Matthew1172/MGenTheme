@@ -3,9 +3,11 @@
 <canvas id="three"></canvas>
 <div class="container mt-5">
 
-    <div class="row">
-        <h1>Instructions:</h1>
-        <p>To get started, just click the Generate button, then click play. If you want to give the model some initial information to go off of, just type in your ABC notation song in the text box, and then click the Generate button.</p>
+    <div class="row justify-content-lg-center">
+        <div class="col-md-6">
+            <h1>Instructions:</h1>
+            <p>To get started, just click the Generate button, then click play. If you want to give the model some initial information to go off of, just type in your ABC notation song in the text box, and then click the Generate button.</p>
+        </div>
     </div>
 
     <div class="row justify-content-lg-center">
@@ -91,10 +93,11 @@
             <div id="osmd_container"></div>
         </div>
     </div>
-    <div id="share" class="row">
-        <button id="createLink">Share this song</button>
-        <p id="link"></p>
+    <div id="share" class="row justify-content-lg-center">
+        <div class="col-md-6">
+            <button id="createLink">Share this song</button>
+            <p id="link"></p>
+        </div>
     </div>
-
 </div>
 <?php get_footer(); ?>
