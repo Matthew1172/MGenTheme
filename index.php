@@ -67,6 +67,37 @@
         </div>
     </div>
 
+
+
+
+
+
+
+
+    
+    <div class="row">
+        <div class="playback-buttons">
+            <div class="control-panel__play-controls">
+                <button class="mdc-fab mdc-fab--mini reset-button" aria-label="Reset">
+                    <div class="mdc-fab__ripple"></div>
+                    <span class="mdc-fab__icon material-icons">skip_previous</span>
+                </button>
+
+                <button class="mdc-fab playpause-button" aria-label="Play" style="margin-left: 20px;">
+                    <div class="mdc-fab__ripple"></div>
+                    <span class="mdc-fab__icon material-icons play-icon">play_arrow</span>
+                    <span class="mdc-fab__icon material-icons pause-icon">pause</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <div id="controls" class="row controls">
         <div class="col-md-3">
             <div class="btn-group" role="group" aria-label="Basic example">

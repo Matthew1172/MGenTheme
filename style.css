@@ -1,6 +1,6 @@
 /*
-   Theme Name: MGen Website
-   Text Domain: mgen
+Theme Name: MGen Website
+Text Domain: mgen
 Version: 1.0
 Requires at least: 4.7
 Requires PHP: 5.2.4
@@ -18,8 +18,27 @@ License version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned
 with others.
- */
- 
+*/
+
+
+
+
+.playpause-button .pause-icon {
+      display: none;
+}
+
+.playpause-button.playing .pause-icon {
+      display: block;
+}
+
+.playpause-button.playing .play-icon {
+      display: none;
+}
+
+
+
+
+
 #bpm-value,
 #temperature-value {
       color: rgba(248, 193, 51, 1.0)
