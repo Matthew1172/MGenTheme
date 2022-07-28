@@ -383,7 +383,7 @@ const err_codes = [
                                         osmd.render();
                                         osmd.cursor.show();
                                         
-                                        demoPlaybackControl(osmd).initialize();
+                                        //demoPlaybackControl(osmd).initialize();
 
                                         audioPlayer.loadScore(osmd);
                                         $('#controls').show();

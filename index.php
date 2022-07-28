@@ -66,22 +66,6 @@
             </form>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div id="controls" class="row controls">
         <div class="col-md-3">
             <div class="btn-group" role="group" aria-label="Basic example">
